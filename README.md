@@ -13,7 +13,7 @@
 * Using Google Map API display a map of the world
 
 ### Tools
-* Google Maps API
+* Open Layers API 
 * node.js
 * Javascript, HTML, CSS 
 

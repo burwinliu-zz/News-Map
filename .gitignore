@@ -1,3 +1,6 @@
 # just making sure that no weird files are here
 ./idea
+# looks like we can't avoid showing api key to end user.. ah well worth a shot
 .env
+node_modules
+venv

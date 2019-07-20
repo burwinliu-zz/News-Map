@@ -1,0 +1,29 @@
+{
+  "name": "news-map",
+  "version": "1.0.0",
+  "description": "A News Map to depict various news around the world in a graphical representation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "parcel build --public-url . index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burwinliu/News-Map.git"
+  },
+  "author": "Burwin Liu, Richard Gao",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/burwinliu/News-Map/issues"
+  },
+  "homepage": "https://github.com/burwinliu/News-Map#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3",
+    "webpack": "^4.36.1",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "dependencies": {
+    "ol": "^5.3.3"
+  }
+}

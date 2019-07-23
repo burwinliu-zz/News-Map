@@ -5,12 +5,17 @@
 
 import bs4
 from urllib.request import urlopen
+'''Take in url function and scrape -- using google '''
 
 
 class Headlines:
     def __init__(self, url: str):
+        """
+
+        :param url:
+        """
         if type(url) != str:
             raise TypeError
         content = urlopen(url).read()
-        soup = bs4.BeautifulSoup(content)
-        print(soup)
+        self.soup = bs4.BeautifulSoup(content)
+        self._dict = []

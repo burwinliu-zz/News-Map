@@ -6,16 +6,16 @@
 
 ### What are the goals of this project?
 * Develop App Skills
-* Provide for an application that can assist in every day life, with hopes of informing and contirubting to a more 
-    enlightened world
+* Provide for an application that can assist in every day life, with hopes of informing in an easy to understand way
 
 ### How are we going to accomplish these goals?
-* Using Google Map API display a map of the world
+* Using Open Layer API display a map of the world with a heat map that graphically demonstrates where news events are coming from.
 
 ### Tools
-* Open Layers API 
-* node.js
+* Open Layers API (https://github.com/openlayers/openlayers)
+* Beautiful Soup web-scraper (https://www.crummy.com/software/BeautifulSoup/)
 * Javascript, HTML, CSS 
+* Python, SQL
 
 ### Contibutors
 * Burwin Liu

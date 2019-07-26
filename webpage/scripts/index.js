@@ -31,7 +31,7 @@ new Map({
 });
 
 
-
+// Need to check commit -- computer setup
 // Reference code from http://openlayersbook.github.io/ch06-styling-vector-layers/example-07.html
 /*
 const high = [64,196,64,1];

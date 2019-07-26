@@ -1,8 +1,12 @@
 # just making sure that no weird files are here
 .idea
-# looks like we can't avoid showing api key to end user.. ah well worth a shot
 .env
 node_modules
 venv
 dist
 .cache
+postgreSQL
+
+# Inside the settings file, to allow for python loading of .env variables  (to protect db passwords)
+settings.py
+

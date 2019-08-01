@@ -16,6 +16,7 @@
 * Beautiful Soup web-scraper (https://www.crummy.com/software/BeautifulSoup/)
 * Javascript, HTML, CSS 
 * Python, SQL
+* geoJSON converted from http://thematicmapping.org/downloads/world_borders.php
 
 ### Contibutors
 * Burwin Liu

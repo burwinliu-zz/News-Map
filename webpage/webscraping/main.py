@@ -1,4 +1,5 @@
-import webpage.webscraping.scraper as scraper
+from webpage.webscraping import *
 
 if __name__ == '__main__':
-    scraped_page = scraper.Headlines("https://news.google.com/?hl=en-US&gl=US&ceid=US:en")
+    scraped_page = Headlines()
+    print(scraped_page)

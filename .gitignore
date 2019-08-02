@@ -10,3 +10,4 @@ postgreSQL
 # Inside the settings file, to allow for python loading of .env variables  (to protect db passwords)
 settings.py
 
+*.pyc

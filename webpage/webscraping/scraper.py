@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup, SoupStrainer
 import html5lib
 import re
 import httplib2
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 from six.moves import cPickle as pkl
 import datetime
 from tqdm import tqdm
@@ -48,7 +48,7 @@ def _trim(tf: List[str]) -> List[str]:
     return rehold
 
 
-def make_readable(sp: BeautifulSoup) -> tuple(str, str):
+def make_readable(sp: BeautifulSoup) -> Dict:
     '''
     this makes a single soup readable
     :param sp:
@@ -60,10 +60,10 @@ def make_readable(sp: BeautifulSoup) -> tuple(str, str):
     lines = [line.strip() for line in text.splitlines()]
     chunks = [phrase.strip() for line in lines for phrase in line.split('  ')]
     text = '\n'.join(chunk for chunk in chunks if chunk)
-    return text, sp.title
+    return {'text': text, 'title': sp.title}
 
 
-def soups_to_strs(soups: List[BeautifulSoup]) -> List[Tuple(str, str)]:
+def soups_to_strs(soups: List[BeautifulSoup]) -> List[Dict]:
     return [make_readable(soup) for soup in soups]
 
 
@@ -80,7 +80,8 @@ class Headlines:
         self.information = zelda.read()
         self.soup = BeautifulSoup(self.information, 'html.parser')
         self.title = self.soup.head.title
-        self.listings = _trim(self.find_links())
+        self.listings = self.find_links()
+        self.listings = _trim(self.listings)
         self.time = datetime.datetime.now()
 
     def find_links(self) -> List[str]:

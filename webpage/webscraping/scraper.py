@@ -29,6 +29,7 @@ class Headlines:
         self.listings = self.trim(self.findlinks())
         self.time = datetime.datetime.now()
 
+    # TODO consistent conventions -- Are we doing camel casing or pep8 convenction? currently on pep8 but can change
     def findLinks(self) -> List[str]:
         '''
         this is a helper method for the main

@@ -16,11 +16,11 @@ from tqdm import tqdm
 
 
 def _trim(tf: List[str]) -> List[str]:
-    '''
+    """
 
     :param tf: this takes in a list
     :return: and attempts to return a cut down list
-    '''
+    """
     rehold = []
 
     def check(site):
@@ -49,11 +49,11 @@ def _trim(tf: List[str]) -> List[str]:
 
 
 def make_readable(sp: BeautifulSoup) -> Dict:
-    '''
+    """
     this makes a single soup readable
     :param sp:
     :return:
-    '''
+    """
     for script in sp(['script', 'style', 'header', 'footer']):
         script.extract()
     text = sp.get_text()
@@ -85,10 +85,10 @@ class Headlines:
         self.time = datetime.datetime.now()
 
     def find_links(self) -> List[str]:
-        '''
+        """
         this is a helper method for the init
         :return:
-        '''
+        """
         triforce = []
 
         def valid(sep):
@@ -111,10 +111,10 @@ class Headlines:
         return triforce
 
     def get_all_articles(self) -> List[BeautifulSoup]:
-        '''
+        """
         i don't think using this would be the best method, probably the generator would be a better choice
         :return:
-        '''
+        """
         loaded_sites = list()
         for i in tqdm(self.listings, desc='loading ALL sites'):
             try:
@@ -128,11 +128,11 @@ class Headlines:
         return loaded_sites
 
     def get_sample(self, batch_size: int = 10) -> List[BeautifulSoup]:
-        '''
+        """
         this might be the better way
         :param batch_size: how much you want to read at a time
         :return:
-        '''
+        """
         loaded_sites = list()
         for i in self.listings:
             try:
@@ -149,11 +149,11 @@ class Headlines:
         return loaded_sites
 
     def save(self, filename=None) -> list:
-        '''
+        """
         @todo actually complete this, will not actually work
         :param filename:
         :return:
-        '''
+        """
         with open(str(self.time) + '.pkl' if filename is None else filename, 'wb') as fp:
             pkl.dump(self.listings, fp)
 

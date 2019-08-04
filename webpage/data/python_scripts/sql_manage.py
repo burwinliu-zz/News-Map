@@ -6,6 +6,8 @@
 import psycopg2
 from webpage.settings import settings
 from os import getenv
+from webpage.data.python_scripts.database import Database
+import decimal
 
 
 # used to test that postgres is in fact working and connected
@@ -18,11 +20,7 @@ def test() -> int:
     :return: int
     """
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password=getenv('DATABASE_PW'),
-                                      host="127.0.0.1",
-                                      port="5432",
-                                      database="postgres")
+        connection = setup_connection()
         settings.test()
         cursor = connection.cursor()
         # Print PostgreSQL Connection properties
@@ -47,7 +45,7 @@ def test() -> int:
 
 # noinspection PyUnresolvedReferences
 def init_db(name: str, column_data: list[tuple[str, ...]], table_rules: list[str, ...] = list, inherit: str = None) \
-        -> None:
+        -> Database:
     """
     Takes params from user and inits postgreSQL database according to inputs
     Note -- column data can have a max of three parameters, see annotations for others
@@ -57,23 +55,22 @@ def init_db(name: str, column_data: list[tuple[str, ...]], table_rules: list[str
     :param column_data: list[tuple] if len(tuple) <= 3 (list[tuple(len<3)])
     :param table_rules: list[str
     :param inherit: str
-    :return: None
+    :return: db.Database
     """
     if table_rules is None:
         table_rules = []
     if table_rules is None:
         table_rules = list()
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password=getenv('DATABASE_PW'),
-                                      host="127.0.0.1",
-                                      port="5432",
-                                      database="postgres")
+        connection = setup_connection()
         cursor = connection.cursor()
         column_compiled = str()
-
+        names = list()
+        types = list()
         for i in column_data:
             if 0 < len(i) < 4:
+                names.append(i[0])
+                types.append(i[1])
                 column_compiled += f"{' '.join([j for j in i])}, "
             else:
                 raise TypeError
@@ -82,12 +79,12 @@ def init_db(name: str, column_data: list[tuple[str, ...]], table_rules: list[str
         if inherit is not None:
             to_execute += f"INHERIT {inherit}"
         cursor.execute(to_execute)
-
+        res = Database(name, tuple(names), tuple(_process_types(types)))
     except (Exception, psycopg2.Error) as error:
         print("Error while connecting to PostgreSQL in initDb", error)
 
     except OSError:
-        print("settings imported incorrectly")
+        print("settings imported incorrectly", OSError)
 
     finally:
         # closing database connection.
@@ -95,14 +92,52 @@ def init_db(name: str, column_data: list[tuple[str, ...]], table_rules: list[str
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
+        if res:
+            return res
 
 
-def store_data():
-    pass
+def _process_types(rules: list) -> list:
+    """
+    Convert the types (in SQL str format) to their corresponding python types.
+
+    :param rules: list
+    :return: tuple
+    """
+    res = list()
+    convert_dict = {"boolean": bool,
+                    "smallint": int,
+                    "int": int,
+                    "bigint": int,
+                    "oid": int,
+                    "real": float,
+                    "double": float,
+                    "numeric": decimal.Decimal,
+                    "bytea": bytes
+                    }
+    for i in rules:
+        try:
+            res.append(convert_dict[i])
+        except KeyError:
+            res.append(str)
+    return res
+
+
+def setup_connection() -> psycopg2.connect():
+    """
+    Setup connection to sql server
+
+    :return: psycopg2._connect
+    """
+    return psycopg2.connect(user="postgres",
+                            password=getenv('DATABASE_PW'),
+                            host="127.0.0.1",
+                            port="5432",
+                            database="postgres")
 
 
 class DatabaseError(Exception):
     pass
+
 
 if __name__ == '__main__':
     test()

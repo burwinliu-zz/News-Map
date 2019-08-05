@@ -4,10 +4,12 @@
     Should have files to configure the databases to hold countries
 """
 import psycopg2
-from webpage.settings import settings
+from webpage.settings import setup
 from os import getenv
-from webpage.data.python_scripts.database import Database
 import decimal
+from webpage.settings.setup import setup_globals
+
+setup_globals()
 
 
 # used to test that postgres is in fact working and connected
@@ -21,7 +23,7 @@ def test() -> int:
     """
     try:
         connection = setup_connection()
-        settings.test()
+        setup.test()
         cursor = connection.cursor()
         # Print PostgreSQL Connection properties
         print(connection.get_dsn_parameters(), "\n")
@@ -37,19 +39,20 @@ def test() -> int:
         return 1
     finally:
         # closing database connection.
-        if connection:
+        if 'connection' in locals():
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
 
 
 # noinspection PyUnresolvedReferences
-def init_db(name: str, column_data: list[tuple[str, ...]], table_rules: list[str, ...] = list, inherit: str = None) \
-        -> Database:
+def init_db(name: str, column_data, table_rules=None, inherit=None) \
+        -> tuple:
     """
     Takes params from user and inits postgreSQL database according to inputs
     Note -- column data can have a max of three parameters, see annotations for others
 
+    :type table_rules: list()
     :rtype: None
     :param name: str
     :param column_data: list[tuple] if len(tuple) <= 3 (list[tuple(len<3)])
@@ -79,7 +82,7 @@ def init_db(name: str, column_data: list[tuple[str, ...]], table_rules: list[str
         if inherit is not None:
             to_execute += f"INHERIT {inherit}"
         cursor.execute(to_execute)
-        res = Database(name, tuple(names), tuple(_process_types(types)))
+        res = tuple((name, tuple(names), tuple(_process_types(types))))
     except (Exception, psycopg2.Error) as error:
         print("Error while connecting to PostgreSQL in initDb", error)
 
@@ -88,11 +91,11 @@ def init_db(name: str, column_data: list[tuple[str, ...]], table_rules: list[str
 
     finally:
         # closing database connection.
-        if connection:
+        if 'connection' in locals():
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
-        if res:
+        if 'res' in locals():
             return res
 
 
@@ -122,12 +125,13 @@ def _process_types(rules: list) -> list:
     return res
 
 
-def setup_connection() -> psycopg2.connect():
+def setup_connection():
     """
     Setup connection to sql server
 
     :return: psycopg2._connect
     """
+    print(getenv('DATABASE_PW'))
     return psycopg2.connect(user="postgres",
                             password=getenv('DATABASE_PW'),
                             host="127.0.0.1",

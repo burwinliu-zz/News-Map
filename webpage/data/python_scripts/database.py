@@ -2,6 +2,7 @@
     Database representation object
 """
 import webpage.data.python_scripts.sql_manage as sql_manage
+import re
 
 
 class Database:
@@ -18,7 +19,7 @@ class Database:
         self.columns = column_names
         self.numColumns = len(column_types)
 
-    def add_many_inputs(self, data_names: tuple, data_input: tuple) -> str:
+    def add_many_inputs(self, data_names: tuple, data_input: tuple) -> None:
         """
         Add many inputs to the database, providing all inputs are consistent with the database
         NOTE: Will finish up to the point of failure, and add all prior datapoints into the database
@@ -26,7 +27,7 @@ class Database:
 
         :param data_names: tuple
         :param data_input: tuple[tuple, ...]
-        :return: str
+        :return: None
         """
         try:
             if len(data_names) <= self.numColumns:
@@ -40,10 +41,13 @@ class Database:
                 for i in data_input:
                     for j in range(len(i)):
                         if type(i[j]) != self.types[j]:
-                            raise TypeError
-                        to_execute[j].append(i[j])
-                return (f"INSERT INTO {self.name}({', '.join(data_names)})"
-                        f"SELECT * FROM  unnest({','.join((' ARRAY' + str(ls)) for ls in to_execute)})")
+                            type(i[j])(self.types[j])
+                        to_execute[j].append(self.types[j](i[j]))
+                data_to_add = ','.join((' ARRAY' + str(ls)) for ls in to_execute)
+                data_to_add = re.sub(r'"', "'", data_to_add)
+                cursor.execute(f"INSERT INTO {self.name}({', '.join(data_names)})"
+                               f"SELECT * FROM  unnest({data_to_add});")
+                connection.commit()
             else:
                 raise self.InvalidInput
         finally:

@@ -77,11 +77,12 @@ def init_db(name: str, column_data, table_rules=None, inherit=None) \
                 column_compiled += f"{' '.join([j for j in i])}, "
             else:
                 raise TypeError
-
-        to_execute = f"CREATE TABLE {name} ({column_compiled}{' '.join(table_rules)})"
+        # NOTE PEOPLE DO NOT FORGET SEMI COLONS
+        to_execute = f"CREATE TABLE {name} ({column_compiled[:-2]}{' '.join(table_rules)});"
         if inherit is not None:
             to_execute += f"INHERIT {inherit}"
         cursor.execute(to_execute)
+        connection.commit()
         res = tuple((name, tuple(names), tuple(_process_types(types))))
     except (Exception, psycopg2.Error) as error:
         print("Error while connecting to PostgreSQL in initDb", error)
@@ -94,7 +95,6 @@ def init_db(name: str, column_data, table_rules=None, inherit=None) \
         if 'connection' in locals():
             cursor.close()
             connection.close()
-            print("PostgreSQL connection is closed")
         if 'res' in locals():
             return res
 
@@ -109,6 +109,7 @@ def _process_types(rules: list) -> list:
     res = list()
     convert_dict = {"boolean": bool,
                     "smallint": int,
+                    "SMALLINT": int,
                     "int": int,
                     "bigint": int,
                     "oid": int,
@@ -131,7 +132,6 @@ def setup_connection():
 
     :return: psycopg2._connect
     """
-    print(getenv('DATABASE_PW'))
     return psycopg2.connect(user="postgres",
                             password=getenv('DATABASE_PW'),
                             host="127.0.0.1",

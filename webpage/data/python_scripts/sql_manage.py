@@ -8,6 +8,7 @@ from webpage.settings import setup
 from os import getenv
 import decimal
 from webpage.settings.setup import setup_globals
+import re
 
 setup_globals()
 
@@ -46,12 +47,13 @@ def test() -> int:
 
 
 # noinspection PyUnresolvedReferences
-def init_db(name: str, column_data, table_rules=None, inherit=None) \
+def init_db(schema: str, name: str, column_data, table_rules=None, inherit=None) \
         -> tuple:
     """
     Takes params from user and inits postgreSQL database according to inputs
     Note -- column data can have a max of three parameters, see annotations for others
 
+    :param schema: str
     :type table_rules: list()
     :rtype: None
     :param name: str
@@ -67,6 +69,7 @@ def init_db(name: str, column_data, table_rules=None, inherit=None) \
     try:
         connection = setup_connection()
         cursor = connection.cursor()
+
         column_compiled = str()
         names = list()
         types = list()
@@ -78,12 +81,12 @@ def init_db(name: str, column_data, table_rules=None, inherit=None) \
             else:
                 raise TypeError
         # NOTE PEOPLE DO NOT FORGET SEMI COLONS
-        to_execute = f"CREATE TABLE {name} ({column_compiled[:-2]}{' '.join(table_rules)});"
+        to_execute = f"CREATE TABLE {schema}.{name} ({column_compiled[:-2]}{' '.join(table_rules)});"
         if inherit is not None:
             to_execute += f"INHERIT {inherit}"
         cursor.execute(to_execute)
         connection.commit()
-        res = tuple((name, tuple(names), tuple(_process_types(types))))
+        res = tuple((schema, name, tuple(names), tuple(_process_types(types))))
     except (Exception, psycopg2.Error) as error:
         print("Error while connecting to PostgreSQL in initDb", error)
 
@@ -96,7 +99,34 @@ def init_db(name: str, column_data, table_rules=None, inherit=None) \
             cursor.close()
             connection.close()
         if 'res' in locals():
+            _add_to_system_records(*res)
+            print(res)
             return res
+
+
+def setup_connection():
+    """
+    Setup connection to sql server
+
+    :return: psycopg2._connect
+    """
+    return psycopg2.connect(user="postgres",
+                            password=getenv('DATABASE_PW'),
+                            host="127.0.0.1",
+                            port="5432",
+                            database="postgres")
+
+
+def execute_command(command: str):
+    try:
+        connection = setup_connection()
+        cursor = connection.cursor()
+        cursor.execute(command)
+        connection.commit()
+    finally:
+        if 'connection' in locals():
+            cursor.close()
+            connection.close()
 
 
 def _process_types(rules: list) -> list:
@@ -126,20 +156,55 @@ def _process_types(rules: list) -> list:
     return res
 
 
-def setup_connection():
+def _types_to_str(types: tuple) -> tuple:
     """
-    Setup connection to sql server
+    convert types tuple to list tuple (with basic types, to expand if needed)
 
-    :return: psycopg2._connect
+    :param types: tuple[types, ...]
+    :return: tuple[str, ...]
     """
-    return psycopg2.connect(user="postgres",
-                            password=getenv('DATABASE_PW'),
-                            host="127.0.0.1",
-                            port="5432",
-                            database="postgres")
+    converter = {
+        str: "str",
+        int: "int",
+        float: "float",
+        bool: "bool",
+    }
+    res = list()
+    for i in types:
+        res.append(converter[i])
+    return tuple(res)
+
+
+def _add_to_system_records(schema: str, name: str, columns: tuple, types: tuple):
+    """
+    Add item to the sys_info database for records
+
+    :param schema:str
+    :param name:str
+    :param columns:tuple of str
+    :param types:tuple of types
+    :return:
+    """
+    try:
+        connection = setup_connection()
+        cursor = connection.cursor()
+        columns = re.sub(r"'", "", str(columns))
+        types = re.sub(r"'", "", str(_types_to_str(types)))
+        to_add = f"'{schema}', '{name}', '{columns}', '{types}'"
+        print(f'INSERT INTO system.sys_info (schema, name, columns, types) VALUES ({to_add})')
+        cursor.execute(f'INSERT INTO system.sys_info (schema, name, columns, types) VALUES ({to_add})')
+        connection.commit()
+    finally:
+        # closing database connection.
+        if 'connection' in locals():
+            cursor.close()
+            connection.close()
 
 
 class DatabaseError(Exception):
+    """
+    Error class
+    """
     pass
 
 

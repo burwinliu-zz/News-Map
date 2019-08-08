@@ -62,6 +62,8 @@ def init_db(schema: str, name: str, column_data, table_rules=None, inherit=None)
     :param inherit: str
     :return: db.Database
     """
+    if check_table_exists(name, schema):
+        return tuple((schema, name, tuple(names), tuple(_process_types(types))))
     if table_rules is None:
         table_rules = []
     if table_rules is None:
@@ -87,9 +89,6 @@ def init_db(schema: str, name: str, column_data, table_rules=None, inherit=None)
         cursor.execute(to_execute)
         connection.commit()
         res = tuple((schema, name, tuple(names), tuple(_process_types(types))))
-    except (Exception, psycopg2.Error) as error:
-        print("Error while connecting to PostgreSQL in initDb", error)
-
     except OSError:
         print("settings imported incorrectly", OSError)
 
@@ -110,14 +109,38 @@ def setup_connection():
 
     :return: psycopg2._connect
     """
-    return psycopg2.connect(user="postgres",
-                            password=getenv('DATABASE_PW'),
-                            host="127.0.0.1",
-                            port="5432",
-                            database="postgres")
+    try:
+        return psycopg2.connect(user="postgres",
+                                password=getenv('DATABASE_PW'),
+                                host="127.0.0.1",
+                                port="5432",
+                                database="postgres")
+    except (Exception, psycopg2.Error) as error:
+        print("Error while fetching data from PostgreSQL", error)
 
 
-def execute_command(command: str):
+def get_data(command: str) -> list:
+    try:
+        connection = setup_connection()
+        cursor = connection.cursor()
+        cursor.execute(command)
+        res = cursor.fetchall()
+    finally:
+        # closing database connection.
+        if 'connection' in locals():
+            cursor.close()
+            connection.close()
+        if 'res' in locals():
+            return res
+
+
+def execute_command(command: str) -> None:
+    """
+    Execute a postgres cmd
+
+    :param command: str -- the command
+    :return: none
+    """
     try:
         connection = setup_connection()
         cursor = connection.cursor()
@@ -129,9 +152,22 @@ def execute_command(command: str):
             connection.close()
 
 
+def check_table_exists(name: str, schema: str) -> bool:
+    """
+    Checks if a table with given name and schema is in the sys_info table
+    :param name: str -- name of table to search
+    :param schema -- parameter the item is under
+    :return: bool
+    """
+    to_execute = f"SELECT schema, name FROM system.sys_info"
+    to_check = get_data(to_execute)
+    return tuple((name, schema)) in to_check
+
+
 def _process_types(rules: list) -> list:
     """
     Convert the types (in SQL str format) to their corresponding python types.
+    todo account for array types
 
     :param rules: list
     :return: tuple
@@ -141,12 +177,14 @@ def _process_types(rules: list) -> list:
                     "smallint": int,
                     "SMALLINT": int,
                     "int": int,
+                    "serial": int,
                     "bigint": int,
                     "oid": int,
                     "real": float,
                     "double": float,
                     "numeric": decimal.Decimal,
-                    "bytea": bytes
+                    "bytea": bytes,
+                    "bigint[]": list,
                     }
     for i in rules:
         try:
@@ -159,6 +197,7 @@ def _process_types(rules: list) -> list:
 def _types_to_str(types: tuple) -> tuple:
     """
     convert types tuple to list tuple (with basic types, to expand if needed)
+    todo need to figure out a way to convert lists into string
 
     :param types: tuple[types, ...]
     :return: tuple[str, ...]
@@ -191,7 +230,6 @@ def _add_to_system_records(schema: str, name: str, columns: tuple, types: tuple)
         columns = re.sub(r"'", "", str(columns))
         types = re.sub(r"'", "", str(_types_to_str(types)))
         to_add = f"'{schema}', '{name}', '{columns}', '{types}'"
-        print(f'INSERT INTO system.sys_info (schema, name, columns, types) VALUES ({to_add})')
         cursor.execute(f'INSERT INTO system.sys_info (schema, name, columns, types) VALUES ({to_add})')
         connection.commit()
     finally:
@@ -206,7 +244,3 @@ class DatabaseError(Exception):
     Error class
     """
     pass
-
-
-if __name__ == '__main__':
-    test()

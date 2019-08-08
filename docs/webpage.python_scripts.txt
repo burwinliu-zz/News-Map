@@ -1,0 +1,3 @@
+Look to data.py for functions to be used within this module -- ignore all other items
+
+#TODO finish updating and documenting

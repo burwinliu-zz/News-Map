@@ -9,9 +9,6 @@ import * as $ from "jquery"
 
 
 /*
-
-    Data for borders.json retrieved from http://thematicmapping.org/downloads/world_borders.php
-
     Data for countries.geojson from https://github.com/datasets/geo-countries
         All data is licensed under the Open Data Commons Public Domain Dedication and License.
         Note that the original data from Natural Earth is public domain. While no credit is formally required a link

@@ -3,10 +3,8 @@
  code. It belongs to all respective owners. Its website can be found: https://www.crummy.com/software/BeautifulSoup/
 """
 import six.moves.urllib as urllib
-from bs4 import BeautifulSoup, SoupStrainer
-import html5lib
+from bs4 import BeautifulSoup
 import re
-import httplib2
 from typing import List, Tuple, Dict
 from six.moves import cPickle as pkl
 import datetime
@@ -127,7 +125,7 @@ class Headlines:
                 print('failed on ' + str(i) + 'with exception' + str(e))
         return loaded_sites
 
-    def get_sample(self, batch_size: int = 10, predict_country=False) -> List[BeautifulSoup]:
+    def get_sample(self, batch_size: int = 10, predict_country=False) -> dict:
         """
         this might be the better way
         :param batch_size: how much you want to read at a time
@@ -141,7 +139,7 @@ class Headlines:
                 loaded_sites.append(i)
                 i['request'] = brought
                 i['soup'] = sp
-                i['title'] = str(sp.head.title)
+                i['text'] = make_readable(sp)
                 if predict_country:
                     i['country']=self.predict_country(i)
                 if len(loaded_sites) >= batch_size:
@@ -163,7 +161,7 @@ class Headlines:
         with open(str(self.time) + '.pkl' if filename is None else filename, 'wb') as fp:
             pkl.dump(self.listings, fp)
 
-    def predict_country(self, listing: dict ):
+    def predict_country(self, listing: dict )->str:
 
         return 'n/a'
 

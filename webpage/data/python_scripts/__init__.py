@@ -1,3 +1,12 @@
-"""
-Outside acess through data.py, most methods are in there for people to use
-"""
+from .data import *
+from .database import *
+from .sql_manage import *
+from .news_database import *
+from .overview_database import *
+'''
+Hey burwin, just trying to start the init
+you finish the all thing
+'''
+__all__ = [
+    'Database','NewsDatabase'
+]

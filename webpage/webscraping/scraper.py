@@ -11,6 +11,7 @@ from typing import List, Tuple, Dict
 from six.moves import cPickle as pkl
 import datetime
 from tqdm import tqdm
+import warnings
 
 '''Take in url function and scrape -- using google '''
 
@@ -31,9 +32,7 @@ def _trim(tf: List[str]) -> List[str]:
 
     last = None
     for dol in tf:
-
         if last is None:
-
             last = dol
         else:
             if check(dol):
@@ -81,6 +80,7 @@ class Headlines:
         self.soup = BeautifulSoup(self.information, 'html.parser')
         self.title = self.soup.head.title
         self.listings = self.find_links()
+        print(self.listings)
         self.listings = _trim(self.listings)
         self.time = datetime.datetime.now()
 
@@ -103,11 +103,10 @@ class Headlines:
                 return False
             return True
 
-        for c, gannon in enumerate(
-                re.findall("(https://(([a-z0-9]+\.)+[a-z]+)(/([^(/\s\"<>)]+))*)", str(self.information))):
+        for c, gannon in enumerate(re.findall("(https://(([a-z0-9]+\.)+[a-z]+)((/[^(/\s\"<>)]+)*))", str(
+                self.information))):  # need to change indecies around for an optional (www)
             if valid(gannon):
-                triforce.append(gannon[0])
-
+                triforce.append({'full': gannon[0], 'site': gannon[2][:-1], 'information': gannon[3]})
         return triforce
 
     def get_all_articles(self) -> List[BeautifulSoup]:
@@ -115,6 +114,7 @@ class Headlines:
         i don't think using this would be the best method, probably the generator would be a better choice
         :return:
         """
+        warnings.warn('Dont use this, i might be too lazy to update this', DeprecationWarning)
         loaded_sites = list()
         for i in tqdm(self.listings, desc='loading ALL sites'):
             try:
@@ -127,7 +127,7 @@ class Headlines:
                 print('failed on ' + str(i) + 'with exception' + str(e))
         return loaded_sites
 
-    def get_sample(self, batch_size: int = 10) -> List[BeautifulSoup]:
+    def get_sample(self, batch_size: int = 10, predict_country=False) -> List[BeautifulSoup]:
         """
         this might be the better way
         :param batch_size: how much you want to read at a time
@@ -138,12 +138,17 @@ class Headlines:
             try:
                 brought = urllib.request.urlopen(i['full']).read()
                 sp = BeautifulSoup(brought, 'html.parser')
-                loaded_sites.append(sp)
+                loaded_sites.append(i)
+                i['request'] = brought
+                i['soup'] = sp
+                i['title'] = str(sp.head.title)
+                if predict_country:
+                    i['country']=self.predict_country(i)
                 if len(loaded_sites) >= batch_size:
                     yield loaded_sites
                     loaded_sites = list()
             except urllib.error.HTTPError:
-                print("failed on " + str(i))
+                print("failed on " + str(i) +'the HTTP or something bad')
             except Exception as e:
                 print('failed on ' + str(i) + 'with exception' + str(e))
         return loaded_sites
@@ -154,8 +159,13 @@ class Headlines:
         :param filename:
         :return:
         """
+        warnings.warn('Not fully implemented yet, plz dont use this')
         with open(str(self.time) + '.pkl' if filename is None else filename, 'wb') as fp:
             pkl.dump(self.listings, fp)
 
+    def predict_country(self, listing: dict ):
+
+        return 'n/a'
+
     def __str__(self):
-        return self.title + '\ncreated on' + self.time + '\nwith :' + len(self.listings) + 'links'
+        return str(self.title) + '\ncreated on' + str(self.time) + '\nwith :' + str(len(self.listings)) + 'links'

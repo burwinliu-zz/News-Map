@@ -33,7 +33,7 @@ class Database:
             to_execute = list()
             for i in data_names:
                 if i not in self.columns:
-                    raise self.InvalidInput
+                    raise Exception("Invalid input")
                 to_execute.append(list())
             for i in data_input:
                 for j in range(len(i)):
@@ -45,7 +45,7 @@ class Database:
             sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_names)})"
                                        f"SELECT * FROM  unnest({data_to_add});")
         else:
-            raise self.InvalidInput
+            raise Exception("Invalid input")
 
     def add_input(self, data_name: tuple, data_input: tuple):
         """
@@ -68,7 +68,7 @@ class Database:
             sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_name)}) VALUES"
                                        f"({data_to_add});")
         else:
-            raise self.InvalidInput
+            raise Exception("Invalid input")
 
     def _check_sys_records(self):
         pass

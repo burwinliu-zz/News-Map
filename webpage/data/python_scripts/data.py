@@ -23,10 +23,20 @@ def store_countries(db: database.Database) -> None:
     db.add_many_inputs(tuple(("NUMERIC", "iso3166_code", "country_name")), tuple((get_country_codes_and_names())))
 
 
-def store_articles(ndb: news_db.NewsDatabase, odb: overview_db, urls: tuple, headlines: tuple, iso_codes: tuple):
-    to_store = ndb.add_many_inputs(tuple(()), tuple(()))
-    for iso in to_store:
-        odb.add_input(iso, to_store[iso])
+def store_articles(ndb: news_db.NewsDatabase, odb: overview_db.OverviewDatabase, urls: tuple, headlines: tuple,
+                   iso_codes: tuple):
+    """
+    store amount of articles, given in tuples to databases
+
+    :param ndb:
+    :param odb:
+    :param urls:
+    :param headlines:
+    :param iso_codes:
+    :return:
+    """
+    param = ndb.add_many_inputs(tuple(("url", "headline", "ISO_Code")), tuple((urls, headlines, iso_codes)))
+    odb.add_input(tuple(("ISO_Code", "News_list")), tuple((param.keys(), param.values())))
 
 
 def _init_countries() -> database.Database:
@@ -84,7 +94,6 @@ def init_news_overview() -> overview_db.OverviewDatabase:
                   [
                       ("ISO_Code", "SMALLINT", "PRIMARY KEY"),
                       ("News_list", "SMALLINT[]"),
-                      ("Colour", "SMALLINT", "NOT NULL")
                   ]
                   )
     return res
@@ -108,10 +117,12 @@ def get_country_codes_and_names() -> list:
 
 
 if __name__ == "__main__":
+    store_articles()
     '''
-    uncomment to setup these databases as necessary, otherwise ignore
+    # uncomment to setup these databases as necessary, otherwise ignore
     to_pass = _init_countries()
     init_news()
     init_news_overview()
     store_countries(to_pass)
     '''
+

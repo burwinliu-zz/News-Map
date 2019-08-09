@@ -10,8 +10,6 @@ SEE data.py for use
 from collections import defaultdict
 
 import webpage.data.python_scripts.database as database
-import webpage.data.python_scripts.sql_manage as sql_manage
-import re
 
 from webpage.data.python_scripts import sql_manage
 
@@ -34,4 +32,3 @@ class NewsDatabase(database.Database):
                 res[item] = [next_value]
                 next_value += 1
         super().add_many_inputs(data_names, data_input)
-        return res

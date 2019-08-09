@@ -62,8 +62,6 @@ def init_db(schema: str, name: str, column_data, table_rules=None, inherit=None)
     :param inherit: str
     :return: db.Database
     """
-    if check_table_exists(name, schema):
-        return tuple((schema, name, tuple(names), tuple(_process_types(types))))
     if table_rules is None:
         table_rules = []
     if table_rules is None:
@@ -86,6 +84,8 @@ def init_db(schema: str, name: str, column_data, table_rules=None, inherit=None)
         to_execute = f"CREATE TABLE {schema}.{name} ({column_compiled[:-2]}{' '.join(table_rules)});"
         if inherit is not None:
             to_execute += f"INHERIT {inherit}"
+        if check_table_exists(name, schema):
+            return tuple((schema, name, tuple(names), tuple(_process_types(types))))
         cursor.execute(to_execute)
         connection.commit()
         res = tuple((schema, name, tuple(names), tuple(_process_types(types))))
@@ -99,7 +99,6 @@ def init_db(schema: str, name: str, column_data, table_rules=None, inherit=None)
             connection.close()
         if 'res' in locals():
             _add_to_system_records(*res)
-            print(res)
             return res
 
 
@@ -110,11 +109,11 @@ def setup_connection():
     :return: psycopg2._connect
     """
     try:
-        return psycopg2.connect(user="postgres",
-                                password=getenv('DATABASE_PW'),
-                                host="127.0.0.1",
-                                port="5432",
-                                database="postgres")
+        return psycopg2.connect(user=getenv('DATABASE_USER_SQL'),
+                                password=getenv('DATABASE_PW_SQL'),
+                                host=getenv('HOST_IP_ADDR_SQL'),
+                                port=getenv('HOST_PORT_SQL'),
+                                database=getenv('DATABASE_TYPE_SQL'))
     except (Exception, psycopg2.Error) as error:
         print("Error while fetching data from PostgreSQL", error)
 
@@ -184,9 +183,11 @@ def _process_types(rules: list) -> list:
                     "double": float,
                     "numeric": decimal.Decimal,
                     "bytea": bytes,
-                    "bigint[]": list,
                     }
     for i in rules:
+        if i.endswith("[]"):
+            res.append(list)
+            continue
         try:
             res.append(convert_dict[i])
         except KeyError:
@@ -207,6 +208,7 @@ def _types_to_str(types: tuple) -> tuple:
         int: "int",
         float: "float",
         bool: "bool",
+        list: "list",
     }
     res = list()
     for i in types:

@@ -1,3 +1,14 @@
 Look to data.py for functions to be used within this module -- ignore all other items
 
+Note, to work this code in your own system, must have postgres setup and properly define setup_connection in your own
+env variables. The variables to define are listed as follows
+
+user="DATABASE_USER_SQL",
+password='DATABASE_PW_SQL'
+host="HOST_IP_ADDR_SQL"
+port="HOST_PORT_SQL"
+database="DATABASE_TYPE_SQL"
+
+Also, define TEST_VAR = AIzaSyBdnh75JG6IK7SW5w5xONNnpQbBdldTrVc
+
 #TODO finish updating and documenting

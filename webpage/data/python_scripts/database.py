@@ -58,16 +58,17 @@ class Database:
         if len(data_name) <= self.numColumns:
             for i in data_name:
                 if i not in self.columns:
-                    raise self.InvalidInput
+                    raise Exception(f'Invalid input {i}')
             data_to_add = ','.join(str(x) for x in data_input)
             data_to_add = re.sub(r'"', "'", data_to_add)
-            sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_name)})"
+            data_to_add = re.sub(r'\[', "'{", data_to_add)
+            data_to_add = re.sub(r'\]', "}'", data_to_add)
+            print(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_name)})"
+                  f"({data_to_add});")
+            sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_name)}) VALUES"
                                        f"({data_to_add});")
         else:
             raise self.InvalidInput
 
     def _check_sys_records(self):
-        pass
-
-    class InvalidInput:
         pass

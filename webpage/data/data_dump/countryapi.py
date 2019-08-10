@@ -1,6 +1,7 @@
 import json
 import pycountry
-from typing import List
+from typing import List, Tuple
+from statistics import mode
 
 
 class Prediction:
@@ -10,10 +11,7 @@ class Prediction:
     """
 
     def __init__(self, seen=List[str]):
-        if seen:
-            self.predicted = None
-        else:
-            self.predicted = max(set(seen), key=seen.count)
+        self.predicted = (mode(seen) if seen else None)
         self.data = seen
 
     def get_confidence(self) -> float:
@@ -28,7 +26,19 @@ class Prediction:
         In theory this should return a pycountry country
         :return: country
         '''
-        return pycountry.countries.get(alpha_2=self.predicted)
+        return pycountry.countries.get(alpha_2=self.predicted) if self.predicted is not None else None
+
+    def get_color(self) -> Tuple[int, int, int]:
+        def lcg(modulus, a, c, seed):
+            while True:
+                seed = (a * seed + c) % modulus
+                yield seed
+
+        try:
+            rand = lcg(2 ** 31, 1103515245, 12345 * len(self.data), self.get_country()["numberic"])
+        except Exception:
+            return 0, 0, 0
+        return rand.__next__(), rand.__next__(), rand.__next__()
 
     def __str__(self):
         return "<Prediction of {} with a {} percent confidence>".format(str(self.get_country()),

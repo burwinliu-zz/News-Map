@@ -10,6 +10,7 @@ from six.moves import cPickle as pkl
 import datetime
 from tqdm import tqdm
 import warnings
+from ..data.data_dump.countryapi import *
 
 '''Take in url function and scrape -- using google '''
 
@@ -81,6 +82,7 @@ class Headlines:
         print(self.listings)
         self.listings = _trim(self.listings)
         self.time = datetime.datetime.now()
+        self.nameBase = CountryNames()
 
     def find_links(self) -> List[str]:
         """
@@ -107,23 +109,13 @@ class Headlines:
                 triforce.append({'full': gannon[0], 'site': gannon[2][:-1], 'information': gannon[3]})
         return triforce
 
-    def get_all_articles(self) -> List[BeautifulSoup]:
+    def get_all_articles(self,predict_country=False) -> dict:
         """
-        i don't think using this would be the best method, probably the generator would be a better choice
-        :return:
+
+        :param predict_country:
+        :return: sample of everything
         """
-        warnings.warn('Dont use this, i might be too lazy to update this', DeprecationWarning)
-        loaded_sites = list()
-        for i in tqdm(self.listings, desc='loading ALL sites'):
-            try:
-                brought = urllib.request.urlopen(i['full']).read()
-                sp = BeautifulSoup(brought, 'html.parser')
-                loaded_sites.append(sp)
-            except urllib.error.HTTPError:
-                print("failed on " + str(i))
-            except Exception as e:
-                print('failed on ' + str(i) + 'with exception' + str(e))
-        return loaded_sites
+        return self.get_sample(batch_size=float("inf"),predict_country=predict_country)
 
     def get_sample(self, batch_size: int = 10, predict_country=False) -> dict:
         """
@@ -161,9 +153,10 @@ class Headlines:
         with open(str(self.time) + '.pkl' if filename is None else filename, 'wb') as fp:
             pkl.dump(self.listings, fp)
 
-    def predict_country(self, listing: dict )->str:
-
-        return 'n/a'
+    def predict_country(self, listing: dict )->Prediction:
+        target = listing['soup'].head.title
+        print("predicting on"+str(target))
+        return self.nameBase.predict(str(target))
 
     def __str__(self):
         return str(self.title) + '\ncreated on' + str(self.time) + '\nwith :' + str(len(self.listings)) + 'links'

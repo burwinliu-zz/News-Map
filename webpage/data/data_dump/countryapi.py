@@ -1,6 +1,6 @@
 import json
 import pycountry
-from typing import List
+from typing import List, Tuple
 
 
 class Prediction:
@@ -30,6 +30,17 @@ class Prediction:
         '''
         return pycountry.countries.get(alpha_2=self.predicted)
 
+    def get_color(self) -> Tuple[int, int, int]:
+        def lcg(modulus, a, c, seed):
+            while True:
+                seed = (a * seed + c) % modulus
+                yield seed
+        try:
+            rand = lcg(2 ** 31, 1103515245, 12345 * len(self.data), self.get_country()["numberic"])
+        except Exception:
+            return 0, 0, 0
+        return rand.__next__(), rand.__next__(), rand.__next__()
+
     def __str__(self):
         return "<Prediction of {} with a {} percent confidence>".format(str(self.get_country()),
                                                                         str(self.get_confidence()))
@@ -53,7 +64,7 @@ class CountryNames:
     def get_countries(self) -> List[str]:
         return [country["country_name"] for country in self.internal]
 
-    def get_nicknames(self) -> list[str]:
+    def get_nicknames(self) -> List[str]:
         """
         I hope this list comprehension works
         :return:

@@ -19,7 +19,7 @@ class Prediction:
         approximate counfidence of this prediction
         :return: a number between 0 and 1 of how confident we are of this prediction
         """
-        return (self.data.count(self.predicted) / len(self.data)) ** 2
+        return (self.data.count(self.predicted) / len(self.data)) ** 2 if self.data else float(0)
 
     def get_country(self):
         '''

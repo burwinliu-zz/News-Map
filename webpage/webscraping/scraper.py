@@ -79,7 +79,6 @@ class Headlines:
         self.soup = BeautifulSoup(self.information, 'html.parser')
         self.title = self.soup.head.title
         self.listings = self.find_links()
-        print(self.listings)
         self.listings = _trim(self.listings)
         self.time = datetime.datetime.now()
         self.nameBase = CountryNames()
@@ -117,10 +116,11 @@ class Headlines:
         """
         return self.get_sample(batch_size=float("inf"),predict_country=predict_country)
 
-    def get_sample(self, batch_size: int = 10, predict_country=False) -> dict:
+    def gen_samples(self, batch_size: int = 10, predict_country=False) -> dict:
         """
-        this might be the better way
+        This is a generator that you can use to get samples or something
         :param batch_size: how much you want to read at a time
+        predict_country: if you want it to try to attempt to predict countries
         :return:
         """
         loaded_sites = list()
@@ -138,9 +138,9 @@ class Headlines:
                     yield loaded_sites
                     loaded_sites = list()
             except urllib.error.HTTPError:
-                print("failed on " + str(i) +'the HTTP or something bad')
+                print("failed on " + str(i['full']) +'the HTTP or something bad')
             except Exception as e:
-                print('failed on ' + str(i) + 'with exception' + str(e))
+                print('failed on ' + str(i['full']) + 'with exception' + str(e))
         return loaded_sites
 
     def save(self, filename=None) -> list:

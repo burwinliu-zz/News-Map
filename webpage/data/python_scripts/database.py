@@ -26,20 +26,27 @@ class Database:
         Add many inputs to the database, providing all inputs are consistent with the database
 
         :param data_names: tuple[str]
-        :param data_input: tuple[tuple[type, ...], ...]
+        :param data_input: tuple[tuple[obj, ...], ...]
         :return: None
         """
+        # TODO
         if len(data_names) <= self.numColumns:
             to_execute = list()
+            name_types = list()
             for i in data_names:
-                if i not in self.columns:
-                    raise Exception("Invalid input")
+                try:
+                    name_types.append(self.types[self.columns.index(i)])
+                except ValueError:
+                    raise ValueError("Name not in list of database")
                 to_execute.append(list())
-            for i in data_input:
-                for j in range(len(i)):
-                    if type(i[j]) != self.types[j]:
-                        type(i[j])(self.types[j])
-                    to_execute[j].append(self.types[j](i[j]))
+            for i in range(len(data_input)):
+                current_data_list = data_input[i]
+                for j in range(len(current_data_list)):
+                    if type(current_data_list[j]) == list:
+                        continue
+                    if type(current_data_list[j]) != name_types[j]:
+                        name_types[j](current_data_list[j])
+                    to_execute[j].append(name_types[j](current_data_list[j]))
             data_to_add = ','.join((' ARRAY' + str(ls)) for ls in to_execute)
             data_to_add = re.sub(r'"', "'", data_to_add)
             sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_names)})"
@@ -63,8 +70,6 @@ class Database:
             data_to_add = re.sub(r'"', "'", data_to_add)
             data_to_add = re.sub(r'\[', "'{", data_to_add)
             data_to_add = re.sub(r'\]', "}'", data_to_add)
-            print(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_name)})"
-                  f"({data_to_add});")
             sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_name)}) VALUES"
                                        f"({data_to_add});")
         else:

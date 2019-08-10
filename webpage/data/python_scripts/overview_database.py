@@ -28,6 +28,15 @@ class OverviewDatabase(database.Database):
             raise ValueError
         super().add_input(data_name, data_input)
 
+    def add_many_inputs(self, data_names: tuple, data_input: tuple) -> None:
+        try:
+            assert "ISO_Code" in data_names
+            assert "News_list" in data_names
+        except AssertionError:
+            print("Passed invalid inputs -- no ISO_Code or news_list found")
+            raise ValueError
+        super().add_many_inputs(data_names, data_input)
+
 
 if __name__ == "__main__":
     # testing purposes

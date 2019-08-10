@@ -17,18 +17,21 @@ from webpage.data.python_scripts import sql_manage
 class NewsDatabase(database.Database):
     def __init__(self):
         col_names = tuple(("news_number", "url", "headline", "ISO_Code"))
-        col_types = tuple(("int", "str", "str", "int"))
+        col_types = tuple((int, str, str, int))
         super().__init__("public", "news", col_names, col_types)
 
     def add_many_inputs(self, data_names: tuple, data_input: tuple) -> dict:
-        next_value = int(sql_manage.get_data("SELECT last_value FROM public.news_news_number_seq;")[0])
+        next_value = int(sql_manage.get_data("SELECT last_value FROM public.news_news_number_seq;")[0][0])
         iso_index = data_names.index("ISO_Code")
         res = dict()
-        for item in data_names[iso_index]:
+        for item in data_input:
+            if type(item[iso_index]) != int:
+                item[iso_index] = int(item[iso_index])
             if item in res:
-                res[item].append(next_value)
+                res[item[iso_index]].append(next_value)
                 next_value += 1
             else:
-                res[item] = [next_value]
+                res[item[iso_index]] = [next_value]
                 next_value += 1
         super().add_many_inputs(data_names, data_input)
+        return res

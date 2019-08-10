@@ -35,8 +35,15 @@ def store_articles(ndb: news_db.NewsDatabase, odb: overview_db.OverviewDatabase,
     :param iso_codes:
     :return:
     """
-    param = ndb.add_many_inputs(tuple(("url", "headline", "ISO_Code")), tuple((urls, headlines, iso_codes)))
-    odb.add_input(tuple(("ISO_Code", "News_list")), tuple((param.keys(), param.values())))
+    # TOdo, create format for addmanyinputs for dicts/list of small ints
+    to_exe = list()
+    for i in range(len(urls)):
+        try:
+            to_exe.append(tuple((urls[i], headlines[i], iso_codes[i])))
+        except IndexError:
+            raise IndexError("inputs don't have consistent lengths")
+    param = ndb.add_many_inputs(tuple(("url", "headline", "ISO_Code")), tuple(to_exe))
+    odb.add_many_inputs(tuple(("ISO_Code", "News_list")), tuple(((k, v) for k, v in param.items())))
 
 
 def _init_countries() -> database.Database:
@@ -73,7 +80,7 @@ def init_news() -> news_db.NewsDatabase:
                       ("news_number", "SERIAL", "PRIMARY KEY"),
                       ("url", "TEXT", "NOT NULL"),
                       ("headline", "VARCHAR(75)", "NOT NULL"),
-                      ("ISO_Code", "SMALLINT", "UNIQUE"),
+                      ("ISO_Code", "SMALLINT",),
                   ]
                   )
     res = news_db.NewsDatabase()
@@ -117,7 +124,7 @@ def get_country_codes_and_names() -> list:
 
 
 if __name__ == "__main__":
-    store_articles()
+    init_news()
     '''
     # uncomment to setup these databases as necessary, otherwise ignore
     to_pass = _init_countries()

@@ -53,7 +53,7 @@ class CountryNames:
     def get_countries(self) -> List[str]:
         return [country["country_name"] for country in self.internal]
 
-    def get_nicknames(self) -> list[str]:
+    def get_nicknames(self) -> List[str]:
         """
         I hope this list comprehension works
         :return:

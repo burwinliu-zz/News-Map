@@ -38,7 +38,6 @@ class Database:
                     name_types.append(self.types[self.columns.index(i)])
                 except ValueError:
                     raise ValueError("Name not in list of database")
-                to_execute.append(list())
             for i in range(len(data_input)):
                 current_data_list = data_input[i]
                 for j in range(len(current_data_list)):
@@ -46,11 +45,12 @@ class Database:
                         continue
                     if type(current_data_list[j]) != name_types[j]:
                         name_types[j](current_data_list[j])
-                    to_execute[j].append(name_types[j](current_data_list[j]))
-            data_to_add = ','.join((' ARRAY' + str(ls)) for ls in to_execute)
+                to_execute.append(tuple(data_input[i]))
+            data_to_add = ','.join(str(ls) for ls in to_execute)
             data_to_add = re.sub(r'"', "'", data_to_add)
+            data_to_add = re.sub(r'\[', "ARRAY[", data_to_add)
             sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_names)})"
-                                       f"SELECT * FROM  unnest({data_to_add});")
+                                       f"VALUES {data_to_add};")
         else:
             raise Exception("Invalid input")
 

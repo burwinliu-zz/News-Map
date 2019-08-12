@@ -163,6 +163,22 @@ def check_table_exists(name: str, schema: str) -> bool:
     return tuple((name, schema)) in to_check
 
 
+def exists_in_table(schema: str, name: str, column: str, table: str) -> bool:
+    """
+    Check if name is in schema.table's column
+
+    :param schema: schema of the table
+    :param name: name of the item seraching for
+    :param column: column name
+    :param table: table name
+    :return: bool
+    """
+    to_check = get_data(f"SELECT {column} FROM {schema}.{table}")
+    # TODO remove
+    print(to_check)
+    return name in to_check
+
+
 def _process_types(rules: list) -> list:
     """
     Convert the types (in SQL str format) to their corresponding python types.

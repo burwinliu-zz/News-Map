@@ -18,7 +18,8 @@ class NewsDatabase(database.Database):
     def __init__(self):
         col_names = tuple(("news_number", "url", "headline", "ISO_Code"))
         col_types = tuple((int, str, str, int))
-        super().__init__("public", "news", col_names, col_types)
+        col_rules = dict()
+        super().__init__("public", "news", col_names, col_rules, col_types)
 
     def add_many_inputs(self, data_names: tuple, data_input: tuple) -> dict:
         next_value = int(sql_manage.get_data("SELECT last_value FROM public.news_news_number_seq;")[0][0])

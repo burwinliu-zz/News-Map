@@ -18,14 +18,29 @@ class NewsDatabase(database.Database):
     def __init__(self):
         col_names = tuple(("news_number", "url", "headline", "ISO_Code"))
         col_types = tuple((int, str, str, int))
-        col_rules = dict()
-        super().__init__("public", "news", col_names, col_rules, col_types)
+        super().__init__("public", "news", col_names, col_types)
 
     def add_many_inputs(self, data_names: tuple, data_input: tuple) -> dict:
+        """
+        Function that will take in data_names and data_inputs, and add the data_input (stored as a tuple of
+        tuples which each have a corresponding value to their respective data_name
+
+        :param data_names:
+        :param data_input:
+        :return:
+        """
+        # Ensuring that function caller will be giving proper inputs=
+        if "url" not in data_names or "headline" not in data_names:
+            raise Exception(f'URL or Headline not in inputs')
+
         next_value = int(sql_manage.get_data("SELECT last_value FROM public.news_news_number_seq;")[0][0])
         iso_index = data_names.index("ISO_Code")
         res = dict()
         for item in data_input:
+            # Ensuring all items have proper length
+            if len(item) != len(data_names):
+                raise Exception(f"Your input tuple are not correct in {item}")
+
             if type(item[iso_index]) != int:
                 item[iso_index] = int(item[iso_index])
             if item in res:

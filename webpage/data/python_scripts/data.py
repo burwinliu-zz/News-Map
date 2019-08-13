@@ -28,20 +28,26 @@ def store_articles(ndb: news_db.NewsDatabase, odb: overview_db.OverviewDatabase,
     """
     store amount of articles, given in tuples to databases
 
-    :param ndb:
-    :param odb:
-    :param urls:
-    :param headlines:
-    :param iso_codes:
-    :return:
+    :param ndb: news_db.NewsDatabase
+    :param odb: overview_db.OverviewDatabase
+    :param urls: tuple
+    :param headlines: tuple
+    :param iso_codes: tuple
+    :return: None
     """
     # TOdo, create format for addmanyinputs for dicts/list of small ints
+    # Variable setup
     to_exe = list()
+    # Double checking your inputs are good, else we crash
+    if not (len(urls) == len(headlines) == len(iso_codes)):
+        raise Exception(f"Your urls, headlines and iso_codes do not have same lengths")
     for i in range(len(urls)):
-        try:
-            to_exe.append(tuple((urls[i], headlines[i], iso_codes[i])))
-        except IndexError:
-            raise IndexError("inputs don't have consistent lengths")
+        # Double checking your inputs are good, else we crash
+        if type(urls[i]) != str or type(headlines[i]) != str or type(iso_codes[i]) != int:
+            raise Exception(f"Input {urls[i]}, {headlines[i]} and {iso_codes[i]} are improper at position {i}")
+
+        to_exe.append(tuple((urls[i], headlines[i], iso_codes[i])))
+
     param = ndb.add_many_inputs(tuple(("url", "headline", "ISO_Code")), tuple(to_exe))
     odb.add_many_inputs(tuple(("ISO_Code", "News_list")), tuple(((k, v) for k, v in param.items())))
 

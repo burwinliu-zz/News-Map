@@ -6,7 +6,7 @@ import re
 
 
 class Database:
-    def __init__(self, schema: str, name: str, column_names: tuple, column_rules: dict, column_types: tuple):
+    def __init__(self, schema: str, name: str, column_names: tuple, column_types: tuple):
         """
         Init a database object representation
 
@@ -19,13 +19,11 @@ class Database:
         self.types = column_types
         self.columns = column_names
         self.numColumns = len(column_types)
-        self.rules = column_rules
         self._check_sys_records()
 
     def add_many_inputs(self, data_names: tuple, data_input: tuple) -> None:
         """
         Add many inputs to the database, providing all inputs are consistent with the database
-
         :param data_names: tuple[str]
         :param data_input: tuple[tuple[obj, ...], ...]
         :return: None
@@ -58,51 +56,22 @@ class Database:
     def add_input(self, data_name: tuple, data_input: tuple):
         """
         Add one line of input to the database, providing all inputs are consistent with the database
-
         :param data_name: tuple[str]
         :param data_input: tuple[type]
         :return: None
         """
         if len(data_name) <= self.numColumns:
-            col_names, data = self._construct_command_sing(data_name, data_input)
-            sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(col_names)}) VALUES"
-                                       f"({data});")
+            for i in data_name:
+                if i not in self.columns:
+                    raise Exception(f'Invalid input {i}')
+            data_to_add = ','.join(str(x) for x in data_input)
+            data_to_add = re.sub(r'"', "'", data_to_add)
+            data_to_add = re.sub(r'\[', "'{", data_to_add)
+            data_to_add = re.sub(r'\]', "}'", data_to_add)
+            sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_name)}) VALUES"
+                                       f"({data_to_add});")
         else:
             raise Exception("Invalid input")
-
-    def _construct_command_sing(self, data_name, data_input):
-        names_parsed, input_parsed = self._parse_commands(data_name, data_input)
-        for i in data_name:
-            if i not in self.columns:
-                raise Exception(f'Invalid input {i}')
-        data_to_add = ','.join(str(x) for x in input_parsed)
-        data_to_add = re.sub(r'"', "'", data_to_add)
-        data_to_add = re.sub(r'\[', "'{", data_to_add)
-        data_to_add = re.sub(r'\]', "}'", data_to_add)
-
-        return names_parsed, data_to_add
-
-    def _construct_command_multi(self, data_name, data_input):
-        pass
-
-    def _parse_commands(self, data_name, data_input):
-        to_return_name = list()
-        to_return_data = list()
-        to_unique_update = dict()
-        for i in range(len(data_name)):
-            try:
-                if self.rules[data_name[i]] == 1:
-                    to_unique_update[data_name[i]] = data_input[i]
-            except KeyError:
-                to_return_name.append(data_name[i])
-                to_return_data.append(data_input[i])
-        self._unique_update(to_unique_update)
-        return to_return_name, to_return_data
-
-    def _unique_update(self, data: dict):
-        # Todo finish function.
-        to_check = sql_manage.get_data(f"SELECT {' ,'.join(data.keys())} FROM {self.schema}.{self.name}")
-
 
     def _check_sys_records(self):
         pass

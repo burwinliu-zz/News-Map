@@ -131,6 +131,7 @@ def get_country_codes_and_names() -> list:
 
 if __name__ == "__main__":
     init_news()
+    init_news_overview()
     '''
     # uncomment to setup these databases as necessary, otherwise ignore
     to_pass = _init_countries()

@@ -118,7 +118,7 @@ def setup_connection():
         print("Error while fetching data from PostgreSQL", error)
 
 
-def get_data(command: str) -> list:
+def retrieve(command: str) -> list:
     try:
         connection = setup_connection()
         cursor = connection.cursor()
@@ -159,8 +159,12 @@ def check_table_exists(name: str, schema: str) -> bool:
     :return: bool
     """
     to_execute = f"SELECT schema, name FROM system.sys_info"
-    to_check = get_data(to_execute)
+    to_check = retrieve(to_execute)
     return tuple((name, schema)) in to_check
+
+
+def get_data(schema: str, name: str, columns: tuple):
+    return retrieve(f"SELECT {', '.join(columns)} FROM {schema}.{name}")
 
 
 def exists_in_table(schema: str, name: str, column: str, table: str) -> bool:
@@ -168,12 +172,12 @@ def exists_in_table(schema: str, name: str, column: str, table: str) -> bool:
     Check if name is in schema.table's column
 
     :param schema: schema of the table
-    :param name: name of the item seraching for
+    :param name: name of the item searching for
     :param column: column name
     :param table: table name
     :return: bool
     """
-    to_check = get_data(f"SELECT {column} FROM {schema}.{table}")
+    to_check = retrieve(f"SELECT {column} FROM {schema}.{table}")
     # TODO remove
     print(to_check)
     return name in to_check
@@ -262,3 +266,4 @@ class DatabaseError(Exception):
     Error class
     """
     pass
+

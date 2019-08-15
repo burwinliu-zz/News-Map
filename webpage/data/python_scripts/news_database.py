@@ -33,7 +33,7 @@ class NewsDatabase(database.Database):
         if "url" not in data_names or "headline" not in data_names:
             raise Exception(f'URL or Headline not in inputs')
 
-        next_value = int(sql_manage.get_data("SELECT last_value FROM public.news_news_number_seq;")[0][0])
+        next_value = int(sql_manage.retrieve("SELECT last_value FROM public.news_news_number_seq;")[0][0])
         iso_index = data_names.index("ISO_Code")
         res = dict()
         for item in data_input:

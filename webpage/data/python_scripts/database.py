@@ -72,6 +72,3 @@ class Database:
         data_to_add = re.sub(r'\]', "}'", data_to_add)
         sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_name)}) VALUES"
                                    f"({data_to_add});")
-
-    def _check_sys_records(self):
-        pass

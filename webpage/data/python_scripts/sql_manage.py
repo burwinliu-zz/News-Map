@@ -14,8 +14,6 @@ setup_globals()
 
 
 # used to test that postgres is in fact working and connected
-# TODO Convert host to more permanent state to connect to
-# TODO setup data file to save and store on db, and record colours, values for county map and country names
 def test() -> int:
     """
     Testing that connection can be established
@@ -178,15 +176,12 @@ def exists_in_table(schema: str, name: str, column: str, table: str) -> bool:
     :return: bool
     """
     to_check = retrieve(f"SELECT {column} FROM {schema}.{table}")
-    # TODO remove
-    print(to_check)
     return name in to_check
 
 
 def _process_types(rules: list) -> list:
     """
     Convert the types (in SQL str format) to their corresponding python types.
-    todo account for array types
 
     :param rules: list
     :return: tuple
@@ -218,7 +213,7 @@ def _process_types(rules: list) -> list:
 def _types_to_str(types: tuple) -> tuple:
     """
     convert types tuple to list tuple (with basic types, to expand if needed)
-    todo need to figure out a way to convert lists into string
+    may be missing a few conversions
 
     :param types: tuple[types, ...]
     :return: tuple[str, ...]

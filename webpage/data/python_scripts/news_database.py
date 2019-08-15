@@ -16,6 +16,9 @@ from webpage.data.python_scripts import sql_manage
 
 class NewsDatabase(database.Database):
     def __init__(self):
+        """
+        Init the database
+        """
         col_names = tuple(("news_number", "url", "headline", "ISO_Code"))
         col_types = tuple((int, str, str, int))
         super().__init__("public", "news", col_names, col_types)
@@ -25,9 +28,9 @@ class NewsDatabase(database.Database):
         Function that will take in data_names and data_inputs, and add the data_input (stored as a tuple of
         tuples which each have a corresponding value to their respective data_name
 
-        :param data_names:
-        :param data_input:
-        :return:
+        :param data_names: tuple of names to be inputted
+        :param data_input: tuple of data to be inputted
+        :return: None
         """
         # Ensuring that function caller will be giving proper inputs=
         if "url" not in data_names or "headline" not in data_names:

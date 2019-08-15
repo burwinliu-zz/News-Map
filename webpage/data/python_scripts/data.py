@@ -35,7 +35,6 @@ def store_articles(ndb: news_db.NewsDatabase, odb: overview_db.OverviewDatabase,
     :param iso_codes: tuple
     :return: None
     """
-    # TOdo, create format for addmanyinputs for dicts/list of small ints
     # Variable setup
     to_exe = list()
     # Double checking your inputs are good, else we crash

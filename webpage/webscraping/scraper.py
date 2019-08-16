@@ -153,9 +153,8 @@ class Headlines:
         with open(str(self.time) + '.pkl' if filename is None else filename, 'wb') as fp:
             pkl.dump(self.listings, fp)
 
-    def predict_country(self, listing: dict )->Prediction:
+    def predict_country(self, listing: dict)->Prediction:
         target = listing['soup'].head.title
-        print("predicting on"+str(target))
         return self.nameBase.predict(str(target))
 
     def __str__(self):

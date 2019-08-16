@@ -52,8 +52,8 @@ def make_readable(sp: BeautifulSoup) -> Dict:
     :param sp:
     :return:
     """
-    for script in sp(['script', 'style', 'header', 'footer']):
-        script.extract()
+    for script in sp(['script', 'style', 'header', 'footer','title','meta','[document]','head']):
+        print(str(script.extract()))
     text = sp.get_text()
     lines = [line.strip() for line in text.splitlines()]
     chunks = [phrase.strip() for line in lines for phrase in line.split('  ')]

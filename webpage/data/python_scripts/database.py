@@ -19,7 +19,7 @@ class Database:
         self.types = column_types
         self.columns = column_names
         self.numColumns = len(column_types)
-        self._check_sys_records()
+        # self._check_sys_records() TODO Pending update
 
     def add_many_inputs(self, data_names: tuple, data_input: tuple) -> None:
         """

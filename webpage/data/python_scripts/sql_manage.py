@@ -45,12 +45,13 @@ def test() -> int:
 
 
 # noinspection PyUnresolvedReferences
-def init_db(schema: str, name: str, column_data, table_rules=None, inherit=None) \
+def init_db(schema: str, name: str, column_data, sys_table=False, table_rules=None, inherit=None) \
         -> tuple:
     """
     Takes params from user and inits postgreSQL database according to inputs
     Note -- column data can have a max of three parameters, see annotations for others
 
+    :param sys_table: bool -- tells if the action executed is a systable or not
     :param schema: str
     :type table_rules: list()
     :rtype: None
@@ -82,8 +83,9 @@ def init_db(schema: str, name: str, column_data, table_rules=None, inherit=None)
         to_execute = f"CREATE TABLE {schema}.{name} ({column_compiled[:-2]}{' '.join(table_rules)});"
         if inherit is not None:
             to_execute += f"INHERIT {inherit}"
-        if check_table_exists(name, schema):
-            return tuple((schema, name, tuple(names), tuple(_process_types(types))))
+        if sys_table is False:
+            if check_table_exists(name, schema):
+                return tuple((schema, name, tuple(names), tuple(_process_types(types))))
         cursor.execute(to_execute)
         connection.commit()
         res = tuple((schema, name, tuple(names), tuple(_process_types(types))))

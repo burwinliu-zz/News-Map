@@ -38,7 +38,7 @@ class OverviewDatabase(database.Database):
         else:
             super().add_input(data_name, data_input)
 
-    def add_many_inputs(self, data_names: tuple, data_input: Tuple[Tuple]) -> None:
+    def add_many_inputs(self, data_names: tuple, data_input: Tuple) -> None:
         """
         Add inputs to overview
 
@@ -90,8 +90,9 @@ class OverviewDatabase(database.Database):
                                    f"WHERE c.iso_code = t.iso_code;")
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # testing purposes
+    '''
     odb = OverviewDatabase()
     x = sql_manage.retrieve(f"SELECT ISO_Code FROM public.news_overview")
     y = sql_manage.retrieve(f"SELECT news_list FROM public.news_overview")
@@ -100,3 +101,4 @@ if __name__ == "__main__":
         print(i)
         print(type(i))
     odb.add_input(tuple(("ISO_Code", "News_list")), tuple((4, [3, 4, 2])))
+    '''

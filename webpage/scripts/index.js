@@ -9,7 +9,7 @@ import * as $ from "jquery"
 
 
 /*
-    TODO on 8/8 -- finish up retreiving data from databases and work on parsing data to colours
+    TODO on 8/8 -- finish up retrieving data from databases and work on parsing data to colours
     Data for countries.geojson from https://github.com/datasets/geo-countries
         All data is licensed under the Open Data Commons Public Domain Dedication and License.
         Note that the original data from Natural Earth is public domain. While no credit is formally required a link
@@ -42,7 +42,7 @@ const englandStyle = new Style({
     fill: new Fill({
         color: '#000000',
     })
-})
+});
 
 // Layers
 const countryColours = new VectorLayer({
@@ -53,7 +53,7 @@ const countryColours = new VectorLayer({
         url: "https://raw.githubusercontent.com/burwinliu/News-Map/master/webpage/scripts/data/countries.geojson",
     }),
     style: function(feature){
-        if(feature.get("ADMIN") == "United Kingdom"){
+        if(feature.get("ADMIN") === "United Kingdom"){
             return englandStyle;
         }
         else{

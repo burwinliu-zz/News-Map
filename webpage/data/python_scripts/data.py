@@ -51,6 +51,22 @@ def store_articles(ndb: news_db.NewsDatabase, odb: overview_db.OverviewDatabase,
     odb.add_many_inputs(tuple(("ISO_Code", "News_list")), tuple(((k, v) for k, v in param.items())))
 
 
+def _init_sys_info() -> database.Database:
+    if setup.test() == 0:
+        raise setup.DatabaseError
+    param = setup.init_db("system", "sys_info",
+                          [
+                              ("schema", "TEXT"),
+                              ("name", "TEXT", "UNIQUE"),
+                              ("columns", "TEXT"),
+                              ("types", "TEXT")
+                          ],
+                          sys_table=True
+                          )
+    res = database.Database(*param)
+    return res
+
+
 def _init_countries() -> database.Database:
     """
     init the countries database
@@ -111,6 +127,15 @@ def init_news_overview() -> overview_db.OverviewDatabase:
     return res
 
 
+def reset_news():
+    setup.execute_command("DELETE FROM public.news")
+    setup.execute_command("ALTER SEQUENCE public.news_news_number_seq RESTART WITH 1")
+
+
+def reset_overview():
+    setup.execute_command("DELETE FROM public.news_overview")
+
+
 def get_country_codes_and_names() -> list:
     """
     for retrieving all country codes and stuff
@@ -129,13 +154,16 @@ def get_country_codes_and_names() -> list:
 
 
 if __name__ == "__main__":
-    init_news()
-    init_news_overview()
+    # For reset of database
     '''
-    # uncomment to setup these databases as necessary, otherwise ignore
-    to_pass = _init_countries()
+    reset_news()
+    reset_overview()
+    '''
+    # For setup of databases
+    '''
+    _init_sys_info()
+    _init_countries()
     init_news()
     init_news_overview()
-    store_countries(to_pass)
     '''
 

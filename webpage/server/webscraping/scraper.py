@@ -63,11 +63,11 @@ def make_readable(sp: BeautifulSoup) -> Dict:
 def soups_to_strs(soups: List[BeautifulSoup]) -> List[Dict]:
     return [make_readable(soup) for soup in soups]
 
-
 class Headlines:
 
     def __init__(self,
-                 url: str = 'https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen'):
+                 url: str = 'https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen',
+                 alt = None):
         """
 
         :param url: this is the place in google news that we will use to check from
@@ -150,7 +150,7 @@ class Headlines:
         """
         warnings.warn('Not fully implemented yet, plz dont use this')
         with open(str(self.time) + '.pkl' if filename is None else filename, 'wb') as fp:
-            pkl.dump(self.listings, fp)
+            pkl.dump(self, fp)
 
     def predict_country(self, listing: dict)->Prediction:
         target = listing['soup'].head.title

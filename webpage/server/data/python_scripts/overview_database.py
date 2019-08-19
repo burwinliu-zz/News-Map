@@ -7,8 +7,8 @@ SEE data.py for use
 ("News_list", "BIGINT[]"),
 ("Colour", "SMALLINT")
 """
-import webpage.data.python_scripts.database as database
-import webpage.data.python_scripts.sql_manage as sql_manage
+import webpage.server.data.python_scripts.database as database
+import webpage.server.data.python_scripts.sql_manage as sql_manage
 from typing import Tuple
 
 

@@ -7,11 +7,10 @@ SEE data.py for use
 ("url", "TEXT"),
 ("ISO_Code", "SMALLINT")
 """
-from collections import defaultdict
 
-import webpage.data.python_scripts.database as database
+import webpage.server.data.python_scripts.database as database
 
-from webpage.data.python_scripts import sql_manage
+from webpage.server.data.python_scripts import sql_manage
 
 
 class NewsDatabase(database.Database):

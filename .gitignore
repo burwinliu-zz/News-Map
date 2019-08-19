@@ -17,5 +17,6 @@ test.py
 settings.py
 
 *.pyc
-webpage/data/data_dump/country-list.json
-webpage/data/data_dump/country-list.json
+country-list.json
+countries.geojson
+custom.json

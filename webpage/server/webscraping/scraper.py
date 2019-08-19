@@ -5,12 +5,11 @@
 import six.moves.urllib as urllib
 from bs4 import BeautifulSoup
 import re
-from typing import List, Tuple, Dict
+from typing import List, Dict
 from six.moves import cPickle as pkl
 import datetime
-from tqdm import tqdm
 import warnings
-from ..data.data_dump.countryapi import *
+from webpage.server.data.data_dump import *
 
 '''Take in url function and scrape -- using google '''
 

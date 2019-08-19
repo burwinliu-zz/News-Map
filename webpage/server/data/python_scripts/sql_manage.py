@@ -4,10 +4,10 @@
     Should have files to configure the databases to hold countries
 """
 import psycopg2
-from webpage.settings import setup
+from webpage.server.settings import setup
 from os import getenv
 import decimal
-from webpage.settings.setup import setup_globals
+from webpage.server.settings import setup_globals
 import re
 
 setup_globals()
@@ -51,7 +51,7 @@ def init_db(schema: str, name: str, column_data, sys_table=False, table_rules=No
     Takes params from user and inits postgreSQL database according to inputs
     Note -- column data can have a max of three parameters, see annotations for others
 
-    :param sys_table: bool -- tells if the action executed is a systable or not
+    :param sys_table: bool -- tells if the action executed is a sys table or not
     :param schema: str
     :type table_rules: list()
     :rtype: None
@@ -83,7 +83,7 @@ def init_db(schema: str, name: str, column_data, sys_table=False, table_rules=No
         to_execute = f"CREATE TABLE {schema}.{name} ({column_compiled[:-2]}{' '.join(table_rules)});"
         if inherit is not None:
             to_execute += f"INHERIT {inherit}"
-        if sys_table is False:
+        if not sys_table:
             if check_table_exists(name, schema):
                 return tuple((schema, name, tuple(names), tuple(_process_types(types))))
         cursor.execute(to_execute)
@@ -160,7 +160,7 @@ def check_table_exists(name: str, schema: str) -> bool:
     """
     to_execute = f"SELECT schema, name FROM system.sys_info"
     to_check = retrieve(to_execute)
-    return tuple((name, schema)) in to_check
+    return tuple((schema, name)) in to_check
 
 
 def get_data(schema: str, name: str, columns: tuple):

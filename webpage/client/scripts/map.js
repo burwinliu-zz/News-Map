@@ -8,6 +8,7 @@ import VectorSource from "ol/source/Vector";
 import * as $ from "jquery"
 
 
+
 /*
     TODO on 8/8 -- finish up retrieving data from databases and work on parsing data to colours
     Data for countries.geojson from https://github.com/datasets/geo-countries
@@ -18,6 +19,13 @@ import * as $ from "jquery"
 
     Data for custom.json is from https://github.com/AshKyd/geojson-regions under The Un-license
 */
+
+
+/*
+    Meant to retrieve data from db
+ */
+
+
 
 
 // File serving/loading
@@ -50,6 +58,8 @@ const countryColours = new VectorLayer({
         format: new GeoJSON(),
         // Temporary fix by using github raw data
         // TODO: Make a new solution with local access of json file (see getJSON from jquery?)
+        // TODO: Serve up this geojson on the site server (APACHE SERVER)
+
         url: "https://raw.githubusercontent.com/burwinliu/News-Map/master/webpage/scripts/data/countries.geojson",
     }),
     style: function(feature){

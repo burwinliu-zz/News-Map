@@ -1,7 +1,7 @@
 """
     Database representation object
 """
-import webpage.data.python_scripts.sql_manage as sql_manage
+import webpage.server.data.python_scripts.sql_manage as sql_manage
 import re
 
 

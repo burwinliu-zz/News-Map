@@ -7,10 +7,10 @@
 """
 
 import pycountry
-import webpage.data.python_scripts.sql_manage as setup
-import webpage.data.python_scripts.database as database
-import webpage.data.python_scripts.overview_database as overview_db
-import webpage.data.python_scripts.news_database as news_db
+import webpage.server.data.python_scripts.sql_manage as setup
+import webpage.server.data.python_scripts.database as database
+import webpage.server.data.python_scripts.overview_database as overview_db
+import webpage.server.data.python_scripts.news_database as news_db
 import re
 
 
@@ -52,6 +52,10 @@ def store_articles(ndb: news_db.NewsDatabase, odb: overview_db.OverviewDatabase,
 
 
 def _init_sys_info() -> database.Database:
+    """
+    init sys info db
+    :return: database.Database
+    """
     if setup.test() == 0:
         raise setup.DatabaseError
     param = setup.init_db("system", "sys_info",
@@ -81,7 +85,8 @@ def _init_countries() -> database.Database:
                               ("NUMERIC", "SMALLINT", "PRIMARY KEY"),
                               ("iso3166_code", "VARCHAR(2)", "NOT NULL"),
                               ("country_name", "VARCHAR(75)", "NOT NULL")
-                          ]
+                          ],
+                          sys_table=False
                           )
     res = database.Database(*param)
     return res
@@ -155,14 +160,17 @@ def get_country_codes_and_names() -> list:
 
 if __name__ == "__main__":
     # For reset of database
-    '''
+
+    ''' 
     reset_news()
     reset_overview()
     '''
+
     # For setup of databases
     '''
     _init_sys_info()
-    _init_countries()
+    countries = _init_countries()
+    store_countries(countries)
     init_news()
     init_news_overview()
     '''

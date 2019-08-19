@@ -1,11 +1,12 @@
 # News Map
 * An app designed among friends
-* Will provide a graphical representation of the world, and provide a heatmap showing where the top news headlines are 
+* Will provide a graphical representation of the world, and provide a heat-map showing where the top news headlines are 
     coming out of
 * Allow for users to navigate to these articles, and see the news locations
 
 ### What are the goals of this project?
-* Develop App Skills
+* Develop web-app skills
+* Learn full stack development and web-dev tools
 * Provide for an application that can assist in every day life, with hopes of informing in an easy to understand way
 
 ### How are we going to accomplish these goals?
@@ -15,10 +16,10 @@
 ### Tools
 * Open Layers API (https://github.com/openlayers/openlayers)
 * Beautiful Soup web-scraper (https://www.crummy.com/software/BeautifulSoup/)
-* Javascript, HTML, CSS, Parcel, nodeJS
-* Python, postgreSQL
+* Javascript, HTML, CSS, Webpack, Babel, nodeJS
+* Python, postgreSQL, Flask
 * Data for countries.geojson from https://github.com/datasets/geo-countries
-* Dat for custom.json from https://github.com/AshKyd/geojson-regions under The Un-license
+* Data for custom.json from https://github.com/AshKyd/geojson-regions under The Un-license
 
 ### Contributors
 * Burwin Liu

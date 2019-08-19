@@ -1,11 +1,15 @@
 # just making sure that no weird files are here (Env setup stuff... etc.)
+# Folders not to add
 .idea
-.env
 node_modules
 venv
 dist
 .cache
 postgreSQL
+public
+
+#Setup files and likewise things
+.env
 config.ini
 setup.py
 setup_global.py
@@ -16,6 +20,7 @@ test.py
 # Inside the settings file, to allow for python loading of .env variables  (to protect db passwords)
 settings.py
 
+# Data, json and large files
 *.pyc
 country-list.json
 countries.geojson

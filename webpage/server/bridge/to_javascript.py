@@ -16,6 +16,7 @@ def get_data():
     news_overview = _attach_code(overview, countries, news)
     colours_dict = _assign_colours(news_overview)
     print(colours_dict)
+    return
 
 
 def _assign_colours(overview: dict) -> dict:

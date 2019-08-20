@@ -115,7 +115,7 @@ class Headlines:
         """
         return self.get_sample(batch_size=float("inf"),predict_country=predict_country)
 
-    def gen_samples(self, batch_size: int = 10, predict_country=False) -> dict:
+    def gen_samples(self, batch_size: int = 10, predict_country=False, early_trim = False) -> dict:
         """
         This is a generator that you can use to get samples or something
         :param batch_size: how much you want to read at a time
@@ -130,7 +130,8 @@ class Headlines:
                 loaded_sites.append(i)
                 i['request'] = brought
                 i['soup'] = sp
-                i['text'] = make_readable(sp)
+                if early_trim:
+                    i['text'] = make_readable(sp)
                 if predict_country:
                     i['country']=self.predict_country(i)
                 if len(loaded_sites) >= batch_size:

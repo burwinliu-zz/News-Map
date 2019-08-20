@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, render_template, send_from_directory, Blueprint
 import os
 from webpage.server.settings import setup_globals
+from webpage.server.bridge.to_javascript import get_colour_data
 
 # FOR TESTING PURPOSES USED ENV VARIABLE TODO get working version
 setup_globals()
@@ -22,6 +23,11 @@ def get_app():
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/test')
+def test():
+    return jsonify(get_colour_data())  # serialize and use JSON headers
 
 
 @app.route('/hello', methods=['GET', 'POST'])

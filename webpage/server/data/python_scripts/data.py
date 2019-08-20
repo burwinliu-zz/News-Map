@@ -23,13 +23,10 @@ def store_countries(db: database.Database) -> None:
     db.add_many_inputs(tuple(("NUMERIC", "iso3166_code", "country_name")), tuple((get_country_codes_and_names())))
 
 
-def store_articles(ndb: news_db.NewsDatabase, odb: overview_db.OverviewDatabase, urls: tuple, headlines: tuple,
-                   iso_codes: tuple):
+def store_articles(urls: tuple, headlines: tuple, iso_codes: tuple):
     """
     store amount of articles, given in tuples to databases
 
-    :param ndb: news_db.NewsDatabase
-    :param odb: overview_db.OverviewDatabase
     :param urls: tuple
     :param headlines: tuple
     :param iso_codes: tuple
@@ -37,6 +34,8 @@ def store_articles(ndb: news_db.NewsDatabase, odb: overview_db.OverviewDatabase,
     """
     # Variable setup
     to_exe = list()
+    ndb = news_db.NewsDatabase()
+    odb = overview_db.OverviewDatabase()
     # Double checking your inputs are good, else we crash
     if not (len(urls) == len(headlines) == len(iso_codes)):
         raise Exception(f"Your urls, headlines and iso_codes do not have same lengths")
@@ -126,7 +125,7 @@ def init_news_overview() -> overview_db.OverviewDatabase:
     setup.init_db("public", "news_overview",
                   [
                       ("ISO_Code", "SMALLINT", "PRIMARY KEY"),
-                      ("News_list", "SMALLINT[]"),
+                      ("News_list", "BIGINT[]"),
                   ]
                   )
     return res
@@ -161,7 +160,7 @@ def get_country_codes_and_names() -> list:
 if __name__ == "__main__":
     # For reset of database
 
-    ''' 
+    '''
     reset_news()
     reset_overview()
     '''

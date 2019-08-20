@@ -18,7 +18,7 @@ class OverviewDatabase(database.Database):
         Init the database
         """
         col_names = tuple(("ISO_Code", "News_list"))
-        col_types = tuple((int, list, int))
+        col_types = tuple((int, list))
         super().__init__("public", "news_overview", col_names, col_types)
 
     def add_input(self, data_name: tuple, data_input: tuple):
@@ -82,11 +82,11 @@ class OverviewDatabase(database.Database):
         """
         if len(data_update) == 0:
             return
-        values = ', '.join(f"({k[0]}, ARRAY{list(k[1])}::SMALLINT[])" for k in data_update)
+        values = ', '.join(f"({k[0]}, ARRAY{list(k[1])}::BIGINT[])" for k in data_update)
         sql_manage.execute_command(f"UPDATE {self.schema}.{self.name} AS t SET "
                                    f"iso_code = c.iso_code, "
                                    f"news_list= t.news_list||c.news_list "
-                                   f"FROM(VALUES {values}) AS c( iso_code, news_list) "
+                                   f"FROM(VALUES {values}) AS c(iso_code, news_list) "
                                    f"WHERE c.iso_code = t.iso_code;")
 
 

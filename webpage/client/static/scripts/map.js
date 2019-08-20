@@ -5,8 +5,7 @@ import {GeoJSON} from "ol/format";
 import VectorLayer from 'ol/layer/Vector';
 import {Style, Fill} from "ol/style";
 import VectorSource from "ol/source/Vector";
-import Tile from "ol/Tile";
-import OSM from "ol/source/OSM";
+import {getJSON} from "jquery"
 
 
 
@@ -34,17 +33,13 @@ const mapView = new View({
 });
 
 // Styles
-const countryStyle = new Style({
-    fill: new Fill({
-        color: '#D4AF37',
+function makeCountryStyle(countryCode){
+    return Style({
+            fill: new Fill({
+            color:,
+        })
     })
-});
-
-const englandStyle = new Style({
-    fill: new Fill({
-        color: '#000000',
-    })
-});
+}
 
 // Layers
 const countryColours = new VectorLayer({
@@ -54,17 +49,10 @@ const countryColours = new VectorLayer({
         // TODO: Make a new solution with local access of json file (see getJSON from jquery?)
         // TODO: Serve up this geojson on the site server (APACHE SERVER)
 
-        // url: "https://raw.githubusercontent.com/burwinliu/News-Map/cd5e447e193fe6c1b8a73f6e0c620c474b399873/webpage/server/data/countries.geojson",
         url: "/static/data/countries.geojson"
     }),
     style: function(feature){
-        if(feature.get("ADMIN") === "United Kingdom"){
-            return englandStyle;
-        }
-        else{
-            return countryStyle;
-        }
-
+        return makeCountryStyle(feature.get("ISO_A2"))
     },
 });
 
@@ -75,6 +63,5 @@ const map = new Map({
 
         countryColours
     ],
-    view: mapView,
-    style: countryStyle
+    view: mapView
 });

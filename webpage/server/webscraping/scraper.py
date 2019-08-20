@@ -51,7 +51,7 @@ def make_readable(sp: BeautifulSoup) -> Dict:
     :param sp:
     :return:
     """
-    for script in sp(['script', 'style', 'header', 'footer','title','meta','[document]','head']):
+    for script in sp(['script', 'style', 'header', 'footer', 'title', 'meta', '[document]', 'head']):
         print(str(script.extract()))
     text = sp.get_text()
     lines = [line.strip() for line in text.splitlines()]
@@ -63,11 +63,12 @@ def make_readable(sp: BeautifulSoup) -> Dict:
 def soups_to_strs(soups: List[BeautifulSoup]) -> List[Dict]:
     return [make_readable(soup) for soup in soups]
 
+
 class Headlines:
 
     def __init__(self,
                  url: str = 'https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen',
-                 alt = None):
+                 alt=None):
         """
 
         :param url: this is the place in google news that we will use to check from
@@ -107,17 +108,19 @@ class Headlines:
                 triforce.append({'full': gannon[0], 'site': gannon[2][:-1], 'information': gannon[3]})
         return triforce
 
-    def get_all_articles(self,predict_country=False) -> dict:
+    def get_all_articles(self, predict_country=False) -> dict:
         """
 
         :param predict_country:
         :return: sample of everything
         """
-        return self.get_sample(batch_size=float("inf"),predict_country=predict_country)
+        return self.get_sample(batch_size=float("inf"), predict_country=predict_country)
 
-    def gen_samples(self, batch_size: int = 10, predict_country=False, early_trim = False) -> dict:
+    def gen_samples(self, batch_size: int = 10, predict_country=False, early_trim=False) -> dict:
         """
         This is a generator that you can use to get samples or something
+        :param early_trim:
+        :param predict_country:
         :param batch_size: how much you want to read at a time
         predict_country: if you want it to try to attempt to predict countries
         :return:
@@ -133,12 +136,12 @@ class Headlines:
                 if early_trim:
                     i['text'] = make_readable(sp)
                 if predict_country:
-                    i['country']=self.predict_country(i)
+                    i['country'] = self.predict_country(i)
                 if len(loaded_sites) >= batch_size:
                     yield loaded_sites
                     loaded_sites = list()
             except urllib.error.HTTPError:
-                print("failed on " + str(i['full']) +'the HTTP or something bad')
+                print("failed on " + str(i['full']) + 'the HTTP or something bad')
             except Exception as e:
                 print('failed on ' + str(i['full']) + 'with exception' + str(e))
         return loaded_sites
@@ -153,7 +156,7 @@ class Headlines:
         with open(str(self.time) + '.pkl' if filename is None else filename, 'wb') as fp:
             pkl.dump(self, fp)
 
-    def predict_country(self, listing: dict)->Prediction:
+    def predict_country(self, listing: dict) -> Prediction:
         target = listing['soup'].head.title
         return self.nameBase.predict(str(target))
 

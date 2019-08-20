@@ -166,11 +166,11 @@ if __name__ == "__main__":
     '''
 
     # For setup of databases
-    '''
+
     _init_sys_info()
     countries = _init_countries()
     store_countries(countries)
     init_news()
     init_news_overview()
-    '''
+
 

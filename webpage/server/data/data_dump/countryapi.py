@@ -1,7 +1,7 @@
 import json
 import pycountry
 from typing import List, Tuple
-from statistics import mode
+from statistics import mode,StatisticsError
 
 
 class Prediction:
@@ -11,7 +11,12 @@ class Prediction:
     """
 
     def __init__(self, seen=List[str]):
-        self.predicted = (mode(seen) if seen else None)
+        try:
+            self.predicted = (mode(seen) if seen else None)
+            self.warning = False
+        except StatisticsError:
+            self.predicted = seen[0]
+            self.warning = True
         self.data = seen
 
     def get_confidence(self) -> float:
@@ -19,6 +24,8 @@ class Prediction:
         approximate counfidence of this prediction
         :return: a number between 0 and 1 of how confident we are of this prediction
         """
+        if self.warning:
+            return 0.0
         return (self.data.count(self.predicted) / len(self.data)) ** 2 if self.data else float(0)
 
     def get_country(self):

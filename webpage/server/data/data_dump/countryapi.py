@@ -46,7 +46,7 @@ class Prediction:
 
 
 class CountryNames:
-    def __init__(self, namefile="webpage/data/data_dump/informalnaming.json"):
+    def __init__(self, namefile="webpage/server/data/data_dump/informalnaming.json"):
         with open(namefile, 'r+') as fp:
             self.internal = json.load(fp)
         if not self.internal:

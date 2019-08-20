@@ -11,5 +11,13 @@ const config = {
     resolve: {
         extensions: ['.js','.css']
     },
+    module:{
+        rules:[
+            {
+                test:/\.css$/i,
+                use:['style-loader','css-loader']
+            }
+       ]
+    },
 };
 module.exports = config;

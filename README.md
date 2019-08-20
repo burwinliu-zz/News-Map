@@ -16,7 +16,7 @@
 ### Tools
 * Open Layers API (https://github.com/openlayers/openlayers)
 * Beautiful Soup web-scraper (https://www.crummy.com/software/BeautifulSoup/)
-* Javascript, HTML, CSS, Webpack, Babel, nodeJS
+* Javascript, HTML, CSS, Webpack, Babel
 * Python, postgreSQL, Flask
 * Data for countries.geojson from https://github.com/datasets/geo-countries
 * Data for custom.json from https://github.com/AshKyd/geojson-regions under The Un-license

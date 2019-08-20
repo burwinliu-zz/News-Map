@@ -1,12 +1,22 @@
-from flask import Flask, jsonify, request, render_template, send_from_directory
+from flask import Flask, jsonify, request, render_template, send_from_directory, Blueprint
 import os
 from webpage.server.settings import setup_globals
 
 # FOR TESTING PURPOSES USED ENV VARIABLE TODO get working version
 setup_globals()
 template_dir = os.getenv('PATH_TO_CLIENT_ROOT')
-static_dir = os.getenv('PATH_TO_STATIC_ROOT')
-app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
+scripts_dir = os.getenv('PATH_TO_SCRIPTS_ROOT')
+public_dir = os.getenv('PATH_TO_PUBLIC_ROOT')
+data_dir = os.getenv('PATH_TO_DATA_ROOT')
+app = Flask(__name__, template_folder=template_dir, static_folder=public_dir)
+statics = Blueprint('site', __name__, static_url_path='/static/scripts', static_folder=scripts_dir)
+data = Blueprint('data', __name__, static_url_path='/static/data', static_folder=data_dir)
+app.register_blueprint(statics)
+app.register_blueprint(data)
+
+
+def get_app():
+    return app
 
 
 @app.route('/')
@@ -28,11 +38,10 @@ def hello():
         return jsonify(message)  # serialize and use JSON headers
 
 
-@app.route('/static/<path:filename>')
-def static_test(filename):
+@app.route('/public/<path:filename>')
+def public_files(filename):
     # look inside `templates` and serve `index.html`
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename, as_attachment=True)
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
 
 if __name__ == '__main__':

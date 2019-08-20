@@ -1,9 +1,12 @@
+import 'ol/ol.css'
 import {Map, View} from 'ol';
 import {fromLonLat} from 'ol/proj'
 import {GeoJSON} from "ol/format";
 import VectorLayer from 'ol/layer/Vector';
 import {Style, Fill} from "ol/style";
 import VectorSource from "ol/source/Vector";
+import Tile from "ol/Tile";
+import OSM from "ol/source/OSM";
 
 
 
@@ -51,7 +54,8 @@ const countryColours = new VectorLayer({
         // TODO: Make a new solution with local access of json file (see getJSON from jquery?)
         // TODO: Serve up this geojson on the site server (APACHE SERVER)
 
-        url: "https://raw.githubusercontent.com/burwinliu/News-Map/master/webpage/scripts/data/countries.geojson",
+        // url: "https://raw.githubusercontent.com/burwinliu/News-Map/cd5e447e193fe6c1b8a73f6e0c620c474b399873/webpage/server/data/countries.geojson",
+        url: "/static/data/countries.geojson"
     }),
     style: function(feature){
         if(feature.get("ADMIN") === "United Kingdom"){
@@ -68,6 +72,7 @@ const countryColours = new VectorLayer({
 const map = new Map({
     target: 'map',
     layers: [
+
         countryColours
     ],
     view: mapView,

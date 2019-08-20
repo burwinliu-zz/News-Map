@@ -22,6 +22,4 @@ settings.py
 
 # Data, json and large files
 *.pyc
-country-list.json
-countries.geojson
 custom.json

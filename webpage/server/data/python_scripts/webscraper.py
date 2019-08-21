@@ -1,7 +1,10 @@
 from webpage.server.webscraping import Headlines
 from .data import store_articles
 
-
+def make_legal(headline:str):
+    headline = headline.replace('\'','\"')
+    print(headline)
+    return headline
 class DataLoader(Headlines):
     def __init__(self, type='world', batch_size=10):
         if type == 'world':
@@ -19,7 +22,7 @@ class DataLoader(Headlines):
         headlines = []
         isocodes = []
         for entry in batch:
-            headlines.append(str(entry['soup'].head.title))
+            headlines.append(make_legal(str(entry['soup'].head.title.string)))
             urls.append(str(entry['full']))
             country = entry['country'].get_country()
             if country is None:

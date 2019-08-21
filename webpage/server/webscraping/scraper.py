@@ -130,6 +130,9 @@ class Headlines:
         loaded_sites = list()
         for i in self.listings:
             try:
+                if i['full'][-3:] == 'the':
+                    i['full'] = i['full'][:-3]
+                    print("hit")
                 brought = urllib.request.urlopen(i['full']).read()
                 sp = BeautifulSoup(brought, 'html.parser')
                 self.amount_loaded += 1

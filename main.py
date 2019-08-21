@@ -1,5 +1,5 @@
-from webpage.server.webscraping import scraper
+from webpage.server.data.python_scripts.webscraper import DataLoader
 
 if __name__ == '__main__':
-    scraped_page = scraper.Headlines()
-    print(scraped_page)
+    DL = DataLoader()
+    DL.dump_batch()

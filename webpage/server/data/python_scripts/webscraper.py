@@ -5,9 +5,9 @@ from .data import store_articles
 class DataLoader(Headlines):
     def __init__(self, type='world', batch_size=10):
         if type == 'world':
-            super()
+            super().__init__()
         elif type == 'US':
-            super("https://news.google.com/?hl=en-US&gl=US&ceid=US:en")
+            super().__init__("https://news.google.com/?hl=en-US&gl=US&ceid=US:en")
         self.datadump = self.gen_samples(batch_size=batch_size, predict_country=True)
 
     def __str__(self):
@@ -21,5 +21,9 @@ class DataLoader(Headlines):
         for entry in batch:
             headlines.append(str(entry['soup'].head.title))
             urls.append(str(entry['full']))
-            isocodes(str(entry['country']))
+            try:
+                isocodes.append(int(entry['country'].get_country().numeric))
+            except Exception as e:
+                print(e)
+                isocodes.append(0)
         store_articles(urls=urls, headlines=headlines, iso_codes=isocodes)

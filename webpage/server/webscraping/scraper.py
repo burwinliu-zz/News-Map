@@ -142,7 +142,7 @@ class Headlines:
                     i['country'] = self.predict_country(i)
                 if len(loaded_sites) >= batch_size:
                     end = timer()
-                    print("Time elapsed:"+str(start-end))
+                    print("Time elapsed:"+str(end-start))
                     yield loaded_sites
                     start = timer()
                     loaded_sites = list()

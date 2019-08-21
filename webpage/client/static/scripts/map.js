@@ -5,10 +5,6 @@ import {GeoJSON} from "ol/format";
 import VectorLayer from 'ol/layer/Vector';
 import {Style, Fill} from "ol/style";
 import VectorSource from "ol/source/Vector";
-import {getJSON} from "jquery"
-
-
-
 /*
     TODO on 8/8 -- finish up retrieving data from databases and work on parsing data to colours
     Data for countries.geojson from https://github.com/datasets/geo-countries
@@ -24,8 +20,7 @@ import {getJSON} from "jquery"
 /*
     Meant to retrieve data from db
  */
-
-
+console.log("0,0.1.2")
 // Views
 const mapView = new View({
     center: fromLonLat([37.41, 8.82]),
@@ -33,16 +28,24 @@ const mapView = new View({
 });
 
 // Styles
-function makeCountryStyle(countryCode){
-    return Style({
-            fill: new Fill({
-            color:,
+
+async function makeCountryStyle(feature){
+    console.log("loading", feature.get("ISO_A2"));
+    const response = await fetch('/colours/colours.json');
+    const data = await response.json();
+    const to_return = new Style({
+        fill: new Fill({
+            color: data[feature.get("ISO_A2")],
         })
-    })
+    });
+    console.log(to_return);
+    console.log("DATA", data);
+    return to_return
 }
 
+
 // Layers
-const countryColours = new VectorLayer({
+const countryLayer = new VectorLayer({
     source: new VectorSource({
         format: new GeoJSON(),
         // Temporary fix by using github raw data
@@ -51,17 +54,14 @@ const countryColours = new VectorLayer({
 
         url: "/static/data/countries.geojson"
     }),
-    style: function(feature){
-        return makeCountryStyle(feature.get("ISO_A2"))
-    },
+    style: makeCountryStyle
 });
 
 // Map declaration
 const map = new Map({
     target: 'map',
     layers: [
-
-        countryColours
+        countryLayer
     ],
     view: mapView
 });

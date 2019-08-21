@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, render_template, send_from_directory, Blueprint
 import os
 from webpage.server.settings import setup_globals
-from webpage.server.bridge.to_javascript import get_colour_data
+from webpage.server.bridge.to_frontend import get_colour_data
 
 # FOR TESTING PURPOSES USED ENV VARIABLE TODO get working version
 setup_globals()
@@ -9,7 +9,7 @@ template_dir = os.getenv('PATH_TO_CLIENT_ROOT')
 scripts_dir = os.getenv('PATH_TO_SCRIPTS_ROOT')
 public_dir = os.getenv('PATH_TO_PUBLIC_ROOT')
 data_dir = os.getenv('PATH_TO_DATA_ROOT')
-app = Flask(__name__, template_folder=template_dir, static_folder=public_dir)
+app = Flask(__name__, template_folder=template_dir, static_url_path='/public', static_folder=public_dir)
 statics = Blueprint('site', __name__, static_url_path='/static/scripts', static_folder=scripts_dir)
 data = Blueprint('data', __name__, static_url_path='/static/data', static_folder=data_dir)
 app.register_blueprint(statics)
@@ -44,10 +44,10 @@ def hello():
         return jsonify(message)  # serialize and use JSON headers
 
 
-@app.route('/public/<path:filename>')
-def public_files(filename):
+@app.route('/colours/colours.json')
+def public_files():
     # look inside `templates` and serve `index.html`
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
+    return jsonify(get_colour_data())
 
 
 if __name__ == '__main__':

@@ -10,6 +10,7 @@ from six.moves import cPickle as pkl
 import datetime
 import warnings
 from webpage.server.data.data_dump import *
+from timeit import default_timer as timer
 
 '''Take in url function and scrape -- using google '''
 
@@ -67,8 +68,7 @@ def soups_to_strs(soups: List[BeautifulSoup]) -> List[Dict]:
 class Headlines:
 
     def __init__(self,
-                 url: str = 'https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen',
-                 alt=None):
+                 url: str = 'https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen'):
         """
 
         :param url: this is the place in google news that we will use to check from
@@ -82,6 +82,7 @@ class Headlines:
         self.listings = _trim(self.listings)
         self.time = datetime.datetime.now()
         self.nameBase = CountryNames()
+        self.amount_loaded = 0
 
     def find_links(self) -> List[str]:
         """
@@ -125,11 +126,13 @@ class Headlines:
         predict_country: if you want it to try to attempt to predict countries
         :return:
         """
+        start = timer()
         loaded_sites = list()
         for i in self.listings:
             try:
                 brought = urllib.request.urlopen(i['full']).read()
                 sp = BeautifulSoup(brought, 'html.parser')
+                self.amount_loaded += 1
                 loaded_sites.append(i)
                 i['request'] = brought
                 i['soup'] = sp
@@ -138,13 +141,16 @@ class Headlines:
                 if predict_country:
                     i['country'] = self.predict_country(i)
                 if len(loaded_sites) >= batch_size:
+                    end = timer()
+                    print("Time elapsed:"+str(start-end))
                     yield loaded_sites
+                    start = timer()
                     loaded_sites = list()
             except urllib.error.HTTPError:
                 print("failed on " + str(i['full']) + 'the HTTP or something bad')
             except Exception as e:
                 print('failed on ' + str(i['full']) + 'with exception' + str(e))
-        return loaded_sites
+        yield loaded_sites
 
     def save(self, filename=None) -> list:
         """
@@ -159,6 +165,7 @@ class Headlines:
     def predict_country(self, listing: dict) -> Prediction:
         target = listing['soup'].head.title
         return self.nameBase.predict(str(target))
+
 
     def __str__(self):
         return str(self.title) + '\ncreated on' + str(self.time) + '\nwith :' + str(len(self.listings)) + 'links'

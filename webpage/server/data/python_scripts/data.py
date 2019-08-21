@@ -23,7 +23,7 @@ def store_countries(db: database.Database) -> None:
     db.add_many_inputs(tuple(("NUMERIC", "iso3166_code", "country_name")), tuple((get_country_codes_and_names())))
 
 
-def store_articles(urls: tuple, headlines: tuple, iso_codes: tuple):
+def store_articles(urls: list, headlines: list, iso_codes: list):
     """
     store amount of articles, given in tuples to databases
 

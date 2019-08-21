@@ -7,7 +7,7 @@ dist
 .cache
 postgreSQL
 public
-static/data
+data
 
 #Setup files and likewise things
 .env

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template, send_from_directory, Blueprint
+from flask import Flask, jsonify, request, render_template, Blueprint, json
 import os
 from webpage.server.settings import setup_globals
 from webpage.server.bridge.to_frontend import get_colour_data
@@ -20,14 +20,16 @@ def get_app():
     return app
 
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-
 @app.route('/test')
 def test():
-    return jsonify(get_colour_data())  # serialize and use JSON headers
+    res = json.dumps(get_colour_data())
+    return render_template('test.html', result=res)
+
+
+@app.route('/')
+def index():
+    res = json.dumps(get_colour_data())
+    return render_template('index.html', result=res)
 
 
 @app.route('/hello', methods=['GET', 'POST'])

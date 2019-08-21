@@ -10,6 +10,7 @@ from six.moves import cPickle as pkl
 import datetime
 import warnings
 from webpage.server.data.data_dump import *
+from timeit import default_timer as timer
 
 '''Take in url function and scrape -- using google '''
 
@@ -125,6 +126,7 @@ class Headlines:
         predict_country: if you want it to try to attempt to predict countries
         :return:
         """
+        start = timer()
         loaded_sites = list()
         for i in self.listings:
             try:
@@ -138,7 +140,10 @@ class Headlines:
                 if predict_country:
                     i['country'] = self.predict_country(i)
                 if len(loaded_sites) >= batch_size:
+                    end = timer()
+                    print("Time elapsed:"+str(start-end))
                     yield loaded_sites
+                    start = timer()
                     loaded_sites = list()
             except urllib.error.HTTPError:
                 print("failed on " + str(i['full']) + 'the HTTP or something bad')

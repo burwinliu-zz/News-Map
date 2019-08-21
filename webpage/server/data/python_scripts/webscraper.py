@@ -21,9 +21,10 @@ class DataLoader(Headlines):
         for entry in batch:
             headlines.append(str(entry['soup'].head.title))
             urls.append(str(entry['full']))
-            try:
-                isocodes.append(int(entry['country'].get_country().numeric))
-            except Exception as e:
-                print(e)
+            country = entry['country'].get_country()
+            if country is None:
                 isocodes.append(0)
+            else:
+                isocodes.append(country.numeric)
+
         store_articles(urls=urls, headlines=headlines, iso_codes=isocodes)

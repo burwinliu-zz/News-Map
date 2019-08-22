@@ -166,6 +166,11 @@ class Headlines:
             pkl.dump(self, fp)
 
     def predict_country(self, listing: dict) -> Prediction:
+        '''
+
+        :param listing:
+        :return: a prediction
+        '''
         target = listing['soup'].head.title
         return self.nameBase.predict(str(target))
 

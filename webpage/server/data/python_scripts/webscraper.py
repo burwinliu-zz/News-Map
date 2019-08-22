@@ -1,9 +1,13 @@
 from webpage.server.webscraping import Headlines
 from .data import store_articles
 
-def make_legal(headline:str):
+def make_legal(headline:str)->str:
+    '''
+    There is the idea of making this leagal for the input
+    :param headline:
+    :return:
+    '''
     headline = headline.replace('\'','\"')
-    print(headline)
     return headline
 class DataLoader(Headlines):
     def __init__(self, type='world', batch_size=10):
@@ -16,7 +20,11 @@ class DataLoader(Headlines):
     def __str__(self):
         return "<Dataloader with Headline>" + super.__str__()
 
-    def dump_batch(self):
+    def dump_batch(self) -> None:
+        '''
+        This dumps a batch into the store article function
+        :return: NOne
+        '''
         batch = self.datadump.__next__()
         urls = []
         headlines = []

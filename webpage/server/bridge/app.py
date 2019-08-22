@@ -6,14 +6,19 @@ from webpage.server.bridge.to_frontend import get_colour_data
 # FOR TESTING PURPOSES USED ENV VARIABLE TODO get working version
 setup_globals()
 template_dir = os.getenv('PATH_TO_CLIENT_ROOT')
-scripts_dir = os.getenv('PATH_TO_SCRIPTS_ROOT')
 public_dir = os.getenv('PATH_TO_PUBLIC_ROOT')
+
+statics_dir = os.getenv("PATH_TO_STATIC_ROOT")
+
 data_dir = os.getenv('PATH_TO_DATA_ROOT')
+
+styles_dir = os.getenv('PATH_TO_STYLES_ROOT')
+scripts_dir = os.getenv('PATH_TO_SCRIPTS_ROOT')
+
 app = Flask(__name__, template_folder=template_dir, static_url_path='/public', static_folder=public_dir)
-statics = Blueprint('site', __name__, static_url_path='/static/scripts', static_folder=scripts_dir)
-data = Blueprint('data', __name__, static_url_path='/static/data', static_folder=data_dir)
+
+statics = Blueprint('site', __name__, static_url_path='/static', static_folder=statics_dir)
 app.register_blueprint(statics)
-app.register_blueprint(data)
 
 
 def get_app():

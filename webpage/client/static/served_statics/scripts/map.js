@@ -1,11 +1,9 @@
-import 'ol/ol.css'
 import {Map, View} from 'ol';
 import {fromLonLat} from 'ol/proj'
 import {GeoJSON} from "ol/format";
 import VectorLayer from 'ol/layer/Vector';
 import {Fill, Style} from "ol/style";
 import VectorSource from "ol/source/Vector";
-import {$, jquery} from "jquery"
 /*
     TODO on 8/8 -- finish up retrieving data from databases and work on parsing data to colours
     Data for countries.geojson from https://github.com/datasets/geo-countries
@@ -21,8 +19,6 @@ import {$, jquery} from "jquery"
  */
 console.log("0,0.1.4");
 const colours = JSON.parse(a);
-console.log(colours['AF']);
-console.log(colours)
 
 // Views
 const mapView = new View({

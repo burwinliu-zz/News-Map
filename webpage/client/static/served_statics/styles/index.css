@@ -1,6 +1,3 @@
-h1 {
-  color: blue;
-}
 /*Meant for the use of top of bar navigation*/
 .navBar{
   padding: 20px;
@@ -9,17 +6,13 @@ h1 {
   color: white;
   font-size: 30px;
 }
+
 /*map shinnaningans*/
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
 .map {
     height: 100%;
-}
-/* Optional: Makes the sample page fill the window. */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    width: 80%;
 }
 
 .test{

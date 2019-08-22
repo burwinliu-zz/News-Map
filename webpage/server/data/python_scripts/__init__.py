@@ -1,5 +1,5 @@
 from .data import *
-from .database import *
+from .database import Database
 from .sql_manage import *
 from .news_database import *
 from .overview_database import *

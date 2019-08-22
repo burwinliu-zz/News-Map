@@ -7,12 +7,14 @@ SEE data.py for use
 ("News_list", "BIGINT[]"),
 ("Colour", "SMALLINT")
 """
+from .database import Database
+from .sql_manage import execute_command, get_data
 import webpage.server.data.python_scripts.database as database
 import webpage.server.data.python_scripts.sql_manage as sql_manage
 from typing import Tuple
 
 
-class OverviewDatabase(database.Database):
+class OverviewDatabase(Database):
     def __init__(self):
         """
         Init the database
@@ -32,7 +34,7 @@ class OverviewDatabase(database.Database):
         # test this command
         if "ISO_Code" not in data_name or "News_list" not in data_name:
             raise ValueError("Passed invalid inputs -- no ISO_Code or news_list found")
-        data = sql_manage.get_data(self.schema, self.name, tuple("iso_code"))
+        data = get_data(self.schema, self.name, tuple("iso_code"))
         if data_input in data:
             self._update_input(data_input)
         else:
@@ -62,7 +64,7 @@ class OverviewDatabase(database.Database):
         """
         to_return_data = list()
         to_unique_update = list()
-        data = sql_manage.get_data(self.schema, self.name, tuple(("ISO_Code",)))
+        data = get_data(self.schema, self.name, tuple(("ISO_Code",)))
         data = [int(item[0]) for item in data]
         for item in data_input:
             if item[pos_iso] in data:
@@ -83,7 +85,7 @@ class OverviewDatabase(database.Database):
         if len(data_update) == 0:
             return
         values = ', '.join(f"({k[0]}, ARRAY{list(k[1])}::BIGINT[])" for k in data_update)
-        sql_manage.execute_command(f"UPDATE {self.schema}.{self.name} AS t SET "
+        execute_command(f"UPDATE {self.schema}.{self.name} AS t SET "
                                    f"iso_code = c.iso_code, "
                                    f"news_list= t.news_list||c.news_list "
                                    f"FROM(VALUES {values}) AS c(iso_code, news_list) "

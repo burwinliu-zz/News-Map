@@ -130,6 +130,9 @@ class Headlines:
         loaded_sites = list()
         for i in self.listings:
             try:
+                if i['full'][-3:] == 'the':
+                    i['full'] = i['full'][:-3]
+                    print("hit")
                 brought = urllib.request.urlopen(i['full']).read()
                 sp = BeautifulSoup(brought, 'html.parser')
                 self.amount_loaded += 1
@@ -163,6 +166,11 @@ class Headlines:
             pkl.dump(self, fp)
 
     def predict_country(self, listing: dict) -> Prediction:
+        '''
+
+        :param listing:
+        :return: a prediction
+        '''
         target = listing['soup'].head.title
         return self.nameBase.predict(str(target))
 

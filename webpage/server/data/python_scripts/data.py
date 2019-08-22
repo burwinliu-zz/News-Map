@@ -104,7 +104,7 @@ def init_news() -> news_db.NewsDatabase:
                   [
                       ("news_number", "SERIAL", "PRIMARY KEY"),
                       ("url", "TEXT", "NOT NULL"),
-                      ("headline", "VARCHAR(75)", "NOT NULL"),
+                      ("headline", "TEXT", "NOT NULL"),
                       ("ISO_Code", "SMALLINT",),
                   ]
                   )

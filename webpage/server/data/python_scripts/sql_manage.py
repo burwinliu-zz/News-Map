@@ -142,6 +142,7 @@ def execute_command(command: str) -> None:
     try:
         connection = setup_connection()
         cursor = connection.cursor()
+        print(command)
         cursor.execute(command)
         connection.commit()
     finally:

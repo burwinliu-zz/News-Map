@@ -129,6 +129,7 @@ class Headlines:
         start = timer()
         loaded_sites = list()
         for i in self.listings:
+            print(i)
             try:
                 if i['full'][-3:] == 'the':
                     i['full'] = i['full'][:-3]

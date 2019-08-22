@@ -2,7 +2,7 @@ from webpage.server.webscraping import Headlines
 from .data import store_articles
 
 
-def make_legal(headline:str)->str:
+def make_legal(headline: str) -> str:
     '''
     There is the idea of making this leagal for the input
     :param headline:
@@ -33,12 +33,18 @@ class DataLoader(Headlines):
         headlines = []
         isocodes = []
         for entry in batch:
-            headlines.append(make_legal(str(entry['soup'].head.title.string)))
+            headlines.append(make_legal(str(entry['soup'].head.title.string))[:75])
             urls.append(str(entry['full']))
             country = entry['country'].get_country()
             if country is None:
                 isocodes.append(0)
             else:
                 isocodes.append(int(country.numeric))
-
-        store_articles(urls=urls, headlines=headlines, iso_codes=isocodes)
+            if len(urls)>2:
+                try:
+                    store_articles(urls=urls, headlines=headlines, iso_codes=isocodes)
+                except SyntaxError as e:
+                    print(e)
+                urls = []
+                headlines = []
+                isocodes = []

@@ -4,10 +4,9 @@
     Should have files to configure the databases to hold countries
 """
 import psycopg2
-from webpage.server.settings import setup
+from webpage.server.settings import setup, setup_globals
 from os import getenv
 import decimal
-from webpage.server.settings import setup_globals
 import re
 
 setup_globals()
@@ -143,6 +142,7 @@ def execute_command(command: str) -> None:
     try:
         connection = setup_connection()
         cursor = connection.cursor()
+        print(command)
         cursor.execute(command)
         connection.commit()
     finally:

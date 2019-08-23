@@ -8,12 +8,11 @@ SEE data.py for use
 ("ISO_Code", "SMALLINT")
 """
 
-import webpage.server.data.python_scripts.database as database
+from .database import Database
+from .sql_manage import retrieve
 
-from webpage.server.data.python_scripts import sql_manage
 
-
-class NewsDatabase(database.Database):
+class NewsDatabase(Database):
     def __init__(self):
         """
         Init the database
@@ -35,7 +34,7 @@ class NewsDatabase(database.Database):
         if "url" not in data_names or "headline" not in data_names:
             raise Exception(f'URL or Headline not in inputs')
 
-        next_value = int(sql_manage.retrieve("SELECT last_value FROM public.news_news_number_seq;")[0][0])
+        next_value = int(retrieve("SELECT last_value FROM public.news_news_number_seq;")[0][0])
         iso_index = data_names.index("ISO_Code")
         res = dict()
         for item in data_input:

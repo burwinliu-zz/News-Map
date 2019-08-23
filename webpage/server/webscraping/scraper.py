@@ -64,6 +64,15 @@ def make_readable(sp: BeautifulSoup) -> Dict:
 def soups_to_strs(soups: List[BeautifulSoup]) -> List[Dict]:
     return [make_readable(soup) for soup in soups]
 
+def _headlinechange(headline:str)->str:
+    '''
+    :param headline:
+    :return:
+    '''
+    headline = headline.strip()
+    headline = headline.replace('\'','\"')
+    return headline
+
 
 class Headlines:
 
@@ -129,6 +138,7 @@ class Headlines:
         start = timer()
         loaded_sites = list()
         for i in self.listings:
+            print(i)
             try:
                 if i['full'][-3:] == 'the':
                     i['full'] = i['full'][:-3]

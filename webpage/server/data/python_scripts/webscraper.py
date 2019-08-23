@@ -41,4 +41,5 @@ class DataLoader(Headlines):
                 isocodes.append(0)
             else:
                 isocodes.append(int(country.numeric))
+
         store_articles(urls=urls, headlines=headlines, iso_codes=isocodes)

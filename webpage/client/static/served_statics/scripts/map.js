@@ -1,9 +1,10 @@
 import {Map, View} from 'ol';
-import {fromLonLat} from 'ol/proj'
+import {fromLonLat, transform} from 'ol/proj'
 import {GeoJSON} from "ol/format";
 import VectorLayer from 'ol/layer/Vector';
 import {Fill, Style} from "ol/style";
 import VectorSource from "ol/source/Vector";
+import {$} from 'jquery';
 /*
     Data for countries.geojson from https://github.com/datasets/geo-countries
         All data is licensed under the Open Data Commons Public Domain Dedication and License.
@@ -16,9 +17,11 @@ import VectorSource from "ol/source/Vector";
 /*
     Meant to retrieve data from db
  */
-console.log("0.0.2.1.1");
+console.log("0.0.2.1.5");
+const tableInner = '<tr><th scope="col">Headline</th><th scope="col">URL</th></tr>';
 const colours = JSON.parse(a);
 let load_in = false;
+let opened_side = false;
 
 // Views
 const mapView = new View({
@@ -73,10 +76,34 @@ map.on('rendercomplete', e => {
     if(!load_in){
         document.getElementById('preloader').classList.toggle('fade');
         document.getElementById('main-page').classList.toggle('show');
-        console.log('in');
         load_in = true;
     }
-    console.log(load_in)
 });
 
+map.on('click', async function(event) {
+    map.forEachFeatureAtPixel(event.pixel, async function(feature) {
+        const url='/data?iso=' + feature.get("ISO_A2");
+        let response = await fetch(url,);
+        let json = await response.json();
+        let key;
+        const tableRef = document.getElementById('table');
+        tableRef.innerHTML = tableInner;
+        for(key in json){
+            const headline = key;
+            const url = json[key];
+            const newRow   = tableRef.insertRow(tableRef.rows.length);
+            const headlineCell = newRow.insertCell(0);
+            const urlCell  = newRow.insertCell(1);
+            const urlText  = document.createTextNode(url);
+            const headlineText  = document.createTextNode(headline);
+            urlCell.appendChild(urlText);
+            headlineCell.appendChild(headlineText);
+        }
+        if(!opened_side){
+            opened_side = true;
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
+    });
+});
 

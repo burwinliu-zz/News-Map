@@ -1,9 +1,19 @@
 # create json folder, serve to a url, and provide to parse.js
 import math
 
-from .get_data import refresh_data
-from ..data.python_scripts.sql_manage import retrieve
-from ..webscraping import scraper
+from webpage.server.bridge.get_data import refresh_data
+from webpage.server.data.python_scripts.sql_manage import retrieve
+from webpage.server.webscraping import scraper
+
+
+def get_news_item(iso_code: str) -> list:
+    result = dict()
+    code = retrieve(f"SELECT numeric FROM public.countries WHERE iso3166_code='{iso_code}'")
+    headlines = retrieve(f"SELECT news_list FROM public.news_overview WHERE iso_code='{int(code[0][0])}'")
+    for i in headlines[0][0]:
+        to_input = retrieve(f"SELECT headline, url FROM public.news WHERE news_number={i}")[0]
+        result[to_input[0]] = to_input[1]
+    return result
 
 
 def reload_data():

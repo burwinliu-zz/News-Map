@@ -1,3 +1,13 @@
+html, body{
+    background-color: #04041b;
+    margin:0;
+    padding:0;
+    height: 100%;
+    width: 100%;
+    position:fixed;
+}
+
+/*Preloader page*/
 #preloader{
     position: absolute;
     top: 0;
@@ -28,12 +38,21 @@
     visibility: visible;
 }
 
+/* Parent div for body */
+#main-body{
+    background-color: #04041b;
+    height: 100%;
+    color: lavender;
+    display: flex;
+    flex-direction: row;
+}
 
 /*Meant for the use of top of bar navigation*/
 /* Add a black background color to the top navigation */
 .navBar {
-    background-color: #333;
+    z-index: 20;
     overflow: hidden;
+    position: absolute;
 }
 
 /* Style the links inside the navigation bar */
@@ -44,6 +63,7 @@
     text-decoration: none;
     font-size: 17px;
     color: #f2f2f2;
+    background:transparent;
 }
 
 /* Change the color of links on hover */
@@ -51,27 +71,31 @@
   background-color: #ddd;
   color: black;
 }
-/* Parent div for body */
-#main-body{
-    background-color: #04041b;
-    height: 100%;
-    color: lavender;
-    display: flex;
-    flex-direction: row;
-}
 
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
 #map {
     display: inline-block;
-    width:   80%;
-    background-color: #10103d;
+    flex-grow: 1;
+    top: 0;
+    height: 100%;
 }
 
 #sidebar{
-    flex-grow: 1;
-    display: flex;
+    background-color: #04041b;
     flex-direction: column;
+    position: relative;
+    left: -25%;
+    transition:0s;
+    opacity: 100%;
+    z-index: 10;
+}
+
+#sidebar.active{
+    left: 0;
+    width: 30%;
+    height: 100%;
+    transition: 1s
 }
 
 #key{
@@ -82,11 +106,8 @@
     flex-grow: 1;
 }
 
-html, body{
-    background-color: #04041b;
-    margin:0;
-    padding:0;
-    height: 100%;
-    width: 100%;
-    position:fixed;
+.ol-zoom{
+    top: 3em;
+    right: .5em;
+    left: auto;
 }

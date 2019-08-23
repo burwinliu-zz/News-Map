@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, jsonify, request, render_template, Blueprint, json
 
-from webpage.server.bridge.to_frontend import get_colour_data
+from webpage.server.bridge.to_frontend import get_colour_data, get_news_item
 from webpage.server.settings import setup_globals
 
 # FOR TESTING PURPOSES USED ENV VARIABLE TODO get working version
@@ -27,10 +27,13 @@ def get_app():
     return app
 
 
-@app.route('/test')
+@app.route('/data', methods=['GET'])
 def test():
-    res = json.dumps(get_colour_data())
-    return render_template('test.html', result=res)
+    if request.method == 'GET':
+        iso_code = request.args.get('iso')
+        res = get_news_item(iso_code)
+        print(res)
+        return jsonify(res)
 
 
 @app.route('/')

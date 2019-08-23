@@ -50,9 +50,11 @@ html, body{
 /*Meant for the use of top of bar navigation*/
 /* Add a black background color to the top navigation */
 .navBar {
+    width: 100%;
     z-index: 20;
     overflow: hidden;
     position: absolute;
+
 }
 
 /* Style the links inside the navigation bar */
@@ -62,23 +64,26 @@ html, body{
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-    color: #f2f2f2;
+    color: rgba(222, 213, 255, 0.67);
     background:transparent;
+    display: inline-block;
 }
 
 /* Change the color of links on hover */
 .navBar a:hover {
-  background-color: #ddd;
-  color: black;
+    border-bottom: 1px solid;
+    padding-bottom: 11px;
 }
 
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
 #map {
+    position:absolute;
     display: inline-block;
     flex-grow: 1;
     top: 0;
     height: 100%;
+    width: 100%;
 }
 
 #sidebar{
@@ -87,7 +92,6 @@ html, body{
     position: relative;
     left: -25%;
     transition:0s;
-    opacity: 100%;
     z-index: 10;
 }
 

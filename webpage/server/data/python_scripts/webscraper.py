@@ -1,6 +1,6 @@
 from webpage.server.webscraping import Headlines
 from .data import store_articles
-
+from psycopg2 import DataError
 
 def make_legal(headline: str) -> str:
     '''
@@ -13,10 +13,10 @@ def make_legal(headline: str) -> str:
 
 
 class DataLoader(Headlines):
-    def __init__(self, type='world', batch_size=10):
-        if type == 'world':
+    def __init__(self, search_space='world', batch_size=10):
+        if search_space == 'world':
             super().__init__()
-        elif type == 'US':
+        elif search_space == 'US':
             super().__init__("https://news.google.com/?hl=en-US&gl=US&ceid=US:en")
         self.datadump = self.gen_samples(batch_size=batch_size, predict_country=True)
 
@@ -40,11 +40,12 @@ class DataLoader(Headlines):
                 isocodes.append(0)
             else:
                 isocodes.append(int(country.numeric))
-            if len(urls)>2:
-                try:
-                    store_articles(urls=urls, headlines=headlines, iso_codes=isocodes)
-                except SyntaxError as e:
-                    print(e)
-                urls = []
-                headlines = []
-                isocodes = []
+            try:
+                store_articles(urls=urls, headlines=headlines, iso_codes=isocodes)
+            except SyntaxError as e:
+                print(e)
+            except DataError as e1:
+                print(str(e1)+"sigh fuck this")
+            urls = []
+            headlines = []
+            isocodes = []

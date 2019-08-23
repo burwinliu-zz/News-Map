@@ -51,7 +51,7 @@ def hello():
         return jsonify(message)  # serialize and use JSON headers
 
 
-@app.route('/colours/colours.json')
+@app.route('/colours/updated_colours', methods=['GET'])
 def public_files():
     # look inside `templates` and serve `index.html`
     return jsonify(get_colour_data())

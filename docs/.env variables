@@ -1,0 +1,16 @@
+TEST_VAR = AIzaSyBdnh75JG6IK7SW5w5xONNnpQbBdldTrVc
+
+// Postgres sql login and information here
+DATABASE_USER_SQL =
+DATABASE_PW_SQL =
+HOST_IP_ADDR_SQL =
+HOST_PORT_SQL =
+DATABASE_TYPE_SQL =
+
+Data paths
+PATH_TO_COUNTRIES_DATA =
+
+Path to serving file for flask
+PATH_TO_CLIENT_ROOT =
+PATH_TO_STATIC_ROOT =
+PATH_TO_PUBLIC_ROOT

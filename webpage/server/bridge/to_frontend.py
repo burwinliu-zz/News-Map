@@ -155,7 +155,13 @@ def _attach_code(overview: list, countries: list, news: list) -> dict:
     countries = _countries_to_dict(countries)
     res = dict()
     for i in overview:
-        res[countries[i[0]]] = i[1]
+        try:
+            res[countries[i[0]]] = i[1]
+        except KeyError:
+            if i[0] == 0:
+                res["NO_COUNTRY"] = i[1]
+            else:
+                raise KeyError
     return res
 
 
@@ -183,6 +189,3 @@ def _max_item(d: dict) -> int:
         if temp > largest:
             largest = temp
     return largest
-
-
-get_colour_data()

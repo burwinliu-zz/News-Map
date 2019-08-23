@@ -1,14 +1,15 @@
 from webpage.server.webscraping import Headlines
 from .data import store_articles
+import re
 
 
-def make_legal(headline:str)->str:
-    '''
-    There is the idea of making this leagal for the input
-    :param headline:
-    :return:
-    '''
-    headline = headline.replace("'", "''")
+def make_legal(headline: str) -> str:
+    """
+    There is the idea of making this legal for the input
+    :param headline: str
+    :return: str
+    """
+    headline = re.sub(r"[‘’']", "''", headline)
     return headline
 
 
@@ -40,5 +41,4 @@ class DataLoader(Headlines):
                 isocodes.append(0)
             else:
                 isocodes.append(int(country.numeric))
-
         store_articles(urls=urls, headlines=headlines, iso_codes=isocodes)

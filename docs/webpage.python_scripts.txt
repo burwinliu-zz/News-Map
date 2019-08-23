@@ -9,6 +9,4 @@ host="HOST_IP_ADDR_SQL"
 port="HOST_PORT_SQL"
 database="DATABASE_TYPE_SQL"
 
-Also, define TEST_VAR = AIzaSyBdnh75JG6IK7SW5w5xONNnpQbBdldTrVc
-
 #TODO finish updating and documenting

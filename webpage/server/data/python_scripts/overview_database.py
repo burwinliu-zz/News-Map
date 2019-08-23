@@ -7,9 +7,10 @@ SEE data.py for use
 ("News_list", "BIGINT[]"),
 ("Colour", "SMALLINT")
 """
+from typing import Tuple
+
 from .database import Database
 from .sql_manage import execute_command, get_data
-from typing import Tuple
 
 
 class OverviewDatabase(Database):

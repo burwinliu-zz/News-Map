@@ -3,11 +3,13 @@
 
     Should have files to configure the databases to hold countries
 """
-import psycopg2
-from ...settings import setup, setup_globals
-from os import getenv
 import decimal
 import re
+from os import getenv
+
+import psycopg2
+
+from ...settings import setup, setup_globals
 
 setup_globals()
 

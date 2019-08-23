@@ -1,5 +1,6 @@
-from typing import List
 import warnings
+from typing import List
+
 from ..data.python_scripts.data import store_articles
 
 

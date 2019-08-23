@@ -6,12 +6,14 @@
     HERE IS MAIN FILE, try not to touch other files
 """
 
-import pycountry
-from .sql_manage import test, DatabaseError, init_db, execute_command
-from .database import Database
-from .overview_database import OverviewDatabase
-from .news_database import NewsDatabase
 import re
+
+import pycountry
+
+from .database import Database
+from .news_database import NewsDatabase
+from .overview_database import OverviewDatabase
+from .sql_manage import test, DatabaseError, init_db, execute_command
 
 
 def store_countries(db: Database) -> None:

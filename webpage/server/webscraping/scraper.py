@@ -2,15 +2,17 @@
  Beautiful Soup is made available under the MIT license: Copyright (c) 2004-2019 Leonard Richardson and is used in this
  code. It belongs to all respective owners. Its website can be found: https://www.crummy.com/software/BeautifulSoup/
 """
+import datetime
+import re
+import warnings
+from timeit import default_timer as timer
+from typing import List, Dict
+
 import six.moves.urllib as urllib
 from bs4 import BeautifulSoup
-import re
-from typing import List, Dict
 from six.moves import cPickle as pkl
-import datetime
-import warnings
+
 from webpage.server.data.data_dump import *
-from timeit import default_timer as timer
 
 '''Take in url function and scrape -- using google '''
 

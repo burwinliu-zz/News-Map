@@ -1,6 +1,7 @@
-from ...webscraping import Headlines
-from .data import store_articles
 import re
+
+from webpage.server.webscraping import Headlines
+from .data import store_articles
 
 
 def make_legal(headline: str) -> str:

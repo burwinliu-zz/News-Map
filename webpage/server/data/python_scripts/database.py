@@ -1,8 +1,9 @@
 """
     Database representation object
 """
-from .sql_manage import execute_command
 import re
+
+from .sql_manage import execute_command
 
 
 class Database:

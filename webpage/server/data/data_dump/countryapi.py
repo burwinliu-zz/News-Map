@@ -1,7 +1,8 @@
 import json
-import pycountry
+from statistics import mode, StatisticsError
 from typing import List, Tuple
-from statistics import mode,StatisticsError
+
+import pycountry
 
 
 class Prediction:

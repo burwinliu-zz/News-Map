@@ -1,8 +1,9 @@
 # create json folder, serve to a url, and provide to parse.js
-from ..webscraping import scraper
-from ..data.python_scripts.sql_manage import retrieve
-from .get_data import refresh_data
 import math
+
+from .get_data import refresh_data
+from ..data.python_scripts.sql_manage import retrieve
+from ..webscraping import scraper
 
 
 def reload_data():

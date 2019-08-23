@@ -7,14 +7,14 @@
 """
 
 import pycountry
-import webpage.server.data.python_scripts.sql_manage as setup
-import webpage.server.data.python_scripts.database as database
-import webpage.server.data.python_scripts.overview_database as overview_db
-import webpage.server.data.python_scripts.news_database as news_db
+from .sql_manage import test, DatabaseError, init_db, execute_command
+from .database import Database
+from .overview_database import OverviewDatabase
+from .news_database import NewsDatabase
 import re
 
 
-def store_countries(db: database.Database) -> None:
+def store_countries(db: Database) -> None:
     """
     Store country info into database
 
@@ -34,8 +34,8 @@ def store_articles(urls: list, headlines: list, iso_codes: list):
     """
     # Variable setup
     to_exe = list()
-    ndb = news_db.NewsDatabase()
-    odb = overview_db.OverviewDatabase()
+    ndb = NewsDatabase()
+    odb = OverviewDatabase()
     # Double checking your inputs are good, else we crash
     if not (len(urls) == len(headlines) == len(iso_codes)):
         raise Exception(f"Your urls, headlines and iso_codes do not have same lengths")
@@ -50,14 +50,14 @@ def store_articles(urls: list, headlines: list, iso_codes: list):
     odb.add_many_inputs(tuple(("ISO_Code", "News_list")), tuple(((k, v) for k, v in param.items())))
 
 
-def _init_sys_info() -> database.Database:
+def _init_sys_info() -> Database:
     """
     init sys info db
-    :return: database.Database
+    :return: Database
     """
-    if setup.test() == 0:
-        raise setup.DatabaseError
-    param = setup.init_db("system", "sys_info",
+    if test() == 0:
+        raise DatabaseError
+    param = init_db("system", "sys_info",
                           [
                               ("schema", "TEXT"),
                               ("name", "TEXT", "UNIQUE"),
@@ -66,20 +66,20 @@ def _init_sys_info() -> database.Database:
                           ],
                           sys_table=True
                           )
-    res = database.Database(*param)
+    res = Database(*param)
     return res
 
 
-def _init_countries() -> database.Database:
+def _init_countries() -> Database:
     """
     init the countries database
     Will store countries numeric, iso and country name
 
     :return: database.Database object
     """
-    if setup.test() == 0:
-        raise setup.DatabaseError
-    param = setup.init_db("public", "countries",
+    if test() == 0:
+        raise DatabaseError
+    param = init_db("public", "countries",
                           [
                               ("NUMERIC", "SMALLINT", "PRIMARY KEY"),
                               ("iso3166_code", "VARCHAR(2)", "NOT NULL"),
@@ -87,20 +87,20 @@ def _init_countries() -> database.Database:
                           ],
                           sys_table=False
                           )
-    res = database.Database(*param)
+    res = Database(*param)
     return res
 
 
-def init_news() -> news_db.NewsDatabase:
+def init_news() -> NewsDatabase:
     """
     init the news database
     Will store news article info
 
     :return: database.Database object
     """
-    if setup.test() == 0:
-        raise setup.DatabaseError
-    setup.init_db("public", "news",
+    if test() == 0:
+        raise DatabaseError
+    init_db("public", "news",
                   [
                       ("news_number", "SERIAL", "PRIMARY KEY"),
                       ("url", "TEXT", "NOT NULL"),
@@ -108,21 +108,21 @@ def init_news() -> news_db.NewsDatabase:
                       ("ISO_Code", "SMALLINT",),
                   ]
                   )
-    res = news_db.NewsDatabase()
+    res = NewsDatabase()
     return res
 
 
-def init_news_overview() -> overview_db.OverviewDatabase:
+def init_news_overview() -> OverviewDatabase:
     """
     init the news overview
     Will store news overview -- number of hits, corresponding colour and other info
 
     :return: database.Database object
     """
-    if setup.test() == 0:
-        raise setup.DatabaseError
-    res = overview_db.OverviewDatabase()
-    setup.init_db("public", "news_overview",
+    if test() == 0:
+        raise DatabaseError
+    res = OverviewDatabase()
+    init_db("public", "news_overview",
                   [
                       ("ISO_Code", "SMALLINT", "PRIMARY KEY"),
                       ("News_list", "BIGINT[]"),
@@ -132,12 +132,12 @@ def init_news_overview() -> overview_db.OverviewDatabase:
 
 
 def reset_news():
-    setup.execute_command("DELETE FROM public.news")
-    setup.execute_command("ALTER SEQUENCE public.news_news_number_seq RESTART WITH 1")
+    execute_command("DELETE FROM public.news")
+    execute_command("ALTER SEQUENCE public.news_news_number_seq RESTART WITH 1")
 
 
 def reset_overview():
-    setup.execute_command("DELETE FROM public.news_overview")
+    execute_command("DELETE FROM public.news_overview")
 
 
 def get_country_codes_and_names() -> list:

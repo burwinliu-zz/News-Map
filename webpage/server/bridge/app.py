@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, render_template, Blueprint, json
 import os
-from webpage.server.settings import setup_globals
-from webpage.server.bridge.to_frontend import get_colour_data
+from ..settings import setup_globals
+from .to_frontend import get_colour_data
 
 # FOR TESTING PURPOSES USED ENV VARIABLE TODO get working version
 setup_globals()

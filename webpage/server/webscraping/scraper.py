@@ -64,13 +64,14 @@ def make_readable(sp: BeautifulSoup) -> Dict:
 def soups_to_strs(soups: List[BeautifulSoup]) -> List[Dict]:
     return [make_readable(soup) for soup in soups]
 
-def _headlinechange(headline:str)->str:
+
+def headline_change(headline: str) -> str:
     '''
     :param headline:
     :return:
     '''
     headline = headline.strip()
-    headline = headline.replace('\'','\"')
+    headline = headline.replace('\'', '\"')
     return headline
 
 
@@ -155,7 +156,7 @@ class Headlines:
                     i['country'] = self.predict_country(i)
                 if len(loaded_sites) >= batch_size:
                     end = timer()
-                    print("Time elapsed:"+str(end-start))
+                    print("Time elapsed:" + str(end - start))
                     yield loaded_sites
                     start = timer()
                     loaded_sites = list()
@@ -183,7 +184,6 @@ class Headlines:
         '''
         target = listing['soup'].head.title
         return self.nameBase.predict(str(target))
-
 
     def __str__(self):
         return str(self.title) + '\ncreated on' + str(self.time) + '\nwith :' + str(len(self.listings)) + 'links'

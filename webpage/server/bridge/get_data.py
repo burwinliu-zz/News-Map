@@ -1,6 +1,6 @@
 from typing import List
 import warnings
-from webpage.server.data.python_scripts.data import store_articles
+from ..data.python_scripts.data import store_articles
 
 
 def refresh_data(data: List[dict]) -> None:

@@ -4,7 +4,7 @@
     Should have files to configure the databases to hold countries
 """
 import psycopg2
-from webpage.server.settings import setup, setup_globals
+from ...settings import setup, setup_globals
 from os import getenv
 import decimal
 import re

@@ -1,7 +1,7 @@
 # create json folder, serve to a url, and provide to parse.js
-from webpage.server.webscraping import scraper
-from webpage.server.data.python_scripts.sql_manage import retrieve
-from webpage.server.bridge.get_data import refresh_data
+from ..webscraping import scraper
+from ..data.python_scripts.sql_manage import retrieve
+from .get_data import refresh_data
 import math
 
 

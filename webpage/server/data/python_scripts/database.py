@@ -1,7 +1,7 @@
 """
     Database representation object
 """
-import webpage.server.data.python_scripts.sql_manage as sql_manage
+from .sql_manage import execute_command
 import re
 
 
@@ -51,7 +51,7 @@ class Database:
         data_to_add = ','.join(str(ls) for ls in to_execute)
         data_to_add = re.sub(r'"', "'", data_to_add)
         data_to_add = re.sub(r'\[', "ARRAY[", data_to_add)
-        sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_names)})"
+        execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_names)})"
                                    f"VALUES {data_to_add};")
 
     def add_input(self, data_name: tuple, data_input: tuple):
@@ -70,5 +70,5 @@ class Database:
         data_to_add = re.sub(r'"', "'", data_to_add)
         data_to_add = re.sub(r'\[', "'{", data_to_add)
         data_to_add = re.sub(r'\]', "}'", data_to_add)
-        sql_manage.execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_name)}) VALUES"
+        execute_command(f"INSERT INTO {self.schema}.{self.name}({', '.join(data_name)}) VALUES"
                                    f"({data_to_add});")

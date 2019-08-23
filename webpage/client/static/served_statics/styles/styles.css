@@ -54,6 +54,7 @@
 /* Parent div for body */
 #main-body{
     background-color: #04041b;
+    height: 100%;
     color: lavender;
     display: flex;
     flex-direction: row;

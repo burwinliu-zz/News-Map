@@ -1,5 +1,4 @@
 from .to_frontend import reload_data, get_colour, get_colour_data
-from .app import * #This looks scary
 from .configurations import BaseConfig, ProductionConfig, DevelopmentConfig
 from .get_data import refresh_data
 

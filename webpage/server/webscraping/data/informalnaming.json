@@ -1,0 +1,2115 @@
+[
+  {
+    "capital": "Oranjestad",
+    "country_name": "Aruba",
+    "iso3166_code": "AW",
+    "nicknames": [
+      "Aruba",
+      "Oranjestad"
+    ],
+    "numeric": 533
+  },
+  {
+    "capital": "Kabul",
+    "country_name": "Afghanistan",
+    "iso3166_code": "AF",
+    "nicknames": [
+      "Afghanistan",
+      "Kabul"
+    ],
+    "numeric": 4
+  },
+  {
+    "capital": "Luanda",
+    "country_name": "Angola",
+    "iso3166_code": "AO",
+    "nicknames": [
+      "Angola",
+      "Luanda"
+    ],
+    "numeric": 24
+  },
+  {
+    "capital": "Tirana",
+    "country_name": "Albania",
+    "iso3166_code": "AL",
+    "nicknames": [
+      "Albania",
+      "Tirana"
+    ],
+    "numeric": 8
+  },
+  {
+    "capital": "Andorra la Vella",
+    "country_name": "Andorra",
+    "iso3166_code": "AD",
+    "nicknames": [
+      "Andorra",
+      "Andorra la Vella"
+    ],
+    "numeric": 20
+  },
+  {
+    "capital": "Abu Dhabi",
+    "country_name": "United Arab Emirates",
+    "iso3166_code": "AE",
+    "nicknames": [
+      "United Arab Emirates",
+      "UAE",
+      "Abu Dhabi"
+    ],
+    "numeric": 784
+  },
+  {
+    "capital": "Buenos Aires",
+    "country_name": "Argentina",
+    "iso3166_code": "AR",
+    "nicknames": [
+      "Argentina",
+      "Buenos Aires"
+    ],
+    "numeric": 32
+  },
+  {
+    "capital": "Yerevan",
+    "country_name": "Armenia",
+    "iso3166_code": "AM",
+    "nicknames": [
+      "Armenia",
+      "Yerevan"
+    ],
+    "numeric": 51
+  },
+  {
+    "capital": "Apia",
+    "country_name": "American Samoa",
+    "iso3166_code": "AS",
+    "nicknames": [
+      "Samoa",
+      "Apia"
+    ],
+    "numeric": 16
+  },
+  {
+    "country_name": "Antarctica",
+    "iso3166_code": "AQ",
+    "nicknames": [
+      "Antarctica"
+    ],
+    "numeric": 10
+  },
+  {
+    "capital": "St. John's",
+    "country_name": "Antigua and Barbuda",
+    "iso3166_code": "AG",
+    "nicknames": [
+      "Antigua and Barbuda",
+      "Antigua",
+      "Barbuda",
+      "St. John's"
+    ],
+    "numeric": 28
+  },
+  {
+    "capital": "Canberra",
+    "country_name": "Australia",
+    "iso3166_code": "AU",
+    "nicknames": [
+      "Australia",
+      "Canberra"
+    ],
+    "numeric": 36
+  },
+  {
+    "capital": "Vienna",
+    "country_name": "Austria",
+    "iso3166_code": "AT",
+    "nicknames": [
+      "Austria",
+      "Vienna"
+    ],
+    "numeric": 40
+  },
+  {
+    "capital": "Baku",
+    "country_name": "Azerbaijan",
+    "iso3166_code": "AZ",
+    "nicknames": [
+      "Azerbaijan",
+      "Baku"
+    ],
+    "numeric": 31
+  },
+  {
+    "capital": "Bujumbura",
+    "country_name": "Burundi",
+    "iso3166_code": "BI",
+    "nicknames": [
+      "Burundi",
+      "Bujumbura"
+    ],
+    "numeric": 108
+  },
+  {
+    "capital": "Brussels",
+    "country_name": "Belgium",
+    "iso3166_code": "BE",
+    "nicknames": [
+      "Belgium",
+      "Brussels"
+    ],
+    "numeric": 56
+  },
+  {
+    "capital": "Porto-Novo",
+    "country_name": "Benin",
+    "iso3166_code": "BJ",
+    "nicknames": [
+      "Benin",
+      "Porto-Novo"
+    ],
+    "numeric": 204
+  },
+  {
+    "capital": "Ouagadougou",
+    "country_name": "Burkina Faso",
+    "iso3166_code": "BF",
+    "nicknames": [
+      "Burkina Faso",
+      "Ouagadougou"
+    ],
+    "numeric": 854
+  },
+  {
+    "capital": "Dhaka",
+    "country_name": "Bangladesh",
+    "iso3166_code": "BD",
+    "nicknames": [
+      "Bangladesh",
+      "Dhaka"
+    ],
+    "numeric": 50
+  },
+  {
+    "capital": "Sofia",
+    "country_name": "Bulgaria",
+    "iso3166_code": "BG",
+    "nicknames": [
+      "Bulgaria",
+      "Sofia"
+    ],
+    "numeric": 100
+  },
+  {
+    "capital": "Manama",
+    "country_name": "Bahrain",
+    "iso3166_code": "BH",
+    "nicknames": [
+      "Bahrain",
+      "Manama"
+    ],
+    "numeric": 48
+  },
+  {
+    "capital": "Nassau",
+    "country_name": "Bahamas",
+    "iso3166_code": "BS",
+    "nicknames": [
+      "Bahamas",
+      "Nassau"
+    ],
+    "numeric": 44
+  },
+  {
+    "capital": "Sarajevo",
+    "country_name": "Bosnia and Herzegovina",
+    "iso3166_code": "BA",
+    "nicknames": [
+      "Bosnia and Herzegovina",
+      "Bosnia",
+      "Herzegovina",
+      "Sarajevo"
+    ],
+    "numeric": 70
+  },
+  {
+    "capital": "Minsk",
+    "country_name": "Belarus",
+    "iso3166_code": "BY",
+    "nicknames": [
+      "Belarus",
+      "Minsk"
+    ],
+    "numeric": 112
+  },
+  {
+    "capital": "Belmopan",
+    "country_name": "Belize",
+    "iso3166_code": "BZ",
+    "nicknames": [
+      "Belize",
+      "Belmopan"
+    ],
+    "numeric": 84
+  },
+  {
+    "capital": "Hamilton",
+    "country_name": "Bermuda",
+    "iso3166_code": "BM",
+    "nicknames": [
+      "Bermuda",
+      "Hamilton"
+    ],
+    "numeric": 60
+  },
+  {
+    "capital": "Sucre",
+    "country_name": "Bolivia, Plurinational State of",
+    "iso3166_code": "BO",
+    "nicknames": [
+      "Bolivia",
+      "Sucre"
+    ],
+    "numeric": 68
+  },
+  {
+    "capital": "Brasília",
+    "country_name": "Brazil",
+    "iso3166_code": "BR",
+    "nicknames": [
+      "Brazil",
+      "Brasília"
+    ],
+    "numeric": 76
+  },
+  {
+    "capital": "Bridgetown",
+    "country_name": "Barbados",
+    "iso3166_code": "BB",
+    "nicknames": [
+      "Barbados",
+      "Bridgetown"
+    ],
+    "numeric": 52
+  },
+  {
+    "capital": "Bandar Seri Begawan",
+    "country_name": "Brunei Darussalam",
+    "iso3166_code": "BN",
+    "nicknames": [
+      "Brunei",
+      "Bandar Seri Begawan"
+    ],
+    "numeric": 96
+  },
+  {
+    "capital": "Thimphu",
+    "country_name": "Bhutan",
+    "iso3166_code": "BT",
+    "nicknames": [
+      "Bhutan",
+      "Thimphu"
+    ],
+    "numeric": 64
+  },
+  {
+    "capital": "Gaborone",
+    "country_name": "Botswana",
+    "iso3166_code": "BW",
+    "nicknames": [
+      "Botswana",
+      "Gaborone"
+    ],
+    "numeric": 72
+  },
+  {
+    "capital": "Bangui",
+    "country_name": "Central African Republic",
+    "iso3166_code": "CF",
+    "nicknames": [
+      "Central African Republic",
+      "CAR",
+      "Bangui"
+    ],
+    "numeric": 140
+  },
+  {
+    "capital": "Ottawa",
+    "country_name": "Canada",
+    "iso3166_code": "CA",
+    "nicknames": [
+      "Canada",
+      "Ottawa"
+    ],
+    "numeric": 124
+  },
+  {
+    "capital": "Bern",
+    "country_name": "Switzerland",
+    "iso3166_code": "CH",
+    "nicknames": [
+      "Switzerland",
+      "Bern"
+    ],
+    "numeric": 756
+  },
+  {
+    "capital": "Santiago",
+    "country_name": "Chile",
+    "iso3166_code": "CL",
+    "nicknames": [
+      "Chile",
+      "Santiago"
+    ],
+    "numeric": 152
+  },
+  {
+    "capital": "Beijing",
+    "country_name": "China",
+    "iso3166_code": "CN",
+    "nicknames": [
+      "China",
+      "PRC",
+      "Beijing"
+    ],
+    "numeric": 156
+  },
+  {
+    "capital": "Yamoussoukro",
+    "country_name": "Côte d'Ivoire",
+    "iso3166_code": "CI",
+    "nicknames": [
+      "Côte d'Ivoire",
+      "Cote d'Ivoire",
+      "Yamoussoukro"
+    ],
+    "numeric": 384
+  },
+  {
+    "capital": "Yaoundé",
+    "country_name": "Cameroon",
+    "iso3166_code": "CM",
+    "nicknames": [
+      "Cameroon",
+      "Yaoundé"
+    ],
+    "numeric": 120
+  },
+  {
+    "capital": "Kinshasa",
+    "country_name": "Congo, The Democratic Republic of the",
+    "iso3166_code": "CD",
+    "nicknames": [
+      "Democratic Republic of the Congo",
+      "DRC",
+      "Kinshasa"
+    ],
+    "numeric": 180
+  },
+  {
+    "capital": "Brazzaville",
+    "country_name": "Congo",
+    "iso3166_code": "CG",
+    "nicknames": [
+      "Republic of the Congo",
+      "Congo Republic",
+      "Brazzaville"
+    ],
+    "numeric": 178
+  },
+  {
+    "capital": "Bogotá",
+    "country_name": "Colombia",
+    "iso3166_code": "CO",
+    "nicknames": [
+      "Colombia",
+      "Bogotá"
+    ],
+    "numeric": 170
+  },
+  {
+    "capital": "Moroni",
+    "country_name": "Comoros",
+    "iso3166_code": "KM",
+    "nicknames": [
+      "Comoros",
+      "Moroni"
+    ],
+    "numeric": 174
+  },
+  {
+    "capital": "Praia",
+    "country_name": "Cabo Verde",
+    "iso3166_code": "CV",
+    "nicknames": [
+      "Cape Verde",
+      "Cabo Verde",
+      "Praia"
+    ],
+    "numeric": 132
+  },
+  {
+    "capital": "San José",
+    "country_name": "Costa Rica",
+    "iso3166_code": "CR",
+    "nicknames": [
+      "Costa Rica",
+      "San José"
+    ],
+    "numeric": 188
+  },
+  {
+    "capital": "Havana",
+    "country_name": "Cuba",
+    "iso3166_code": "CU",
+    "nicknames": [
+      "Cuba",
+      "Havana"
+    ],
+    "numeric": 192
+  },
+  {
+    "capital": "Willemstad",
+    "country_name": "Curaçao",
+    "iso3166_code": "CW",
+    "nicknames": [
+      "Curaçao",
+      "Willemstad"
+    ],
+    "numeric": 531
+  },
+  {
+    "capital": "Nicosia",
+    "country_name": "Cyprus",
+    "iso3166_code": "CY",
+    "nicknames": [
+      "Cyprus",
+      "Nicosia"
+    ],
+    "numeric": 196
+  },
+  {
+    "capital": "Prague",
+    "country_name": "Czechia",
+    "iso3166_code": "CZ",
+    "nicknames": [
+      "Czech Republic",
+      "Czechia",
+      "Prague"
+    ],
+    "numeric": 203
+  },
+  {
+    "capital": "Berlin",
+    "country_name": "Germany",
+    "iso3166_code": "DE",
+    "nicknames": [
+      "Germany",
+      "Berlin"
+    ],
+    "numeric": 276
+  },
+  {
+    "capital": "Djibouti",
+    "country_name": "Djibouti",
+    "iso3166_code": "DJ",
+    "nicknames": [
+      "Djibouti",
+      "Djibouti"
+    ],
+    "numeric": 262
+  },
+  {
+    "capital": "Roseau",
+    "country_name": "Dominica",
+    "iso3166_code": "DM",
+    "nicknames": [
+      "Dominica",
+      "Roseau"
+    ],
+    "numeric": 212
+  },
+  {
+    "capital": "Copenhagen",
+    "country_name": "Denmark",
+    "iso3166_code": "DK",
+    "nicknames": [
+      "Denmark",
+      "Copenhagen"
+    ],
+    "numeric": 208
+  },
+  {
+    "capital": "Santo Domingo",
+    "country_name": "Dominican Republic",
+    "iso3166_code": "DO",
+    "nicknames": [
+      "Dominican Republic",
+      "Santo Domingo"
+    ],
+    "numeric": 214
+  },
+  {
+    "capital": "Algiers",
+    "country_name": "Algeria",
+    "iso3166_code": "DZ",
+    "nicknames": [
+      "Algeria",
+      "Algiers"
+    ],
+    "numeric": 12
+  },
+  {
+    "capital": "Quito",
+    "country_name": "Ecuador",
+    "iso3166_code": "EC",
+    "nicknames": [
+      "Ecuador",
+      "Quito"
+    ],
+    "numeric": 218
+  },
+  {
+    "capital": "Cairo",
+    "country_name": "Egypt",
+    "iso3166_code": "EG",
+    "nicknames": [
+      "Egypt",
+      "Cairo"
+    ],
+    "numeric": 818
+  },
+  {
+    "capital": "Asmara",
+    "country_name": "Eritrea",
+    "iso3166_code": "ER",
+    "nicknames": [
+      "Eritrea",
+      "Asmara"
+    ],
+    "numeric": 232
+  },
+  {
+    "capital": "El Aaiún",
+    "country_name": "Western Sahara",
+    "iso3166_code": "EH",
+    "nicknames": [
+      "Western Sahara",
+      "El Aaiún"
+    ],
+    "numeric": 732
+  },
+  {
+    "capital": "Madrid",
+    "country_name": "Spain",
+    "iso3166_code": "ES",
+    "nicknames": [
+      "Spain",
+      "Madrid",
+      "Madrid"
+    ],
+    "numeric": 724
+  },
+  {
+    "capital": "Tallinn",
+    "country_name": "Estonia",
+    "iso3166_code": "EE",
+    "nicknames": [
+      "Estonia",
+      "Tallinn"
+    ],
+    "numeric": 233
+  },
+  {
+    "capital": "Addis Ababa",
+    "country_name": "Ethiopia",
+    "iso3166_code": "ET",
+    "nicknames": [
+      "Ethiopia",
+      "Addis Ababa"
+    ],
+    "numeric": 231
+  },
+  {
+    "capital": "Helsinki",
+    "country_name": "Finland",
+    "iso3166_code": "FI",
+    "nicknames": [
+      "Finland",
+      "Helsinki"
+    ],
+    "numeric": 246
+  },
+  {
+    "capital": "Suva",
+    "country_name": "Fiji",
+    "iso3166_code": "FJ",
+    "nicknames": [
+      "Fiji",
+      "Suva"
+    ],
+    "numeric": 242
+  },
+  {
+    "capital": "Paris",
+    "country_name": "France",
+    "iso3166_code": "FR",
+    "nicknames": [
+      "France",
+      "Paris",
+      "Paris"
+    ],
+    "numeric": 250
+  },
+  {
+    "capital": "Palikir",
+    "country_name": "Micronesia, Federated States of",
+    "iso3166_code": "FM",
+    "nicknames": [
+      "Federated States of Micronesia",
+      "Micronesia",
+      "Palikir"
+    ],
+    "numeric": 583
+  },
+  {
+    "capital": "Libreville",
+    "country_name": "Gabon",
+    "iso3166_code": "GA",
+    "nicknames": [
+      "Gabon",
+      "Libreville"
+    ],
+    "numeric": 266
+  },
+  {
+    "country_name": "United Kingdom",
+    "iso3166_code": "GB",
+    "nicknames": [
+      "United Kingdom",
+      "UK",
+      "U.K.",
+      "Britain",
+      "Scotland",
+      "Wales",
+      "Northern Ireland",
+      "London",
+      "Cardiff",
+      "Belfast",
+      "Edinburgh"
+    ],
+    "numeric": 826
+  },
+  {
+    "capital": "Tbilisi",
+    "country_name": "Georgia",
+    "iso3166_code": "GE",
+    "nicknames": [
+      "Georgia",
+      "Tbilisi"
+    ],
+    "numeric": 268
+  },
+  {
+    "capital": "Accra",
+    "country_name": "Ghana",
+    "iso3166_code": "GH",
+    "nicknames": [
+      "Ghana",
+      "Accra"
+    ],
+    "numeric": 288
+  },
+  {
+    "capital": "Gibraltar",
+    "country_name": "Gibraltar",
+    "iso3166_code": "GI",
+    "nicknames": [
+      "Gibraltar",
+      "Gibraltar"
+    ],
+    "numeric": 292
+  },
+  {
+    "capital": "Conakry",
+    "country_name": "Guinea",
+    "iso3166_code": "GN",
+    "nicknames": [
+      "Guinea",
+      "Conakry"
+    ],
+    "numeric": 324
+  },
+  {
+    "country_name": "Guadeloupe",
+    "iso3166_code": "GP",
+    "nicknames": [
+      "Guadeloupe"
+    ],
+    "numeric": 312
+  },
+  {
+    "capital": "Banjul",
+    "country_name": "Gambia",
+    "iso3166_code": "GM",
+    "nicknames": [
+      "Gambia",
+      "Banjul"
+    ],
+    "numeric": 270
+  },
+  {
+    "capital": "Bissau",
+    "country_name": "Guinea-Bissau",
+    "iso3166_code": "GW",
+    "nicknames": [
+      "Guinea-Bissau",
+      "Bissau"
+    ],
+    "numeric": 624
+  },
+  {
+    "capital": "Malabo",
+    "country_name": "Equatorial Guinea",
+    "iso3166_code": "GQ",
+    "nicknames": [
+      "Equatorial Guinea",
+      "Malabo"
+    ],
+    "numeric": 226
+  },
+  {
+    "capital": "Athens",
+    "country_name": "Greece",
+    "iso3166_code": "GR",
+    "nicknames": [
+      "Greece",
+      "Athens"
+    ],
+    "numeric": 300
+  },
+  {
+    "capital": "St. George's",
+    "country_name": "Grenada",
+    "iso3166_code": "GD",
+    "nicknames": [
+      "Grenada",
+      "St. George's"
+    ],
+    "numeric": 308
+  },
+  {
+    "capital": "Nuuk",
+    "country_name": "Greenland",
+    "iso3166_code": "GL",
+    "nicknames": [
+      "Greenland",
+      "Nuuk"
+    ],
+    "numeric": 304
+  },
+  {
+    "capital": "Guatemala City",
+    "country_name": "Guatemala",
+    "iso3166_code": "GT",
+    "nicknames": [
+      "Guatemala",
+      "Guatemala City"
+    ],
+    "numeric": 320
+  },
+  {
+    "capital": "Cayenne",
+    "country_name": "French Guiana",
+    "iso3166_code": "GF",
+    "nicknames": [
+      "French Guiana",
+      "Cayenne"
+    ],
+    "numeric": 254
+  },
+  {
+    "capital": "Hagåtña",
+    "country_name": "Guam",
+    "iso3166_code": "GU",
+    "nicknames": [
+      "Guam",
+      "Hagåtña"
+    ],
+    "numeric": 316
+  },
+  {
+    "capital": "Georgetown",
+    "country_name": "Guyana",
+    "iso3166_code": "GY",
+    "nicknames": [
+      "Guyana",
+      "Georgetown"
+    ],
+    "numeric": 328
+  },
+  {
+    "country_name": "Hong Kong",
+    "iso3166_code": "HK",
+    "nicknames": [
+      "Hong Kong"
+    ],
+    "numeric": 344
+  },
+  {
+    "capital": "Tegucigalpa",
+    "country_name": "Honduras",
+    "iso3166_code": "HN",
+    "nicknames": [
+      "Honduras",
+      "Tegucigalpa"
+    ],
+    "numeric": 340
+  },
+  {
+    "capital": "Zagreb",
+    "country_name": "Croatia",
+    "iso3166_code": "HR",
+    "nicknames": [
+      "Croatia",
+      "Zagreb"
+    ],
+    "numeric": 191
+  },
+  {
+    "capital": "Port-au-Prince",
+    "country_name": "Haiti",
+    "iso3166_code": "HT",
+    "nicknames": [
+      "Haiti",
+      "Port-au-Prince"
+    ],
+    "numeric": 332
+  },
+  {
+    "capital": "Budapest",
+    "country_name": "Hungary",
+    "iso3166_code": "HU",
+    "nicknames": [
+      "Hungary",
+      "Budapest"
+    ],
+    "numeric": 348
+  },
+  {
+    "capital": "Jakarta",
+    "country_name": "Indonesia",
+    "iso3166_code": "ID",
+    "nicknames": [
+      "Indonesia",
+      "Jakarta"
+    ],
+    "numeric": 360
+  },
+  {
+    "capital": "Douglas",
+    "country_name": "Isle of Man",
+    "iso3166_code": "IM",
+    "nicknames": [
+      "Isle of Man",
+      "Douglas"
+    ],
+    "numeric": 833
+  },
+  {
+    "capital": "New Delhi",
+    "country_name": "India",
+    "iso3166_code": "IN",
+    "nicknames": [
+      "India",
+      "New Delhi"
+    ],
+    "numeric": 356
+  },
+  {
+    "capital": "Dublin",
+    "country_name": "Ireland",
+    "iso3166_code": "IE",
+    "nicknames": [
+      "Ireland",
+      "Dublin"
+    ],
+    "numeric": 372
+  },
+  {
+    "capital": "Tehran",
+    "country_name": "Iran, Islamic Republic of",
+    "iso3166_code": "IR",
+    "nicknames": [
+      "Iran",
+      "Tehran"
+    ],
+    "numeric": 364
+  },
+  {
+    "capital": "Baghdad",
+    "country_name": "Iraq",
+    "iso3166_code": "IQ",
+    "nicknames": [
+      "Iraq",
+      "Baghdad"
+    ],
+    "numeric": 368
+  },
+  {
+    "capital": "Reykjavík",
+    "country_name": "Iceland",
+    "iso3166_code": "IS",
+    "nicknames": [
+      "Iceland",
+      "Reykjavík"
+    ],
+    "numeric": 352
+  },
+  {
+    "capital": "Jerusalem",
+    "country_name": "Israel",
+    "iso3166_code": "IL",
+    "nicknames": [
+      "Israel",
+      "Jerusalem"
+    ],
+    "numeric": 376
+  },
+  {
+    "capital": "Rome",
+    "country_name": "Italy",
+    "iso3166_code": "IT",
+    "nicknames": [
+      "Italy",
+      "Rome"
+    ],
+    "numeric": 380
+  },
+  {
+    "capital": "Kingston",
+    "country_name": "Jamaica",
+    "iso3166_code": "JM",
+    "nicknames": [
+      "Jamaica",
+      "Kingston"
+    ],
+    "numeric": 388
+  },
+  {
+    "capital": "St. Helier",
+    "country_name": "Jersey",
+    "iso3166_code": "JE",
+    "nicknames": [
+      "Jersey",
+      "St. Helier"
+    ],
+    "numeric": 832
+  },
+  {
+    "capital": "Amman",
+    "country_name": "Jordan",
+    "iso3166_code": "JO",
+    "nicknames": [
+      "Jordan",
+      "Amman"
+    ],
+    "numeric": 400
+  },
+  {
+    "capital": "Tokyo",
+    "country_name": "Japan",
+    "iso3166_code": "JP",
+    "nicknames": [
+      "Japan",
+      "Tokyo"
+    ],
+    "numeric": 392
+  },
+  {
+    "capital": "Astana",
+    "country_name": "Kazakhstan",
+    "iso3166_code": "KZ",
+    "nicknames": [
+      "Kazakhstan",
+      "Astana"
+    ],
+    "numeric": 398
+  },
+  {
+    "capital": "Nairobi",
+    "country_name": "Kenya",
+    "iso3166_code": "KE",
+    "nicknames": [
+      "Kenya",
+      "Nairobi"
+    ],
+    "numeric": 404
+  },
+  {
+    "capital": "Bishkek",
+    "country_name": "Kyrgyzstan",
+    "iso3166_code": "KG",
+    "nicknames": [
+      "Kyrgyzstan",
+      "Bishkek"
+    ],
+    "numeric": 417
+  },
+  {
+    "capital": "Phnom Penh",
+    "country_name": "Cambodia",
+    "iso3166_code": "KH",
+    "nicknames": [
+      "Cambodia",
+      "Phnom Penh"
+    ],
+    "numeric": 116
+  },
+  {
+    "capital": "Tarawa",
+    "country_name": "Kiribati",
+    "iso3166_code": "KI",
+    "nicknames": [
+      "Kiribati",
+      "Tarawa"
+    ],
+    "numeric": 296
+  },
+  {
+    "capital": "Seoul",
+    "country_name": "Korea, Republic of",
+    "iso3166_code": "KR",
+    "nicknames": [
+      "South Korea",
+      "Republic of Korea",
+      "Seoul"
+    ],
+    "numeric": 410
+  },
+  {
+    "capital": "Kuwait City",
+    "country_name": "Kuwait",
+    "iso3166_code": "KW",
+    "nicknames": [
+      "Kuwait",
+      "Kuwait City"
+    ],
+    "numeric": 414
+  },
+  {
+    "capital": "Vientiane",
+    "country_name": "Lao People's Democratic Republic",
+    "iso3166_code": "LA",
+    "nicknames": [
+      "Laos",
+      "Lao People's Democratic Republic",
+      "Vientiane"
+    ],
+    "numeric": 418
+  },
+  {
+    "capital": "Beirut",
+    "country_name": "Lebanon",
+    "iso3166_code": "LB",
+    "nicknames": [
+      "Lebanon",
+      "Beirut"
+    ],
+    "numeric": 422
+  },
+  {
+    "capital": "Monrovia",
+    "country_name": "Liberia",
+    "iso3166_code": "LR",
+    "nicknames": [
+      "Liberia",
+      "Monrovia"
+    ],
+    "numeric": 430
+  },
+  {
+    "capital": "Tripoli",
+    "country_name": "Libya",
+    "iso3166_code": "LY",
+    "nicknames": [
+      "Libya",
+      "Tripoli"
+    ],
+    "numeric": 434
+  },
+  {
+    "capital": "Castries",
+    "country_name": "Saint Lucia",
+    "iso3166_code": "LC",
+    "nicknames": [
+      "Saint Lucia",
+      "Castries"
+    ],
+    "numeric": 662
+  },
+  {
+    "capital": "Vaduz",
+    "country_name": "Liechtenstein",
+    "iso3166_code": "LI",
+    "nicknames": [
+      "Liechtenstein",
+      "Vaduz"
+    ],
+    "numeric": 438
+  },
+  {
+    "capital": "Sri Jayawardenapura Kotte",
+    "country_name": "Sri Lanka",
+    "iso3166_code": "LK",
+    "nicknames": [
+      "Sri Lanka",
+      "Sri Jayawardenapura Kotte"
+    ],
+    "numeric": 144
+  },
+  {
+    "capital": "Maseru",
+    "country_name": "Lesotho",
+    "iso3166_code": "LS",
+    "nicknames": [
+      "Lesotho",
+      "Maseru"
+    ],
+    "numeric": 426
+  },
+  {
+    "capital": "Vilnius",
+    "country_name": "Lithuania",
+    "iso3166_code": "LT",
+    "nicknames": [
+      "Lithuania",
+      "Vilnius"
+    ],
+    "numeric": 440
+  },
+  {
+    "capital": "Luxembourg",
+    "country_name": "Luxembourg",
+    "iso3166_code": "LU",
+    "nicknames": [
+      "Luxembourg",
+      "Luxembourg"
+    ],
+    "numeric": 442
+  },
+  {
+    "capital": "Riga",
+    "country_name": "Latvia",
+    "iso3166_code": "LV",
+    "nicknames": [
+      "Latvia",
+      "Riga"
+    ],
+    "numeric": 428
+  },
+  {
+    "country_name": "Macao",
+    "iso3166_code": "MO",
+    "nicknames": [
+      "Macao"
+    ],
+    "numeric": 446
+  },
+  {
+    "capital": "Rabat",
+    "country_name": "Morocco",
+    "iso3166_code": "MA",
+    "nicknames": [
+      "Morocco",
+      "Rabat"
+    ],
+    "numeric": 504
+  },
+  {
+    "capital": "Monaco",
+    "country_name": "Monaco",
+    "iso3166_code": "MC",
+    "nicknames": [
+      "Monaco",
+      "Monaco"
+    ],
+    "numeric": 492
+  },
+  {
+    "capital": "Chisinau",
+    "country_name": "Moldova, Republic of",
+    "iso3166_code": "MD",
+    "nicknames": [
+      "Moldova",
+      "Chisinau"
+    ],
+    "numeric": 498
+  },
+  {
+    "capital": "Antananarivo",
+    "country_name": "Madagascar",
+    "iso3166_code": "MG",
+    "nicknames": [
+      "Madagascar",
+      "Antananarivo"
+    ],
+    "numeric": 450
+  },
+  {
+    "capital": "Malé",
+    "country_name": "Maldives",
+    "iso3166_code": "MV",
+    "nicknames": [
+      "Maldives",
+      "Malé"
+    ],
+    "numeric": 462
+  },
+  {
+    "capital": "Mexico City",
+    "country_name": "Mexico",
+    "iso3166_code": "MX",
+    "nicknames": [
+      "Mexico",
+      "Mexico City"
+    ],
+    "numeric": 484
+  },
+  {
+    "capital": "Skopje",
+    "country_name": "North Macedonia",
+    "iso3166_code": "MK",
+    "nicknames": [
+      "Macedonia",
+      "Skopje"
+    ],
+    "numeric": 807
+  },
+  {
+    "capital": "Bamako",
+    "country_name": "Mali",
+    "iso3166_code": "ML",
+    "nicknames": [
+      "Mali",
+      "Bamako"
+    ],
+    "numeric": 466
+  },
+  {
+    "capital": "Valletta",
+    "country_name": "Malta",
+    "iso3166_code": "MT",
+    "nicknames": [
+      "Malta",
+      "Valletta"
+    ],
+    "numeric": 470
+  },
+  {
+    "capital": "Naypyidaw",
+    "country_name": "Myanmar",
+    "iso3166_code": "MM",
+    "nicknames": [
+      "Myanmar",
+      "Naypyidaw"
+    ],
+    "numeric": 104
+  },
+  {
+    "capital": "Podgorica",
+    "country_name": "Montenegro",
+    "iso3166_code": "ME",
+    "nicknames": [
+      "Montenegro",
+      "Podgorica"
+    ],
+    "numeric": 499
+  },
+  {
+    "capital": "Ulaanbaatar",
+    "country_name": "Mongolia",
+    "iso3166_code": "MN",
+    "nicknames": [
+      "Mongolia",
+      "Ulaanbaatar"
+    ],
+    "numeric": 496
+  },
+  {
+    "capital": "Maputo",
+    "country_name": "Mozambique",
+    "iso3166_code": "MZ",
+    "nicknames": [
+      "Mozambique",
+      "Maputo"
+    ],
+    "numeric": 508
+  },
+  {
+    "capital": "Nouakchott",
+    "country_name": "Mauritania",
+    "iso3166_code": "MR",
+    "nicknames": [
+      "Mauritania",
+      "Nouakchott"
+    ],
+    "numeric": 478
+  },
+  {
+    "country_name": "Martinique",
+    "iso3166_code": "MQ",
+    "nicknames": [
+      "Martinique"
+    ],
+    "numeric": 474
+  },
+  {
+    "capital": "Port Louis",
+    "country_name": "Mauritius",
+    "iso3166_code": "MU",
+    "nicknames": [
+      "Mauritius",
+      "Port Louis"
+    ],
+    "numeric": 480
+  },
+  {
+    "capital": "Lilongwe",
+    "country_name": "Malawi",
+    "iso3166_code": "MW",
+    "nicknames": [
+      "Malawi",
+      "Lilongwe"
+    ],
+    "numeric": 454
+  },
+  {
+    "capital": "Kuala Lumpur",
+    "country_name": "Malaysia",
+    "iso3166_code": "MY",
+    "nicknames": [
+      "Malaysia",
+      "Kuala Lumpur"
+    ],
+    "numeric": 458
+  },
+  {
+    "capital": "Windhoek",
+    "country_name": "Namibia",
+    "iso3166_code": "NA",
+    "nicknames": [
+      "Namibia",
+      "Windhoek"
+    ],
+    "numeric": 516
+  },
+  {
+    "capital": "Nouméa",
+    "country_name": "New Caledonia",
+    "iso3166_code": "NC",
+    "nicknames": [
+      "New Caledonia",
+      "Nouméa"
+    ],
+    "numeric": 540
+  },
+  {
+    "capital": "Niamey",
+    "country_name": "Niger",
+    "iso3166_code": "NE",
+    "nicknames": [
+      "Niger",
+      "Niamey"
+    ],
+    "numeric": 562
+  },
+  {
+    "capital": "Abuja",
+    "country_name": "Nigeria",
+    "iso3166_code": "NG",
+    "nicknames": [
+      "Nigeria",
+      "Abuja"
+    ],
+    "numeric": 566
+  },
+  {
+    "capital": "Managua",
+    "country_name": "Nicaragua",
+    "iso3166_code": "NI",
+    "nicknames": [
+      "Nicaragua",
+      "Managua"
+    ],
+    "numeric": 558
+  },
+  {
+    "capital": "Amsterdam",
+    "country_name": "Netherlands",
+    "iso3166_code": "NL",
+    "nicknames": [
+      "Netherlands",
+      "Amsterdam"
+    ],
+    "numeric": 528
+  },
+  {
+    "capital": "Oslo",
+    "country_name": "Norway",
+    "iso3166_code": "NO",
+    "nicknames": [
+      "Norway",
+      "Oslo"
+    ],
+    "numeric": 578
+  },
+  {
+    "capital": "Kathmandu",
+    "country_name": "Nepal",
+    "iso3166_code": "NP",
+    "nicknames": [
+      "Nepal",
+      "Kathmandu"
+    ],
+    "numeric": 524
+  },
+  {
+    "capital": "Wellington",
+    "country_name": "New Zealand",
+    "iso3166_code": "NZ",
+    "nicknames": [
+      "New Zealand",
+      "Wellington"
+    ],
+    "numeric": 554
+  },
+  {
+    "capital": "Muscat",
+    "country_name": "Oman",
+    "iso3166_code": "OM",
+    "nicknames": [
+      "Oman",
+      "Muscat"
+    ],
+    "numeric": 512
+  },
+  {
+    "capital": "Islamabad",
+    "country_name": "Pakistan",
+    "iso3166_code": "PK",
+    "nicknames": [
+      "Pakistan",
+      "Islamabad"
+    ],
+    "numeric": 586
+  },
+  {
+    "capital": "Panama City",
+    "country_name": "Panama",
+    "iso3166_code": "PA",
+    "nicknames": [
+      "Panama",
+      "Panama City"
+    ],
+    "numeric": 591
+  },
+  {
+    "capital": "Lima",
+    "country_name": "Peru",
+    "iso3166_code": "PE",
+    "nicknames": [
+      "Peru",
+      "Lima"
+    ],
+    "numeric": 604
+  },
+  {
+    "capital": "Manila",
+    "country_name": "Philippines",
+    "iso3166_code": "PH",
+    "nicknames": [
+      "Philippines",
+      "Manila"
+    ],
+    "numeric": 608
+  },
+  {
+    "capital": "Port Moresby",
+    "country_name": "Papua New Guinea",
+    "iso3166_code": "PG",
+    "nicknames": [
+      "Papua New Guinea",
+      "Port Moresby"
+    ],
+    "numeric": 598
+  },
+  {
+    "capital": "Warsaw",
+    "country_name": "Poland",
+    "iso3166_code": "PL",
+    "nicknames": [
+      "Poland",
+      "Warsaw"
+    ],
+    "numeric": 616
+  },
+  {
+    "capital": "San Juan",
+    "country_name": "Puerto Rico",
+    "iso3166_code": "PR",
+    "nicknames": [
+      "Puerto Rico",
+      "San Juan"
+    ],
+    "numeric": 630
+  },
+  {
+    "capital": "Pyongyang",
+    "country_name": "Korea, Democratic People's Republic of",
+    "iso3166_code": "KP",
+    "nicknames": [
+      "North Korea",
+      "Democratic People's Republic of Korea",
+      "DPRK",
+      "Pyongyang"
+    ],
+    "numeric": 408
+  },
+  {
+    "capital": "Lisbon",
+    "country_name": "Portugal",
+    "iso3166_code": "PT",
+    "nicknames": [
+      "Portugal",
+      "Lisbon"
+    ],
+    "numeric": 620
+  },
+  {
+    "capital": "Asunción",
+    "country_name": "Paraguay",
+    "iso3166_code": "PY",
+    "nicknames": [
+      "Paraguay",
+      "Asunción"
+    ],
+    "numeric": 600
+  },
+  {
+    "capital": "Jerusalem",
+    "country_name": "Palestine, State of",
+    "iso3166_code": "PS",
+    "nicknames": [
+      "Palestine",
+      "Jerusalem"
+    ],
+    "numeric": 275
+  },
+  {
+    "capital": "Papeete",
+    "country_name": "French Polynesia",
+    "iso3166_code": "PF",
+    "nicknames": [
+      "French Polynesia",
+      "Papeete"
+    ],
+    "numeric": 258
+  },
+  {
+    "capital": "Doha",
+    "country_name": "Qatar",
+    "iso3166_code": "QA",
+    "nicknames": [
+      "Qatar",
+      "Doha"
+    ],
+    "numeric": 634
+  },
+  {
+    "country_name": "Réunion",
+    "iso3166_code": "RE",
+    "nicknames": [
+      "Réunion"
+    ],
+    "numeric": 638
+  },
+  {
+    "capital": "Bucharest",
+    "country_name": "Romania",
+    "iso3166_code": "RO",
+    "nicknames": [
+      "Romania",
+      "Bucharest"
+    ],
+    "numeric": 642
+  },
+  {
+    "capital": "Moscow",
+    "country_name": "Russian Federation",
+    "iso3166_code": "RU",
+    "nicknames": [
+      "Russia",
+      "Russian Federation",
+      "Moscow"
+    ],
+    "numeric": 643
+  },
+  {
+    "capital": "Kigali",
+    "country_name": "Rwanda",
+    "iso3166_code": "RW",
+    "nicknames": [
+      "Rwanda",
+      "Kigali"
+    ],
+    "numeric": 646
+  },
+  {
+    "capital": "Riyadh",
+    "country_name": "Saudi Arabia",
+    "iso3166_code": "SA",
+    "nicknames": [
+      "Saudi Arabia",
+      "Riyadh"
+    ],
+    "numeric": 682
+  },
+  {
+    "capital": "Khartoum",
+    "country_name": "Sudan",
+    "iso3166_code": "SD",
+    "nicknames": [
+      "Sudan",
+      "Khartoum"
+    ],
+    "numeric": 729
+  },
+  {
+    "capital": "Dakar",
+    "country_name": "Senegal",
+    "iso3166_code": "SN",
+    "nicknames": [
+      "Senegal",
+      "Dakar"
+    ],
+    "numeric": 686
+  },
+  {
+    "capital": "Singapore",
+    "country_name": "Singapore",
+    "iso3166_code": "SG",
+    "nicknames": [
+      "Singapore",
+      "Singapore"
+    ],
+    "numeric": 702
+  },
+  {
+    "capital": "Honiara",
+    "country_name": "Solomon Islands",
+    "iso3166_code": "SB",
+    "nicknames": [
+      "Solomon Islands",
+      "Honiara"
+    ],
+    "numeric": 90
+  },
+  {
+    "capital": "Freetown",
+    "country_name": "Sierra Leone",
+    "iso3166_code": "SL",
+    "nicknames": [
+      "Sierra Leone",
+      "Freetown"
+    ],
+    "numeric": 694
+  },
+  {
+    "capital": "San Salvador",
+    "country_name": "El Salvador",
+    "iso3166_code": "SV",
+    "nicknames": [
+      "El Salvador",
+      "San Salvador"
+    ],
+    "numeric": 222
+  },
+  {
+    "capital": "San Marino",
+    "country_name": "San Marino",
+    "iso3166_code": "SM",
+    "nicknames": [
+      "San Marino",
+      "San Marino"
+    ],
+    "numeric": 674
+  },
+  {
+    "capital": "Mogadishu",
+    "country_name": "Somalia",
+    "iso3166_code": "SO",
+    "nicknames": [
+      "Somalia",
+      "Mogadishu"
+    ],
+    "numeric": 706
+  },
+  {
+    "capital": "Belgrade",
+    "country_name": "Serbia",
+    "iso3166_code": "RS",
+    "nicknames": [
+      "Serbia",
+      "Belgrade"
+    ],
+    "numeric": 688
+  },
+  {
+    "country_name": "South Sudan",
+    "iso3166_code": "SS",
+    "nicknames": [
+      "South Sudan",
+      "Juba"
+    ],
+    "numeric": 728
+  },
+  {
+    "capital": "São Tomé",
+    "country_name": "Sao Tome and Principe",
+    "iso3166_code": "ST",
+    "nicknames": [
+      "São Tomé and Príncipe",
+      "Sao Tome and Principe",
+      "São Tomé",
+      "São Tomé"
+    ],
+    "numeric": 678
+  },
+  {
+    "capital": "Paramaribo",
+    "country_name": "Suriname",
+    "iso3166_code": "SR",
+    "nicknames": [
+      "Suriname",
+      "Paramaribo"
+    ],
+    "numeric": 740
+  },
+  {
+    "capital": "Bratislava",
+    "country_name": "Slovakia",
+    "iso3166_code": "SK",
+    "nicknames": [
+      "Slovakia",
+      "Bratislava"
+    ],
+    "numeric": 703
+  },
+  {
+    "capital": "Ljubljana",
+    "country_name": "Slovenia",
+    "iso3166_code": "SI",
+    "nicknames": [
+      "Slovenia",
+      "Ljubljana"
+    ],
+    "numeric": 705
+  },
+  {
+    "capital": "Stockholm",
+    "country_name": "Sweden",
+    "iso3166_code": "SE",
+    "nicknames": [
+      "Sweden",
+      "Stockholm"
+    ],
+    "numeric": 752
+  },
+  {
+    "capital": "Mbabane",
+    "country_name": "Eswatini",
+    "iso3166_code": "SZ",
+    "nicknames": [
+      "Swaziland",
+      "Eswatini",
+      "Mbabane"
+    ],
+    "numeric": 748
+  },
+  {
+    "capital": "Victoria",
+    "country_name": "Seychelles",
+    "iso3166_code": "SC",
+    "nicknames": [
+      "Seychelles",
+      "Victoria"
+    ],
+    "numeric": 690
+  },
+  {
+    "capital": "Damascus",
+    "country_name": "Syrian Arab Republic",
+    "iso3166_code": "SY",
+    "nicknames": [
+      "Syria",
+      "Syrian Arab Republic",
+      "Damascus"
+    ],
+    "numeric": 760
+  },
+  {
+    "capital": "Cockburn Town",
+    "country_name": "Turks and Caicos Islands",
+    "iso3166_code": "TC",
+    "nicknames": [
+      "Turks and Caicos Islands",
+      "Cockburn Town"
+    ],
+    "numeric": 796
+  },
+  {
+    "capital": "N'Djamena",
+    "country_name": "Chad",
+    "iso3166_code": "TD",
+    "nicknames": [
+      "Chad",
+      "N'Djamena"
+    ],
+    "numeric": 148
+  },
+  {
+    "capital": "Lomé",
+    "country_name": "Togo",
+    "iso3166_code": "TG",
+    "nicknames": [
+      "Togo",
+      "Lomé"
+    ],
+    "numeric": 768
+  },
+  {
+    "capital": "Bangkok",
+    "country_name": "Thailand",
+    "iso3166_code": "TH",
+    "nicknames": [
+      "Thailand",
+      "Bangkok"
+    ],
+    "numeric": 764
+  },
+  {
+    "country_name": "Timor-Leste",
+    "iso3166_code": "TL",
+    "nicknames": [
+      "East Timor",
+      "Timor-Leste"
+    ],
+    "numeric": 626
+  },
+  {
+    "capital": "Nukuʻalofa",
+    "country_name": "Tonga",
+    "iso3166_code": "TO",
+    "nicknames": [
+      "Tonga",
+      "Nukuʻalofa"
+    ],
+    "numeric": 776
+  },
+  {
+    "capital": "Port of Spain",
+    "country_name": "Trinidad and Tobago",
+    "iso3166_code": "TT",
+    "nicknames": [
+      "Trinidad and Tobago",
+      "Trinidad",
+      "Tobago",
+      "Port of Spain"
+    ],
+    "numeric": 780
+  },
+  {
+    "capital": "Tunis",
+    "country_name": "Tunisia",
+    "iso3166_code": "TN",
+    "nicknames": [
+      "Tunisia",
+      "Tunis"
+    ],
+    "numeric": 788
+  },
+  {
+    "capital": "Ankara",
+    "country_name": "Turkey",
+    "iso3166_code": "TR",
+    "nicknames": [
+      "Turkey",
+      "Ankara"
+    ],
+    "numeric": 792
+  },
+  {
+    "capital": "Funafuti",
+    "country_name": "Tuvalu",
+    "iso3166_code": "TV",
+    "nicknames": [
+      "Tuvalu",
+      "Funafuti"
+    ],
+    "numeric": 798
+  },
+  {
+    "country_name": "Taiwan, Province of China",
+    "iso3166_code": "TW",
+    "nicknames": [
+      "Taiwan",
+      "Taipei"
+    ],
+    "numeric": 158
+  },
+  {
+    "capital": "Dodoma",
+    "country_name": "Tanzania, United Republic of",
+    "iso3166_code": "TZ",
+    "nicknames": [
+      "Tanzania",
+      "Dodoma"
+    ],
+    "numeric": 834
+  },
+  {
+    "capital": "Kampala",
+    "country_name": "Uganda",
+    "iso3166_code": "UG",
+    "nicknames": [
+      "Uganda",
+      "Kampala"
+    ],
+    "numeric": 800
+  },
+  {
+    "capital": "Kiev",
+    "country_name": "Ukraine",
+    "iso3166_code": "UA",
+    "nicknames": [
+      "Ukraine",
+      "Kiev"
+    ],
+    "numeric": 804
+  },
+  {
+    "capital": "Montevideo",
+    "country_name": "Uruguay",
+    "iso3166_code": "UY",
+    "nicknames": [
+      "Uruguay",
+      "Montevideo"
+    ],
+    "numeric": 858
+  },
+  {
+    "capital": "Washington, D.C.",
+    "country_name": "United States",
+    "iso3166_code": "US",
+    "nicknames": [
+      "United States",
+      "U.S.",
+      "America",
+      "Washington, D.C."
+    ],
+    "numeric": 840
+  },
+  {
+    "capital": "Tashkent",
+    "country_name": "Uzbekistan",
+    "iso3166_code": "UZ",
+    "nicknames": [
+      "Uzbekistan",
+      "Tashkent"
+    ],
+    "numeric": 860
+  },
+  {
+    "capital": "Vatican City",
+    "country_name": "Holy See (Vatican City State)",
+    "iso3166_code": "VA",
+    "nicknames": [
+      "Vatican City",
+      "Holy See",
+      "Vatican City"
+    ],
+    "numeric": 336
+  },
+  {
+    "capital": "Caracas",
+    "country_name": "Venezuela, Bolivarian Republic of",
+    "iso3166_code": "VE",
+    "nicknames": [
+      "Venezuela",
+      "Caracas"
+    ],
+    "numeric": 862
+  },
+  {
+    "capital": "Hanoi",
+    "country_name": "Viet Nam",
+    "iso3166_code": "VN",
+    "nicknames": [
+      "Vietnam",
+      "Viet Nam",
+      "Hanoi"
+    ],
+    "numeric": 704
+  },
+  {
+    "capital": "Port Vila",
+    "country_name": "Vanuatu",
+    "iso3166_code": "VU",
+    "nicknames": [
+      "Vanuatu",
+      "Port Vila"
+    ],
+    "numeric": 548
+  },
+  {
+    "capital": "Sanaá",
+    "country_name": "Yemen",
+    "iso3166_code": "YE",
+    "nicknames": [
+      "Yemen",
+      "Sanaá"
+    ],
+    "numeric": 887
+  },
+  {
+    "capital": "Pretoria",
+    "country_name": "South Africa",
+    "iso3166_code": "ZA",
+    "nicknames": [
+      "South Africa",
+      "Pretoria"
+    ],
+    "numeric": 710
+  },
+  {
+    "capital": "Lusaka",
+    "country_name": "Zambia",
+    "iso3166_code": "ZM",
+    "nicknames": [
+      "Zambia",
+      "Lusaka"
+    ],
+    "numeric": 894
+  },
+  {
+    "capital": "Harare",
+    "country_name": "Zimbabwe",
+    "iso3166_code": "ZW",
+    "nicknames": [
+      "Zimbabwe",
+      "Harare"
+    ],
+    "numeric": 716
+  }
+]

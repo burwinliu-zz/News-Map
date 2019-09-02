@@ -5,9 +5,8 @@ node_modules
 venv
 dist
 .cache
-postgreSQL
+webpage/server/webscraping/data/postgreSQL
 public
-data
 
 #Setup files and likewise things
 .env

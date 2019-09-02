@@ -12,7 +12,7 @@ import six.moves.urllib as urllib
 from bs4 import BeautifulSoup
 from six.moves import cPickle as pkl
 
-from webpage.server.data.data_dump import *
+from .data import *
 
 '''Take in url function and scrape -- using google '''
 

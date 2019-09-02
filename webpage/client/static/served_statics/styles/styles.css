@@ -87,6 +87,7 @@ html, body{
 }
 
 #sidebar{
+    padding-left: 2%;
     background-color: #04041b;
     flex-direction: column;
     position: relative;
@@ -103,6 +104,7 @@ html, body{
 }
 
 #key{
+    padding-top: 2%;
     height: 20%;
 }
 

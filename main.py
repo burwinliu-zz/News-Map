@@ -1,4 +1,4 @@
-from webpage.server.data.python_scripts.webscraper import DataLoader
+from webscraping.data import DataLoader
 
 if __name__ == '__main__':
     DL = DataLoader()

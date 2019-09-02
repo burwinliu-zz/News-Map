@@ -1,4 +1,4 @@
-App.py under News-Map\webpage\server\bridge\app.py is the running point for FLASK.
+App.py under webpage is the running point for FLASK.
 remember to have webpack and parcel setup with proper paths -- define all items from .env in docs under .env file.
 The client root should come to the folder leading to index.html and static should likewise lead to the
 file containing the file webpack bundled. (in my case it is \News-Map\webpage\client and \News-Map\public respectively)
@@ -6,3 +6,5 @@ file containing the file webpack bundled. (in my case it is \News-Map\webpage\cl
 After those envs have been set, run in console under the \News-Map\webpage directory the command "npm run prod" and
 witness magic. bundle.js should have all files properly bundled, allowing for flask to serve index.html and all public
 files properly. The site should load up a map and work from there
+
+if navigated to the root dir, one should be able to run by python webpage/app.py

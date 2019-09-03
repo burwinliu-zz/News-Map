@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Index Page</title>
+  </head>
+  <link rel="stylesheet" href="/static/styles/styles.css">
+  {% block styles %}{% endblock %}
+  <body>
+    {% block body %}{% endblock %}
+    <div id = "main-page">
+
+      <div class="navBar">
+        <!--TODO show all map info/display items from news list-->
+        <a href="map">Map</a>
+        <a href="display-news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <!--TODO create login function-->
+        <a href="login" style="right:0;position:absolute">Login</a>
+      </div>
+
+      <div id="main-body">
+          {% block content %}{% endblock %}
+      </div>
+
+    </div>
+    {% block script %}{% endblock %}
+  </body>
+</html>

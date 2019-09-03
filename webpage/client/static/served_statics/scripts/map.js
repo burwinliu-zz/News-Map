@@ -16,8 +16,8 @@ import VectorSource from "ol/source/Vector";
 /*
     Meant to retrieve data from db
  */
-console.log("0.0.2.1.5");
-const tableInner = '<tr><th scope="col">Headline</th><th scope="col">URL</th></tr>';
+console.log("0.0.2.1.8");
+const contentInner = '<div id="key">meh</div><div id="headlines"> <table id="table"> </table> </div>';
 const colours = JSON.parse(a);
 let load_in = false;
 let opened_side = false;
@@ -79,24 +79,28 @@ map.on('rendercomplete', e => {
     }
 });
 
-async function update(event){
+async function update_name(event){
     map.forEachFeatureAtPixel(event.pixel, async function(feature) {
-        // Set vars
-        const url_data='/data?iso=' + feature.get("ISO_A2");
-        let response_data = await fetch(url_data,);
-        let json_data = await response_data.json();
-        let key;
-        const tableRef = document.getElementById('table');
         const statusDisplay = document.getElementById('status_display');
-
         const url_name ='/data_country_name?iso=' + feature.get("ISO_A2");
         let response_name = await fetch(url_name,);
         let json_name = await response_name.json();
 
         // Set name of country
         statusDisplay.innerHTML = json_name['code'];
+    });
+}
 
-        tableRef.innerHTML = tableInner;
+async function update_events(event){
+    map.forEachFeatureAtPixel(event.pixel, async function(feature) {
+        // Set vars
+        // TODO split updating country name and updating table, to quickly update the name first of country
+        const url_data='/data?iso=' + feature.get("ISO_A2");
+        let response_data = await fetch(url_data,);
+        let json_data = await response_data.json();
+        let key;
+        const tableRef = document.getElementById('table');
+        tableRef.innerHTML = '<tr> <th scope="col">Headline</th> <th scope="col">URL</th> </tr> ';
         for(key in json_data){
             const headline = key;
             const url = json_data[key];
@@ -118,13 +122,7 @@ async function update(event){
 
 map.on('click', async function(event) {
     const content = document.getElementById('sidebar-content');
-    if (!(content.classList.contains('updating'))) {
-        content.classList.toggle('updating');
-    }
-    await update(event);
-    document.getElementById('sidebar-content').classList.toggle('updating');
+    await update_name(event);
+    content.innerHTML = contentInner;
+    await update_events(event);
 });
-
-const sleep = (milliseconds) => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds))
-};

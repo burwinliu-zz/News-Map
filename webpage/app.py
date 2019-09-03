@@ -45,8 +45,28 @@ def get_name():
 
 @app.route('/')
 def index():
+    return render_template('index.html')
+
+
+@app.route('/map')
+def map_page():
     res = json.dumps(get_colour_data())
-    return render_template('index.html', result=res)
+    return render_template('map.html', result=res)
+
+
+@app.route('/display-news')
+def display_news():
+    pass
+
+
+@app.route("/contact")
+def contact():
+    pass
+
+
+@app.route('/about')
+def about():
+    pass
 
 
 @app.route('/hello', methods=['GET', 'POST'])

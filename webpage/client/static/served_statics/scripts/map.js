@@ -1,10 +1,9 @@
 import {Map, View} from 'ol';
-import {fromLonLat, transform} from 'ol/proj'
+import {fromLonLat} from 'ol/proj'
 import {GeoJSON} from "ol/format";
 import VectorLayer from 'ol/layer/Vector';
 import {Fill, Style} from "ol/style";
 import VectorSource from "ol/source/Vector";
-import {$} from 'jquery';
 /*
     Data for countries.geojson from https://github.com/datasets/geo-countries
         All data is licensed under the Open Data Commons Public Domain Dedication and License.
@@ -80,17 +79,27 @@ map.on('rendercomplete', e => {
     }
 });
 
-map.on('click', async function(event) {
+async function update(event){
     map.forEachFeatureAtPixel(event.pixel, async function(feature) {
-        const url='/data?iso=' + feature.get("ISO_A2");
-        let response = await fetch(url,);
-        let json = await response.json();
+        // Set vars
+        const url_data='/data?iso=' + feature.get("ISO_A2");
+        let response_data = await fetch(url_data,);
+        let json_data = await response_data.json();
         let key;
         const tableRef = document.getElementById('table');
+        const statusDisplay = document.getElementById('status_display');
+
+        const url_name ='/data_country_name?iso=' + feature.get("ISO_A2");
+        let response_name = await fetch(url_name,);
+        let json_name = await response_name.json();
+
+        // Set name of country
+        statusDisplay.innerHTML = json_name['code'];
+
         tableRef.innerHTML = tableInner;
-        for(key in json){
+        for(key in json_data){
             const headline = key;
-            const url = json[key];
+            const url = json_data[key];
             const newRow   = tableRef.insertRow(tableRef.rows.length);
             const headlineCell = newRow.insertCell(0);
             const urlCell  = newRow.insertCell(1);
@@ -105,5 +114,17 @@ map.on('click', async function(event) {
         }
 
     });
+}
+
+map.on('click', async function(event) {
+    const content = document.getElementById('sidebar-content');
+    if (!(content.classList.contains('updating'))) {
+        content.classList.toggle('updating');
+    }
+    await update(event);
+    document.getElementById('sidebar-content').classList.toggle('updating');
 });
 
+const sleep = (milliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+};

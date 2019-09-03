@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, jsonify, request, render_template, Blueprint, json
 
-from server.to_frontend import get_colour_data, get_news_item
+from server.to_frontend import get_colour_data, get_news_item, get_country_name
 from server.database_access.config.sql_manage import setup_globals
 
 # FOR TESTING PURPOSES USED ENV VARIABLE TODO get working version
@@ -32,8 +32,15 @@ def test():
     if request.method == 'GET':
         iso_code = request.args.get('iso')
         res = get_news_item(iso_code)
-        print(res)
         return jsonify(res)
+
+
+@app.route('/data_country_name', methods=['GET'])
+def get_name():
+    if request.method == 'GET':
+        iso_code = request.args.get('iso')
+        res = get_country_name(iso_code)
+        return jsonify({'code': res})
 
 
 @app.route('/')

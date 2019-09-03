@@ -16,6 +16,10 @@ def get_news_item(iso_code: str) -> dict:
     return result
 
 
+def get_country_name(iso_code: str) -> str:
+    return retrieve(f"SELECT country_name FROM public.countries WHERE iso3166_code='{iso_code}'")[0]
+
+
 def reload_data():
     worker = Headlines()
     sample = worker.gen_samples(predict_country=True)

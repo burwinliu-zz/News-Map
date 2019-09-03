@@ -9,6 +9,7 @@
   <body>
     <div id = "preloader">Loading...</div>
     <div id = "main-page">
+
       <div class="navBar">
         <a href="#home">Home</a>
         <a href="#news">News</a>
@@ -16,25 +17,32 @@
         <a href="#about">About</a>
         <!--TODO create login function-->
         <a href="#login" style="right:0;position:absolute">Login</a>
-
       </div>
+
       <div id="main-body">
+
         <div id="sidebar">
           <!--TODO show all map info/display items from news list-->
           <div id="navbarSpace" style="height: 5%"></div>
-          <div id="key">to-add colour key?</div>
-          <div id="headlines">
-            <table id="table">
+          <div id="status_display" style="height: 5%"></div>
+          <div id="sidebar-content">
+            <div id="key">to-add colour key?</div>
+            <div id="headlines">
+              <table id="table">
               <tr>
                 <th scope="col">Headline</th>
                 <th scope="col">URL</th>
               </tr>
             </table>
+            </div>
           </div>
         </div>
+
         <div id="map"></div>
       </div>
+
     </div>
+
     <script type="text/javascript">
       const a = ' {{result|safe}} ';
     </script>

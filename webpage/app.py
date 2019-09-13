@@ -3,7 +3,7 @@ import os
 from flask import Flask, jsonify, request, render_template, Blueprint, json
 
 from server.to_frontend import get_colour_data, get_news_item, get_country_name
-from server.database_access.config.sql_manage import setup_globals
+from server.database_access.config.setup import setup_globals
 
 # FOR TESTING PURPOSES USED ENV VARIABLE TODO get working version
 setup_globals()

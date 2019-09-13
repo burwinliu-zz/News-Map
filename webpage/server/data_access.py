@@ -10,8 +10,8 @@ import re
 
 import pycountry
 
-from .database_access import Database, NewsDatabase, OverviewDatabase
-from .database_access.config import test, DatabaseError, init_db, execute_command
+from database_access import Database, NewsDatabase, OverviewDatabase
+from database_access.config import test, DatabaseError, init_db, execute_command
 
 
 def store_countries(db: Database) -> None:

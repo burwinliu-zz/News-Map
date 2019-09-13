@@ -9,8 +9,10 @@ SEE data.py for use
 """
 from typing import Tuple
 
-from .database import Database
-from .config.sql_manage import execute_command, get_data
+import database
+from config import execute_command, get_data
+
+Database = database.Database
 
 
 class OverviewDatabase(Database):

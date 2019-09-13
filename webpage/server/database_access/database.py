@@ -3,7 +3,7 @@
 """
 import re
 
-from .config import execute_command
+from config import execute_command
 
 
 class Database:

@@ -9,9 +9,9 @@ from os import getenv
 
 import psycopg2
 
-from .setup import setup_globals
+import setup
 
-setup_globals()
+setup.setup_globals()
 
 
 # used to test that postgres is in fact working and connected

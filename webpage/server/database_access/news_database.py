@@ -8,8 +8,10 @@ SEE data.py for use
 ("ISO_Code", "SMALLINT")
 """
 
-from .database import Database
-from .config.sql_manage import retrieve
+import database
+from config import retrieve
+
+Database = database.Database
 
 
 class NewsDatabase(Database):

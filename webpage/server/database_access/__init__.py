@@ -1,6 +1,10 @@
-from .database import Database
-from .news_database import NewsDatabase
-from .overview_database import OverviewDatabase
+import database
+import news_database
+import overview_database
+
+Database = database.Database
+NewsDatabase = news_database.NewsDatabase
+OverviewDatabase = overview_database.OverviewDatabase
 
 __all__ = [
     'Database', 'NewsDatabase', 'OverviewDatabase'

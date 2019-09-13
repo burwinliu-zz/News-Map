@@ -22,6 +22,11 @@ app = Flask(__name__, template_folder=template_dir, static_url_path='/public', s
 statics = Blueprint('site', __name__, static_url_path='/static', static_folder=statics_dir)
 app.register_blueprint(statics)
 
+print(template_dir)
+from os import listdir
+from os.path import isfile, join
+onlyfiles = [f for f in listdir(template_dir) if isfile(join(template_dir, f))]
+print(onlyfiles)
 
 def get_app():
     return app
@@ -90,4 +95,8 @@ def public_files():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(
+        host=os.getenv('LISTEN', '0.0.0.0'),
+        debug= True,
+        port=5000
+    )

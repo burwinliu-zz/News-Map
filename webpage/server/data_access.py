@@ -10,8 +10,13 @@ import re
 
 import pycountry
 
-from database_access import Database, NewsDatabase, OverviewDatabase
+from database_access import database, news_database, overview_database
 from database_access.config import test, DatabaseError, init_db, execute_command
+
+
+Database = database.Database
+NewsDatabase = news_database.NewsDatabase
+OverviewDatabase = overview_database.OverviewDatabase
 
 
 def store_countries(db: Database) -> None:
@@ -167,12 +172,12 @@ if __name__ == "__main__":
 
     # For setup of databases
 
-    '''
+
     _init_sys_info()
     countries = _init_countries()
     store_countries(countries)
     init_news()
     init_news_overview()
-    '''
+
 
 

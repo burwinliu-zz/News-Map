@@ -39,7 +39,7 @@ def test() -> int:
         return 1
     finally:
         # closing database connection.
-        if 'connection' in locals():
+        if 'cursor' in locals():
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")

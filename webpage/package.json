@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "dotenv": "^8.1.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ol": "^5.3.3",
     "pg": "^7.12.1",
     "pg-native": "^3.0.0",
